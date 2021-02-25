@@ -10,13 +10,15 @@ using namespace std;
 
 void parse(TiXmlDocument* doc, vector<Centrum>* centra, vector<Hub>* hubs){
     TiXmlElement* root = doc->FirstChildElement();
-    vector<string> c;
+    vector<string> c; // vector voor centra in hubs
     string elementName;
 
+    //intereert over hubs en centra
     for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr; elem = elem->NextSiblingElement()){
         map<string, string> elements;
         string name;
 
+        //ittereert over elementen in hubs en centra
         for(TiXmlElement* ele = elem->FirstChildElement(); ele != nullptr; ele = ele->NextSiblingElement()){
             name = ele->Value();
             if(name != "CENTRA")
