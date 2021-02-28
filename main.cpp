@@ -5,8 +5,20 @@
 #include "Hub.h"
 #include <string>
 #include <map>
+#include <sstream>
 
 using namespace std;
+
+/**
+ * Zet string om naar int
+ * @param s String die wordt omgezet
+ * @return Int waarde
+ */
+int stoi(string& s) {
+    int i;
+    istringstream(s) >> i;
+    return i;
+}
 
 void parse(TiXmlDocument* doc, vector<Centrum>* centra, vector<Hub>* hubs){
     TiXmlElement* root = doc->FirstChildElement();
@@ -14,17 +26,17 @@ void parse(TiXmlDocument* doc, vector<Centrum>* centra, vector<Hub>* hubs){
     string elementName;
 
     //intereert over hubs en centra
-    for(TiXmlElement* elem = root->FirstChildElement(); elem != nullptr; elem = elem->NextSiblingElement()){
+    for(TiXmlElement* elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()){
         map<string, string> elements;
         string name;
 
         //ittereert over elementen in hubs en centra
-        for(TiXmlElement* ele = elem->FirstChildElement(); ele != nullptr; ele = ele->NextSiblingElement()){
+        for(TiXmlElement* ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()){
             name = ele->Value();
             if(name != "CENTRA")
                 elements[ele->Value()] = ele->FirstChild()->ToText()->Value();
             else{ // zet centra in een vector (enkel voor hubs)
-                for(TiXmlElement* el = ele->FirstChildElement(); el != nullptr; el = el->NextSiblingElement()){
+                for(TiXmlElement* el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()){
                     c.push_back(el->FirstChild()->ToText()->Value());
                 }
             }
