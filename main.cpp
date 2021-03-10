@@ -1,74 +1,26 @@
 #include <iostream>
-#include "tinyxml.h"
+#include "XmlParser/tinyxml.h"
 #include <vector>
-#include "Centrum.h"
-#include "Hub.h"
+#include "Simulation/Centrum.h"
+#include "Simulation/Hub.h"
+#include "Simulation/simulation.h"
+#include "Simulation/simulationImporter.h"
+#include "Simulation/simulationExporter.h"
 #include <string>
 #include <map>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
-/**
- * Zet string om naar int
- * @param s String die wordt omgezet
- * @return Int waarde
- */
-int stoi(string& s) {
-    int i;
-    istringstream(s) >> i;
-    return i;
-}
-
-void parse(TiXmlDocument* doc, vector<Centrum>* centra, vector<Hub>* hubs){
-    TiXmlElement* root = doc->FirstChildElement();
-    vector<string> c; // vector voor centra in hubs
-    string elementName;
-
-    //intereert over hubs en centra
-    for(TiXmlElement* elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()){
-        map<string, string> elements;
-        string name;
-
-        //ittereert over elementen in hubs en centra
-        for(TiXmlElement* ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()){
-            name = ele->Value();
-            if(name != "CENTRA")
-                elements[ele->Value()] = ele->FirstChild()->ToText()->Value();
-            else{ // zet centra in een vector (enkel voor hubs)
-                for(TiXmlElement* el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()){
-                    c.push_back(el->FirstChild()->ToText()->Value());
-                }
-            }
-        }
-
-        elementName = elem->Value();
-
-        if(elementName == "HUB")
-            hubs->push_back(Hub(stoi(elements["levering"]), stoi(elements["interval"]), stoi(elements["transport"]), c));
-        else if (elementName == "VACCINATIECENTRUM")
-            centra->push_back(Centrum(elements["naam"], elements["adres"], stoi(elements["inwoners"]), stoi(elements["capaciteit"])));
-
-    }
-}
-
 int main() {
-    TiXmlDocument doc;
-    vector<Centrum> centra;
-    vector<Hub> hubs;
+    simulation s;
 
-    if(!doc.LoadFile("data1.xml")) {
-        cerr << doc.ErrorDesc() << endl;
-        return 1;
-    }
+    simulationImporter::importFile("data1.xml", s);
 
-    parse(&doc, &centra, &hubs);
-
-    if (hubs.empty())
-        cerr << "no hubs found";
-
-    if (centra.empty())
-        cerr << "no centra found";
+//    ofstream myFile("output.txt");
+    simulationExporter exporter;
+    exporter.exportSim(cout, s);
 
     return 0;
 }

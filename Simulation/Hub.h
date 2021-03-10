@@ -7,35 +7,38 @@
 
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
+
+class Centrum;
 
 class Hub {
     int levering;
     int interval;
     int transport;
-    vector<string> centra;
+    map<string, Centrum*> centra;
 public:
     //constructor
-    Hub(int l, int i, int t, vector<string> c){
+    Hub() {};
+    Hub(int l, int i, int t, map<string, Centrum*> c){
         levering = l;
         interval = i;
         transport = t;
         centra = c;
     };
 
-    //getters
-    int getLevering(){return levering;};
-    int getInterval(){return interval;};
-    int getTransport(){return transport;};
-    vector<string> getCentra(){return centra;};
-
     //setters
     void setLevering(int l){levering = l;};
     void setInterval(int i){interval = i;};
     void setTransport(int t){levering = t;};
-    void setCentra(vector<string> c){centra = c;};
+    void setCentra(const map<string, Centrum*>& c) {centra = c;};
 
+    //getters
+    int getLevering(){return levering;};
+    int getInterval(){return interval;};
+    int getTransport(){return transport;};
+    map<string, Centrum*> getCentra() {return centra;};
 };
 
 
