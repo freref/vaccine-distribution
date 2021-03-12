@@ -22,8 +22,8 @@ int main() {
     autoSim simulate(&s);
 //    ofstream myFile("output.txt");
 
-    //simulationExporter exporter;
-    //exporter.exportSim(cout, s);
+    simulationExporter exporter;
+    exporter.exportSim(cout, s);
 
     return 0;
 }

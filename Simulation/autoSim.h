@@ -11,20 +11,26 @@
 class autoSim {
 public:
     simulation* simu;
+    vector<Centrum*> centra;
+    Hub* hub;
 
     autoSim(simulation* s){
         simu = s;
+        hub = simu->getHub();
+        centra = simu->getCentra();
+
         simulate();
     }
     //transport
     int berekenLadingen(Centrum* centrum);
-    void verlaagVaccins(int vaccins);
-    void verhoogVaccins(Centrum* centrum, int vaccins);
+    void verhoogVaccinsHub(int vaccins);
+    void verlaagVaccinsHub(int vaccins);
+    void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
     void printTransport(Centrum* centrum, int vaccins);
 
     //vaccinaties
     int berekenVaccinatie(Centrum* centrum);
-    void verlaagVaccinatie(Centrum* centrum, int vaccins);
+    void verlaagVaccinCentrum(Centrum* centrum, int vaccins);
     void verhoogVaccinaties(Centrum* centrum, int vaccins);
     void printVaccinatie(Centrum* centrum, int vaccins);
 
