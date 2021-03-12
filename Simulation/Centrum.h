@@ -28,6 +28,8 @@ public:
         gevaccineerd = 0;
     };
 
+    void setVaccins(int v){vaccins = v;};
+
     const string &getNaam() const {
         return naam;
     }

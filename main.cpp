@@ -6,6 +6,7 @@
 #include "Simulation/simulation.h"
 #include "Simulation/simulationImporter.h"
 #include "Simulation/simulationExporter.h"
+#include "Simulation/autoSim.h"
 #include <string>
 #include <map>
 #include <sstream>
@@ -18,9 +19,11 @@ int main() {
 
     simulationImporter::importFile("data1.xml", s);
 
+    autoSim simulate(&s);
 //    ofstream myFile("output.txt");
-    simulationExporter exporter;
-    exporter.exportSim(cout, s);
+
+    //simulationExporter exporter;
+    //exporter.exportSim(cout, s);
 
     return 0;
 }

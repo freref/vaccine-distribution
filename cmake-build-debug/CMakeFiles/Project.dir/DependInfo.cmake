@@ -4,15 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Centrum.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/Centrum.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Hub.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/Hub.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/main.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/tinystr.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/tinystr.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/tinyxml.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/tinyxml.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/tinyxmlerror.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/tinyxmlerror.cpp.o"
-  "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/tinyxmlparser.cpp" "/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles/Project.dir/tinyxmlparser.cpp.o"
+  "C:/Users/Frederic/Documents/PSE/Simulation/Centrum.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/Centrum.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/Simulation/Hub.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/Hub.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/Simulation/autoSim.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/autoSim.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/Simulation/simulation.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/simulation.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/XmlParser/tinystr.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/XmlParser/tinystr.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/XmlParser/tinyxml.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/XmlParser/tinyxmlerror.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/XmlParser/tinyxmlerror.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/XmlParser/tinyxmlparser.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/XmlParser/tinyxmlparser.cpp.obj"
+  "C:/Users/Frederic/Documents/PSE/main.cpp" "C:/Users/Frederic/Documents/PSE/cmake-build-debug/CMakeFiles/Project.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
