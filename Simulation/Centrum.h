@@ -29,30 +29,14 @@ public:
     };
 
     void setVaccins(int v){vaccins = v;};
+    void setGevaccineerd(int g){gevaccineerd = g;};
 
-    const string &getNaam() const {
-        return naam;
-    }
-
-    const string &getAdres() const {
-        return adres;
-    }
-
-    int getInwoners() const {
-        return inwoners;
-    }
-
-    int getCapaciteit() const {
-        return capaciteit;
-    }
-
-    int getVaccins() const {
-        return vaccins;
-    }
-
-    int getGevaccineerd() const {
-        return gevaccineerd;
-    }
+    const string &getNaam() const {return naam;};
+    const string &getAdres() const {return adres;};
+    int getInwoners() const {return inwoners;};
+    int getCapaciteit() const {return capaciteit;};
+    int getVaccins() const {return vaccins;};
+    int getGevaccineerd() const {return gevaccineerd;};
 };
 
 
