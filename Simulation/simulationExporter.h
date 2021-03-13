@@ -13,7 +13,7 @@ class simulation;
 
 class simulationExporter {
 public:
-    void exportSim(ostream& ostream, const simulation& sim);
+    static void exportSim(ostream& ostream, const simulation& sim);
 };
 
 

@@ -76,7 +76,6 @@ void autoSim::simulate(){
                 printTransport(centrum, vaccins);
             }
         }
-
         bool check = true;
 
         for(int i = 0; i < centra.size(); i++){
