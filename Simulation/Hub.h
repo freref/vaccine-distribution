@@ -30,18 +30,18 @@ public:
     };
 
     //setters
-    void setLevering(int l){levering = l;};
-    void setVoorraad(int v){levering = v;};
-    void setInterval(int i){interval = i;};
-    void setTransport(int t){levering = t;};
+    void setLevering(int l) {levering = l;};
+    void setVoorraad(int v) {voorraad = v;};
+    void setInterval(int i) {interval = i;};
+    void setTransport(int t) {transport = t;};
     void setCentra(const map<string, Centrum*>& c) {centra = c;};
 
     //getters
-    int getLevering(){return levering;};
-    int getVoorraad(){return voorraad;};
-    int getInterval(){return interval;};
-    int getTransport(){return transport;};
-    map<string, Centrum*> getCentra() {return centra;};
+    int getLevering() const {return levering;};
+    int getVoorraad() const {return voorraad;};
+    int getInterval() const {return interval;};
+    int getTransport() const {return transport;};
+    map<string, Centrum*> getCentra() const {return centra;};
 };
 
 

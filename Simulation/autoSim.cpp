@@ -7,19 +7,23 @@
 
 using namespace std;
 
-int autoSim::berekenLadingen(Centrum* centrum) {
+int autoSim::berekenLadingen(Centrum* centrum) const {
     int transport = hub->getTransport();
     int capaciteit = centrum->getCapaciteit();
     int vaccins = centrum->getVaccins();
     int voorraad = hub->getVoorraad();
-    int ladingen;
+    int ladingen = 0;
 
     //for loop met alle condities van appendix B
-    for(int i = transport; capaciteit > i + vaccins && i + vaccins < 2*capaciteit && transport < voorraad; i += transport){
-        ladingen = i ;
+    // Lading verder kijken dan huidige (om na te kijken), om niet op volgende over parameters te gaan
+    while ((ladingen+1)*transport <= voorraad && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
+        // Afbreken wanneer voldaan aan capaciteit
+        if (ladingen*transport + vaccins >= capaciteit)
+            break;
+        ladingen += 1;
     }
 
-    return (ladingen+transport) / hub->getTransport();
+    return ladingen;
 }
 
 int autoSim::berekenVaccinatie(Centrum* centrum){
@@ -51,7 +55,7 @@ void autoSim::verhoogVaccinaties(Centrum* centrum, int vaccins){
     centrum->setGevaccineerd(centrum->getGevaccineerd()+vaccins);
 }
 
-void autoSim::printTransport(Centrum* centrum, int vaccins){
+void autoSim::printTransport(Centrum* centrum, int vaccins) const {
     cout << "Er werden " << vaccins/hub->getTransport() << " ladingen (" << vaccins << " vaccins) getransporteerd naar "<< centrum->getNaam() <<"." << endl;
 }
 
@@ -59,11 +63,12 @@ void autoSim::printVaccinatie(Centrum* centrum, int vaccins){
     cout << "Er werden " << vaccins << " inwonders gevaccineerd in " << centrum->getNaam() << "." << endl;
 }
 
-void autoSim::simulate(){
-    for(int i = 1; i < 100; i++){
+void autoSim::simulate(unsigned int n){
+    for(int i = 1; i < n+1; i++){
+        // cout << endl << "DAG: " << i << endl; // DEBUG INFO
         if(i%(hub->getInterval()+1) == 0)
             verhoogVaccinsHub(hub->getLevering());
-
+        // Transporten uitvoeren
         for(int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
 
@@ -74,10 +79,11 @@ void autoSim::simulate(){
                 verlaagVaccinsHub(vaccins);
                 verhoogVaccinsCentrum(centrum, vaccins);
                 printTransport(centrum, vaccins);
+                // cout << centrum->getCapaciteit() << ":\t" << centrum->getVaccins() << endl; // DEBUG INFO
             }
         }
         bool check = true;
-
+        // Vaccinaties uitvoeren
         for(int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
 
@@ -85,6 +91,7 @@ void autoSim::simulate(){
             verlaagVaccinCentrum(centrum, vaccinaties);
             verhoogVaccinaties(centrum, vaccinaties);
             printVaccinatie(centrum, vaccinaties);
+            // cout << vaccinaties << "\t -> " << centrum->getVaccins() << endl; // DEBUG INFO
 
             if (vaccinaties > 0)
                 check = false;

@@ -14,19 +14,19 @@ public:
     vector<Centrum*> centra;
     Hub* hub;
 
-    explicit autoSim(simulation* s){
+    explicit autoSim(simulation* s, int n){
         simu = s;
         hub = simu->getHub();
         centra = simu->getCentra();
 
-        simulate();
+        simulate(n);
     }
     //transport
-    int berekenLadingen(Centrum* centrum);
+    int berekenLadingen(Centrum* centrum) const;
     void verhoogVaccinsHub(int vaccins);
     void verlaagVaccinsHub(int vaccins);
     static void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
-    void printTransport(Centrum* centrum, int vaccins);
+    void printTransport(Centrum* centrum, int vaccins) const;
 
     //vaccinaties
     static int berekenVaccinatie(Centrum* centrum);
@@ -35,7 +35,7 @@ public:
     static void printVaccinatie(Centrum* centrum, int vaccins);
 
     //simulatie
-    void simulate();
+    void simulate(unsigned int n);
 };
 
 

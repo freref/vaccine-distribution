@@ -19,11 +19,11 @@ int main() {
 
     simulationImporter::importFile("data1.xml", s);
 
-    autoSim simulate(&s);
+    autoSim simulate(&s, 100);
 //    ofstream myFile("output.txt");
 
-    simulationExporter exporter;
-    exporter.exportSim(cout, s);
+//    simulationExporter exporter;
+//    simulationExporter::exportSim(cout, s);
 
     return 0;
 }
