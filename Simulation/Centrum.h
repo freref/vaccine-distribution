@@ -1,6 +1,11 @@
-//
-
-//
+/**
+ * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * Class which represents a vaccination center
+ *
+ * @authors Frederic Hamelink & Sander Marinus
+ * @date    25/2/2021
+ * @version 1.0
+ */
 
 #ifndef PROJECT_CENTRUM_H
 #define PROJECT_CENTRUM_H
@@ -10,7 +15,12 @@
 
 using namespace std;
 
+/**
+ * Class which represents a vaccination centre in the simulation
+ */
 class Centrum {
+    Centrum* _initCheck = NULL;
+
     string naam;
     string adres;
     int inwoners;
@@ -19,24 +29,26 @@ class Centrum {
     int gevaccineerd;
 public:
     //constructor
-    Centrum(const string& n, const string& a, int i, int c){
-        naam = n;
-        adres = a;
-        inwoners = i;
-        capaciteit = c;
-        vaccins = 0;
-        gevaccineerd = 0;
-    };
+    /**
+     * Constructor
+     * @param n:    Name
+     * @param a:    Adres
+     * @param i:    Inhabitants amount
+     * @param c:    Capacity
+     */
+    Centrum(const string& n, const string& a, int i, int c);
 
-    void setVaccins(int v){vaccins = v;};
-    void setGevaccineerd(int g){gevaccineerd = g;};
+    bool properlyInitialised() const {return _initCheck == this; };
 
-    const string &getNaam() const {return naam;};
-    const string &getAdres() const {return adres;};
-    int getInwoners() const {return inwoners;};
-    int getCapaciteit() const {return capaciteit;};
-    int getVaccins() const {return vaccins;};
-    int getGevaccineerd() const {return gevaccineerd;};
+    void setVaccins(int v);
+    void setGevaccineerd(int g);
+
+    const string &getNaam() const;
+    const string &getAdres() const;
+    int getInwoners() const;
+    int getCapaciteit() const;
+    int getVaccins() const;
+    int getGevaccineerd() const;
 };
 
 

@@ -1,6 +1,11 @@
-//
-// Created by sande on 4/03/2021.
-//
+/**
+ * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * Class which stores and handles the simulation
+ *
+ * @authors Frederic Hamelink & Sander Marinus
+ * @date    9/3/2021
+ * @version 1.0
+ */
 
 #ifndef PROJECTPSE_SIMULATION_H
 #define PROJECTPSE_SIMULATION_H
@@ -12,6 +17,9 @@ using namespace std;
 class Hub;
 class Centrum;
 
+/**
+ * Class which represents a vaccination simulation
+ */
 class simulation {
     Hub* hub;
     vector<Centrum*> centra;
@@ -27,7 +35,6 @@ public:
 
     Hub* getHub() const;
     const vector<Centrum*> &getCentra() const;
-
 };
 
 

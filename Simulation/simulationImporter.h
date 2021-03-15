@@ -1,6 +1,11 @@
-//
-// Created by sande on 4/03/2021.
-//
+/**
+ * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * Class to import a simulation
+ *
+ * @authors Frederic Hamelink & Sander Marinus
+ * @date    4/3/2021
+ * @version 1.0
+ */
 
 #ifndef PROJECTPSE_SIMULATIONIMPORTER_H
 #define PROJECTPSE_SIMULATIONIMPORTER_H

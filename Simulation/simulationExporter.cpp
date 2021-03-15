@@ -1,6 +1,11 @@
-//
-// Created by sande on 9/03/2021.
-//
+/**
+ * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * Definitions for the simulationExporter class
+ *
+ * @authors Frederic Hamelink & Sander Marinus
+ * @date    9/3/2021
+ * @version 1.0
+ */
 
 #include <map>
 #include <vector>
@@ -9,8 +14,10 @@
 #include "simulation.h"
 #include "Hub.h"
 #include "Centrum.h"
+#include "../DesignByContract.h"
 
 void simulationExporter::exportSim(ostream &ostream, const simulation &sim) {
+    REQUIRE(sim.properlyInitialised(), "simulation wasn't initialised when calling exporter");
     Hub* hub = sim.getHub();
     ostream << "Hub (" << hub->getLevering() << ")\n";
     map<string, Centrum*> hCentra = hub->getCentra();
