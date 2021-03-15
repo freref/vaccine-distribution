@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.17)
 project(Project)
 
 set(CMAKE_CXX_STANDARD 98)
-#set(CMAKE_CXX_FLAGS "-Wall -Werror -O2")
+set(CMAKE_CXX_FLAGS "-Wall -Werror")
 set(CMAKE_EXE_LINKER_FLAGS -pthread)
 
 # Set include dir
@@ -35,7 +35,7 @@ set(DEBUG_FILES tests_main.cpp
         Simulation/simulationExporter.cpp
         Simulation/autoSim.cpp
         tests/autoSimTests.cpp
-        tests/domainTests.cpp)
+        tests/domainTests.cpp tests/exportTests.cpp)
 
 # Create executables
 add_executable(Project ${SOURCE_FILES})
