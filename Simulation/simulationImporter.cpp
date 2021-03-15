@@ -24,10 +24,11 @@ int stoi(string& s) {
     return i;
 }
 
-int simulationImporter::importFile(const string &inFile, simulation &sim) {
+
+int simulationImporter::importFile(string inFile, simulation &sim) {
     TiXmlDocument doc;
 
-    if(!doc.LoadFile("data1.xml")) {
+    if(!doc.LoadFile(inFile.c_str())) {
         cerr << "Error reading file: " << doc.ErrorDesc() << endl;
         return 1;
     }

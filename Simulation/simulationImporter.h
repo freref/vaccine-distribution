@@ -11,6 +11,7 @@
 #define PROJECTPSE_SIMULATIONIMPORTER_H
 
 #include <string>
+#include "../XmlParser/tinyxml.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class simulation;
 
 class simulationImporter {
 public:
-    static int importFile(const string& inFile, simulation& sim);
+    static int importFile(string inFile, simulation& sim);
 };
 
 
