@@ -48,7 +48,7 @@ public:
     int getVoorraad() const;
     int getInterval() const;
     int getTransport() const;
-    map<string, Centrum*> getCentra() const;
+    const map<string, Centrum*>& getCentra() const;
 };
 
 

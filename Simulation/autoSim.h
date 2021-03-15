@@ -15,32 +15,10 @@
 
 class autoSim {
 public:
-    simulation* simu;
-    vector<Centrum*> centra;
-    Hub* hub;
-
-    explicit autoSim(simulation* s, int n){
-        simu = s;
-        hub = simu->getHub();
-        centra = simu->getCentra();
-
-        simulate(n);
-    }
-    //transport
-    int berekenLadingen(Centrum* centrum) const;
-    void verhoogVaccinsHub(int vaccins);
-    void verlaagVaccinsHub(int vaccins);
-    static void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
-    void printTransport(Centrum* centrum, int vaccins) const;
-
-    //vaccinaties
-    static int berekenVaccinatie(Centrum* centrum);
-    static void verlaagVaccinCentrum(Centrum* centrum, int vaccins);
-    static void verhoogVaccinaties(Centrum* centrum, int vaccins);
-    static void printVaccinatie(Centrum* centrum, int vaccins);
-
     //simulatie
-    void simulate(unsigned int n);
+    static void simulateTransport(simulation& s, Centrum* c);
+    static void simulateVaccinatie(simulation& s, Centrum* c);
+    static void simulate(simulation& s, int n);
 };
 
 

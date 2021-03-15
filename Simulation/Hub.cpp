@@ -95,7 +95,7 @@ int Hub::getTransport() const {
     return amount;
 }
 
-map<string, Centrum *> Hub::getCentra() const {
+const map<string, Centrum *>& Hub::getCentra() const {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");
     int size = centra.size();
     ENSURE(size>=1, "getCentra postconditions failed");

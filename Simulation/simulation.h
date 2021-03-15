@@ -35,6 +35,19 @@ public:
 
     Hub* getHub() const;
     const vector<Centrum*> &getCentra() const;
+
+    //transport
+    int berekenLadingen(Centrum* centrum) const;
+    void verhoogVaccinsHub(int vaccins);
+    void verlaagVaccinsHub(int vaccins);
+    static void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
+    void printTransport(Centrum* centrum, int vaccins) const;
+
+    //vaccinaties
+    static int berekenVaccinatie(Centrum* centrum);
+    static void verlaagVaccinCentrum(Centrum* centrum, int vaccins);
+    static void verhoogVaccinaties(Centrum* centrum, int vaccins);
+    static void printVaccinatie(Centrum* centrum, int vaccins);
 };
 
 

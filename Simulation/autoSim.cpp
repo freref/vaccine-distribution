@@ -14,127 +14,67 @@
 
 using namespace std;
 
-int autoSim::berekenLadingen(Centrum* centrum) const {
-    REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenLadigen");
-    int transport = hub->getTransport();
-    int capaciteit = centrum->getCapaciteit();
-    int vaccins = centrum->getVaccins();
-    int voorraad = hub->getVoorraad();
-    int ladingen = 0;
+void autoSim::simulateTransport(simulation &s, Centrum *c) {
+    Hub* h = s.getHub();
+    int ladingen = s.berekenLadingen(c);
+    int vaccins = ladingen*h->getTransport();
 
-    //for loop met alle condities van appendix B
-    // Lading verder kijken dan huidige (om na te kijken) om niet op volgende over parameters te gaan
-    while ((ladingen+1)*transport <= voorraad && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
-        // Afbreken wanneer voldaan aan capaciteit
-        if (ladingen*transport + vaccins >= capaciteit)
-            break;
-        ladingen += 1;
-    }
-    ENSURE(ladingen>=0, "berekenLadingen postconditions failed");
-    return ladingen;
+    s.verlaagVaccinsHub(vaccins);
+    s.verhoogVaccinsCentrum(c, vaccins);
+    s.printTransport(c, vaccins);
 }
 
-int autoSim::berekenVaccinatie(Centrum* centrum){
-    REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenVaccinatie");
-    int result = min(centrum->getVaccins(), min(centrum->getCapaciteit(), centrum->getInwoners()-centrum->getGevaccineerd()));
-    ENSURE(result>=0 && result <= centrum->getCapaciteit(), "berekenVaccinatie postconditions failed");
-    return result;
+void autoSim::simulateVaccinatie(simulation &s, Centrum *c) {
+    int vaccinaties = s.berekenVaccinatie(c);
+    s.verlaagVaccinCentrum(c, vaccinaties);
+    s.verhoogVaccinaties(c, vaccinaties);
+    s.printVaccinatie(c, vaccinaties);
+    // cout << vaccinaties << "\t -> " << centrum->getVaccins() << endl; // DEBUG INFO
 }
 
-//verlaagt het aantal vaccins in de hub met i aantal vaccins
-void autoSim::verlaagVaccinsHub(int vaccins){
-    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling verlaagVaccinsHub");
-    REQUIRE(vaccins >= 0, "vaccins amount must be positive");
-    int before = hub->getVoorraad();
-    hub->setVoorraad(hub->getVoorraad()-vaccins);
-    ENSURE(hub->getVoorraad() == before-vaccins && hub->getVoorraad() >= 0,
-           "verlaagVaccinsHub postconditions failed");
-}
-
-//verhoogt de vaccins in een hub
-void autoSim::verhoogVaccinsHub(int vaccins) {
-    REQUIRE(hub->properlyInitialised(), "hub wasn't properly initialised when calling verhoogVaccinsHub");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    hub->setVoorraad(hub->getVoorraad()+vaccins);
-}
-
-//verhoogt de vaccins in gegeven centrum met i aantal vaccins
-void autoSim::verhoogVaccinsCentrum(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinsCentrum");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    int oAmount = centrum->getVaccins();
-    int capacity = centrum->getCapaciteit();
-    centrum->setVaccins(centrum->getVaccins()+vaccins);
-    ENSURE(centrum->getVaccins() == oAmount+vaccins && centrum->getVaccins() <= capacity*2,
-           "verhoogVaccinsCentrum postconditions failed");
-}
-
-//verlaagt het aantal vaccins in gegeven centrum
-void autoSim::verlaagVaccinCentrum(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verlaagVaccinsCentrum");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    int oAmount = centrum->getVaccins();
-    centrum->setVaccins(centrum->getVaccins()-vaccins);
-    ENSURE(centrum->getVaccins() == oAmount-vaccins && centrum->getVaccins() >= 0,
-           "verlaagVaccinsCentrum postconditions failed");
-}
-
-//verhoogt het aantal gevaccineerden in een centrum
-void autoSim::verhoogVaccinaties(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties");
-    REQUIRE(vaccins >= 0, "vaccins amount must be positive");
-    centrum->setGevaccineerd(centrum->getGevaccineerd()+vaccins);
-    ENSURE(centrum->getGevaccineerd() <= centrum->getInwoners(),
-           "verhoogVaccinaties postconditions failed");
-}
-
-void autoSim::printTransport(Centrum* centrum, int vaccins) const {
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
-    REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
-    REQUIRE(vaccins%hub->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
-    cout << "Er werden " << vaccins/hub->getTransport() << " ladingen (" << vaccins << " vaccins)"
-        << " getransporteerd naar "<< centrum->getNaam() <<"." << endl;
-}
-
-void autoSim::printVaccinatie(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printVaccinatie");
-    REQUIRE(vaccins >= 0, "vaccinated amount can't be negative");
-    REQUIRE(vaccins <= centrum->getCapaciteit(), "vaccinated ammount can't exceed capacity");
-    cout << "Er werden " << vaccins << " inwoners gevaccineerd in " << centrum->getNaam() << "." << endl;
-}
-
-void autoSim::simulate(unsigned int n){
-    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling simulate");
-    REQUIRE(simu->properlyInitialised(), "simulation wasn't initialised when calling simulate");
+void autoSim::simulate(simulation& s, int n){
+    // REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling simulate");
+    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
+    Hub* hub = s.getHub();
+    map<string, Centrum*> centraHub = hub->getCentra();
+    vector<Centrum*> centra = s.getCentra();
     for(int j = 1; j < n+1; j++){
-        // cout << endl << "DAG: " << j << endl; // DEBUG INFO
+//        cout << endl << "DAG: " << j << endl;               // DEBUG INFO
+//        cout << "Hub: " << hub->getVoorraad() << "\t-> ";   // DEBUG INFO
         if(j%(hub->getInterval()+1) == 0)
-            verhoogVaccinsHub(hub->getLevering());
+            s.verhoogVaccinsHub(hub->getLevering());
+//        cout << hub->getVoorraad() << endl;                 // DEBUG INFO
         // Transporten uitvoeren
-        for(int i = 0; i < centra.size(); i++){
-            Centrum* centrum = centra[i];
-
-            if(hub->getCentra().count(centrum->getNaam())){
-                int ladingen = berekenLadingen(centrum);
-                int vaccins = ladingen*hub->getTransport();
-
-                verlaagVaccinsHub(vaccins);
-                verhoogVaccinsCentrum(centrum, vaccins);
-                printTransport(centrum, vaccins);
-                // cout << centrum->getCapaciteit() << ":\t" << centrum->getVaccins() << endl; // DEBUG INFO
-            }
+        for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
+//            int before = it->second->getVaccins();          // DEBUG INFO
+            simulateTransport(s, it->second);
+//            cout << "Centrum: " << before << "\t -> " << it->second->getVaccins() << endl; // DEBUG INFO
         }
+//        for(int i = 0; i < centra.size(); i++){
+//            Centrum* centrum = centra[i];
+//
+//            if(hub->getCentra().count(centrum->getNaam())){
+//                int ladingen = berekenLadingen(centrum);
+//                int vaccins = ladingen*hub->getTransport();
+//
+//                verlaagVaccinsHub(vaccins);
+//                verhoogVaccinsCentrum(centrum, vaccins);
+//                printTransport(centrum, vaccins);
+//            }
+//        }
         bool check = true;
         // Vaccinaties uitvoeren
         for(int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
+//            int beforeV = centrum->getVaccins();            // DEBUG INFO
+            simulateVaccinatie(s, centrum);
+//            cout << "Centrum: " << beforeV << "\t-> " << centrum->getVaccins() << endl; // DEBUG INFO
 
-            int vaccinaties = berekenVaccinatie(centrum);
-            verlaagVaccinCentrum(centrum, vaccinaties);
-            verhoogVaccinaties(centrum, vaccinaties);
-            printVaccinatie(centrum, vaccinaties);
-            // cout << vaccinaties << "\t -> " << centrum->getVaccins() << endl; // DEBUG INFO
+//            int vaccinaties = berekenVaccinatie(centrum);
+//            verlaagVaccinCentrum(centrum, vaccinaties);
+//            verhoogVaccinaties(centrum, vaccinaties);
+//            printVaccinatie(centrum, vaccinaties);
 
             if (centrum->getGevaccineerd() != centrum->getInwoners())
                 check = false;
