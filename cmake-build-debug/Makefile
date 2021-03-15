@@ -40,9 +40,6 @@ default_target: all
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Command-line flag to silence nested $(MAKE).
 $(VERBOSE)MAKESILENT = -s
 
@@ -145,6 +142,19 @@ Project/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/build
 .PHONY : Project/fast
 
+#=============================================================================
+# Target rules for targets named sim_debug
+
+# Build rule for target.
+sim_debug: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 sim_debug
+.PHONY : sim_debug
+
+# fast build rule for target.
+sim_debug/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/build
+.PHONY : sim_debug/fast
+
 Simulation/Centrum.obj: Simulation/Centrum.cpp.obj
 
 .PHONY : Simulation/Centrum.obj
@@ -152,6 +162,7 @@ Simulation/Centrum.obj: Simulation/Centrum.cpp.obj
 # target to build an object file
 Simulation/Centrum.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Centrum.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Centrum.cpp.obj
 .PHONY : Simulation/Centrum.cpp.obj
 
 Simulation/Centrum.i: Simulation/Centrum.cpp.i
@@ -161,6 +172,7 @@ Simulation/Centrum.i: Simulation/Centrum.cpp.i
 # target to preprocess a source file
 Simulation/Centrum.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Centrum.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Centrum.cpp.i
 .PHONY : Simulation/Centrum.cpp.i
 
 Simulation/Centrum.s: Simulation/Centrum.cpp.s
@@ -170,6 +182,7 @@ Simulation/Centrum.s: Simulation/Centrum.cpp.s
 # target to generate assembly for a file
 Simulation/Centrum.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Centrum.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Centrum.cpp.s
 .PHONY : Simulation/Centrum.cpp.s
 
 Simulation/Hub.obj: Simulation/Hub.cpp.obj
@@ -179,6 +192,7 @@ Simulation/Hub.obj: Simulation/Hub.cpp.obj
 # target to build an object file
 Simulation/Hub.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Hub.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Hub.cpp.obj
 .PHONY : Simulation/Hub.cpp.obj
 
 Simulation/Hub.i: Simulation/Hub.cpp.i
@@ -188,6 +202,7 @@ Simulation/Hub.i: Simulation/Hub.cpp.i
 # target to preprocess a source file
 Simulation/Hub.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Hub.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Hub.cpp.i
 .PHONY : Simulation/Hub.cpp.i
 
 Simulation/Hub.s: Simulation/Hub.cpp.s
@@ -197,6 +212,7 @@ Simulation/Hub.s: Simulation/Hub.cpp.s
 # target to generate assembly for a file
 Simulation/Hub.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/Hub.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/Hub.cpp.s
 .PHONY : Simulation/Hub.cpp.s
 
 Simulation/autoSim.obj: Simulation/autoSim.cpp.obj
@@ -206,6 +222,7 @@ Simulation/autoSim.obj: Simulation/autoSim.cpp.obj
 # target to build an object file
 Simulation/autoSim.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/autoSim.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.obj
 .PHONY : Simulation/autoSim.cpp.obj
 
 Simulation/autoSim.i: Simulation/autoSim.cpp.i
@@ -215,6 +232,7 @@ Simulation/autoSim.i: Simulation/autoSim.cpp.i
 # target to preprocess a source file
 Simulation/autoSim.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/autoSim.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.i
 .PHONY : Simulation/autoSim.cpp.i
 
 Simulation/autoSim.s: Simulation/autoSim.cpp.s
@@ -224,6 +242,7 @@ Simulation/autoSim.s: Simulation/autoSim.cpp.s
 # target to generate assembly for a file
 Simulation/autoSim.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/autoSim.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s
 .PHONY : Simulation/autoSim.cpp.s
 
 Simulation/simulation.obj: Simulation/simulation.cpp.obj
@@ -233,6 +252,7 @@ Simulation/simulation.obj: Simulation/simulation.cpp.obj
 # target to build an object file
 Simulation/simulation.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulation.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.obj
 .PHONY : Simulation/simulation.cpp.obj
 
 Simulation/simulation.i: Simulation/simulation.cpp.i
@@ -242,6 +262,7 @@ Simulation/simulation.i: Simulation/simulation.cpp.i
 # target to preprocess a source file
 Simulation/simulation.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.i
 .PHONY : Simulation/simulation.cpp.i
 
 Simulation/simulation.s: Simulation/simulation.cpp.s
@@ -251,6 +272,7 @@ Simulation/simulation.s: Simulation/simulation.cpp.s
 # target to generate assembly for a file
 Simulation/simulation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.s
 .PHONY : Simulation/simulation.cpp.s
 
 Simulation/simulationExporter.obj: Simulation/simulationExporter.cpp.obj
@@ -260,6 +282,7 @@ Simulation/simulationExporter.obj: Simulation/simulationExporter.cpp.obj
 # target to build an object file
 Simulation/simulationExporter.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationExporter.cpp.obj
 .PHONY : Simulation/simulationExporter.cpp.obj
 
 Simulation/simulationExporter.i: Simulation/simulationExporter.cpp.i
@@ -269,6 +292,7 @@ Simulation/simulationExporter.i: Simulation/simulationExporter.cpp.i
 # target to preprocess a source file
 Simulation/simulationExporter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationExporter.cpp.i
 .PHONY : Simulation/simulationExporter.cpp.i
 
 Simulation/simulationExporter.s: Simulation/simulationExporter.cpp.s
@@ -278,6 +302,7 @@ Simulation/simulationExporter.s: Simulation/simulationExporter.cpp.s
 # target to generate assembly for a file
 Simulation/simulationExporter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationExporter.cpp.s
 .PHONY : Simulation/simulationExporter.cpp.s
 
 Simulation/simulationImporter.obj: Simulation/simulationImporter.cpp.obj
@@ -287,6 +312,7 @@ Simulation/simulationImporter.obj: Simulation/simulationImporter.cpp.obj
 # target to build an object file
 Simulation/simulationImporter.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.obj
 .PHONY : Simulation/simulationImporter.cpp.obj
 
 Simulation/simulationImporter.i: Simulation/simulationImporter.cpp.i
@@ -296,6 +322,7 @@ Simulation/simulationImporter.i: Simulation/simulationImporter.cpp.i
 # target to preprocess a source file
 Simulation/simulationImporter.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.i
 .PHONY : Simulation/simulationImporter.cpp.i
 
 Simulation/simulationImporter.s: Simulation/simulationImporter.cpp.s
@@ -305,6 +332,7 @@ Simulation/simulationImporter.s: Simulation/simulationImporter.cpp.s
 # target to generate assembly for a file
 Simulation/simulationImporter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.s
 .PHONY : Simulation/simulationImporter.cpp.s
 
 XmlParser/tinystr.obj: XmlParser/tinystr.cpp.obj
@@ -314,6 +342,7 @@ XmlParser/tinystr.obj: XmlParser/tinystr.cpp.obj
 # target to build an object file
 XmlParser/tinystr.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinystr.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinystr.cpp.obj
 .PHONY : XmlParser/tinystr.cpp.obj
 
 XmlParser/tinystr.i: XmlParser/tinystr.cpp.i
@@ -323,6 +352,7 @@ XmlParser/tinystr.i: XmlParser/tinystr.cpp.i
 # target to preprocess a source file
 XmlParser/tinystr.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinystr.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinystr.cpp.i
 .PHONY : XmlParser/tinystr.cpp.i
 
 XmlParser/tinystr.s: XmlParser/tinystr.cpp.s
@@ -332,6 +362,7 @@ XmlParser/tinystr.s: XmlParser/tinystr.cpp.s
 # target to generate assembly for a file
 XmlParser/tinystr.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinystr.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinystr.cpp.s
 .PHONY : XmlParser/tinystr.cpp.s
 
 XmlParser/tinyxml.obj: XmlParser/tinyxml.cpp.obj
@@ -341,6 +372,7 @@ XmlParser/tinyxml.obj: XmlParser/tinyxml.cpp.obj
 # target to build an object file
 XmlParser/tinyxml.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxml.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxml.cpp.obj
 .PHONY : XmlParser/tinyxml.cpp.obj
 
 XmlParser/tinyxml.i: XmlParser/tinyxml.cpp.i
@@ -350,6 +382,7 @@ XmlParser/tinyxml.i: XmlParser/tinyxml.cpp.i
 # target to preprocess a source file
 XmlParser/tinyxml.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxml.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxml.cpp.i
 .PHONY : XmlParser/tinyxml.cpp.i
 
 XmlParser/tinyxml.s: XmlParser/tinyxml.cpp.s
@@ -359,6 +392,7 @@ XmlParser/tinyxml.s: XmlParser/tinyxml.cpp.s
 # target to generate assembly for a file
 XmlParser/tinyxml.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxml.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxml.cpp.s
 .PHONY : XmlParser/tinyxml.cpp.s
 
 XmlParser/tinyxmlerror.obj: XmlParser/tinyxmlerror.cpp.obj
@@ -368,6 +402,7 @@ XmlParser/tinyxmlerror.obj: XmlParser/tinyxmlerror.cpp.obj
 # target to build an object file
 XmlParser/tinyxmlerror.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlerror.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlerror.cpp.obj
 .PHONY : XmlParser/tinyxmlerror.cpp.obj
 
 XmlParser/tinyxmlerror.i: XmlParser/tinyxmlerror.cpp.i
@@ -377,6 +412,7 @@ XmlParser/tinyxmlerror.i: XmlParser/tinyxmlerror.cpp.i
 # target to preprocess a source file
 XmlParser/tinyxmlerror.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlerror.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlerror.cpp.i
 .PHONY : XmlParser/tinyxmlerror.cpp.i
 
 XmlParser/tinyxmlerror.s: XmlParser/tinyxmlerror.cpp.s
@@ -386,6 +422,7 @@ XmlParser/tinyxmlerror.s: XmlParser/tinyxmlerror.cpp.s
 # target to generate assembly for a file
 XmlParser/tinyxmlerror.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlerror.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlerror.cpp.s
 .PHONY : XmlParser/tinyxmlerror.cpp.s
 
 XmlParser/tinyxmlparser.obj: XmlParser/tinyxmlparser.cpp.obj
@@ -395,6 +432,7 @@ XmlParser/tinyxmlparser.obj: XmlParser/tinyxmlparser.cpp.obj
 # target to build an object file
 XmlParser/tinyxmlparser.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlparser.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlparser.cpp.obj
 .PHONY : XmlParser/tinyxmlparser.cpp.obj
 
 XmlParser/tinyxmlparser.i: XmlParser/tinyxmlparser.cpp.i
@@ -404,6 +442,7 @@ XmlParser/tinyxmlparser.i: XmlParser/tinyxmlparser.cpp.i
 # target to preprocess a source file
 XmlParser/tinyxmlparser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlparser.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlparser.cpp.i
 .PHONY : XmlParser/tinyxmlparser.cpp.i
 
 XmlParser/tinyxmlparser.s: XmlParser/tinyxmlparser.cpp.s
@@ -413,6 +452,7 @@ XmlParser/tinyxmlparser.s: XmlParser/tinyxmlparser.cpp.s
 # target to generate assembly for a file
 XmlParser/tinyxmlparser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/XmlParser/tinyxmlparser.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/XmlParser/tinyxmlparser.cpp.s
 .PHONY : XmlParser/tinyxmlparser.cpp.s
 
 main.obj: main.cpp.obj
@@ -442,6 +482,87 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+tests/autoSimTests.obj: tests/autoSimTests.cpp.obj
+
+.PHONY : tests/autoSimTests.obj
+
+# target to build an object file
+tests/autoSimTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj
+.PHONY : tests/autoSimTests.cpp.obj
+
+tests/autoSimTests.i: tests/autoSimTests.cpp.i
+
+.PHONY : tests/autoSimTests.i
+
+# target to preprocess a source file
+tests/autoSimTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.i
+.PHONY : tests/autoSimTests.cpp.i
+
+tests/autoSimTests.s: tests/autoSimTests.cpp.s
+
+.PHONY : tests/autoSimTests.s
+
+# target to generate assembly for a file
+tests/autoSimTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.s
+.PHONY : tests/autoSimTests.cpp.s
+
+tests/domainTests.obj: tests/domainTests.cpp.obj
+
+.PHONY : tests/domainTests.obj
+
+# target to build an object file
+tests/domainTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj
+.PHONY : tests/domainTests.cpp.obj
+
+tests/domainTests.i: tests/domainTests.cpp.i
+
+.PHONY : tests/domainTests.i
+
+# target to preprocess a source file
+tests/domainTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.i
+.PHONY : tests/domainTests.cpp.i
+
+tests/domainTests.s: tests/domainTests.cpp.s
+
+.PHONY : tests/domainTests.s
+
+# target to generate assembly for a file
+tests/domainTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.s
+.PHONY : tests/domainTests.cpp.s
+
+tests_main.obj: tests_main.cpp.obj
+
+.PHONY : tests_main.obj
+
+# target to build an object file
+tests_main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests_main.cpp.obj
+.PHONY : tests_main.cpp.obj
+
+tests_main.i: tests_main.cpp.i
+
+.PHONY : tests_main.i
+
+# target to preprocess a source file
+tests_main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests_main.cpp.i
+.PHONY : tests_main.cpp.i
+
+tests_main.s: tests_main.cpp.s
+
+.PHONY : tests_main.s
+
+# target to generate assembly for a file
+tests_main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests_main.cpp.s
+.PHONY : tests_main.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -451,6 +572,7 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Project
+	@echo ... sim_debug
 	@echo ... Simulation/Centrum.obj
 	@echo ... Simulation/Centrum.i
 	@echo ... Simulation/Centrum.s
@@ -484,6 +606,15 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... tests/autoSimTests.obj
+	@echo ... tests/autoSimTests.i
+	@echo ... tests/autoSimTests.s
+	@echo ... tests/domainTests.obj
+	@echo ... tests/domainTests.i
+	@echo ... tests/domainTests.s
+	@echo ... tests_main.obj
+	@echo ... tests_main.i
+	@echo ... tests_main.s
 .PHONY : help
 
 

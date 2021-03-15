@@ -20,7 +20,10 @@ class simulation;
 class simulationImporter {
 public:
     static int importFile(string inFile, simulation& sim);
-};
+    static bool isCoorectCentrum(map<string, string> elements);
+    static bool checkName(string name);
+    static bool checkElementName(string name);
+    };
 
 
 #endif //PROJECTPSE_SIMULATIONIMPORTER_H
