@@ -19,7 +19,7 @@ int main() {
 
     simulationImporter::importFile("data1.xml", s);
 
-    autoSim::simulate(s, 1000);
+    autoSim::simulate(s, 100, cout);
 //    ofstream myFile("output.txt");
 
 //    simulationExporter exporter;

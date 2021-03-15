@@ -19,7 +19,7 @@ Hub::Hub(int l, int i, int t, map<string, Centrum *> c) {
     REQUIRE(l>=0, "levering amount can't be negative");
     REQUIRE(i>=0, "interval can't be negative");
     REQUIRE(t>=0, "transport amount can't be negative");
-    REQUIRE(c.size()>=1, "must atleast contain 1 centrum");
+    REQUIRE(!c.empty(), "must atleast contain 1 centrum");
     levering = l;
     voorraad = l;
     interval = i;

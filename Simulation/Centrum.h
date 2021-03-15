@@ -29,6 +29,7 @@ class Centrum {
     int gevaccineerd;
 public:
     //constructor
+    Centrum();
     /**
      * Constructor
      * @param n:    Name

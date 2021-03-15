@@ -10,6 +10,17 @@
 #include "Centrum.h"
 #include "../DesignByContract.h"
 
+Centrum::Centrum() {
+    naam = "";
+    adres = "";
+    inwoners = 0;
+    capaciteit = 0;
+    vaccins = 0;
+    gevaccineerd = 0;
+    _initCheck = this;
+    ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
+}
+
 Centrum::Centrum(const string &n, const string &a, int i, int c) {
     REQUIRE(i>=0, "inhabitant amount can't be negative");
     REQUIRE(c>=0, "capacity can't be negative");

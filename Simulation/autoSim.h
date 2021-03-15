@@ -9,16 +9,17 @@
 
 #ifndef PSE_AUTOSIM_H
 #define PSE_AUTOSIM_H
+
+#include <iostream>
 #include "simulation.h"
 #include "Centrum.h"
-
 
 class autoSim {
 public:
     //simulatie
-    static void simulateTransport(simulation& s, Centrum* c);
-    static void simulateVaccinatie(simulation& s, Centrum* c);
-    static void simulate(simulation& s, int n);
+    static void simulateTransport(simulation& s, Centrum* c, ostream& outS);
+    static void simulateVaccinatie(simulation& s, Centrum* c, ostream& outS);
+    static void simulate(simulation& s, int n, ostream& outS);
 };
 
 

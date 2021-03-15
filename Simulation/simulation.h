@@ -29,9 +29,9 @@ public:
     ~simulation();
     bool properlyInitialised() const;
 
-    void setHub(Hub* const h) { hub = h; }
+    void setHub(Hub* const h);
     void addCentrum(Centrum* c);
-    void setCentra(const vector<Centrum*>& c) { centra = c; }
+    void setCentra(const vector<Centrum*>& c);
 
     Hub* getHub() const;
     const vector<Centrum*> &getCentra() const;
@@ -41,13 +41,13 @@ public:
     void verhoogVaccinsHub(int vaccins);
     void verlaagVaccinsHub(int vaccins);
     static void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
-    void printTransport(Centrum* centrum, int vaccins) const;
+    void printTransport(Centrum* centrum, int vaccins, ostream& onStream) const;
 
     //vaccinaties
     static int berekenVaccinatie(Centrum* centrum);
     static void verlaagVaccinCentrum(Centrum* centrum, int vaccins);
     static void verhoogVaccinaties(Centrum* centrum, int vaccins);
-    static void printVaccinatie(Centrum* centrum, int vaccins);
+    static void printVaccinatie(Centrum* centrum, int vaccins, ostream& onStream);
 };
 
 
