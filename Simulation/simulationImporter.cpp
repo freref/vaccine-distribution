@@ -29,7 +29,7 @@ bool simulationImporter::isCoorectCentrum(map<string, string> elements) {
         stoi(elements["capaciteit"]) > 0)
         return true;
 
-    cerr << "Het bestand bevat foute informatie voor vaccinatiecentrum: " << elements["naam"];
+    cerr << "Het bestand bevat foute informatie voor vaccinatiecentrum: " << elements["naam"] << endl;
     return false;
 }
 
@@ -38,7 +38,7 @@ bool isCorrectHub(map<string, string> elements) {
     if (stoi(elements["levering"]) > 0 && stoi(elements["interval"]) > 0 && stoi(elements["transport"]) > 0)
         return true;
 
-    cerr << "Het bestand bevat foute informatie voor de hub";
+    cerr << "Het bestand bevat foute informatie voor de hub" << endl;
     return false;
 }
 
@@ -59,7 +59,7 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
     int hubCount = 0;
 
     if (!doc.LoadFile(inFile.c_str())) {
-        cerr << "Error reading file: " << doc.ErrorDesc() << endl;
+        cerr << "Error reading file: " << doc.ErrorDesc() << endl << endl;
         return 1;
     }
 
@@ -74,7 +74,7 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
         for (TiXmlElement *ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()) {
             name = ele->Value();
             if (!checkName(name)) {
-                cerr << "Kan element niet herkennen";
+                cerr << "Kan element niet herkennen" << endl;
                 continue;
             }
             if (name != "CENTRA")
@@ -89,7 +89,7 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
         string elementName = elem->Value();
 
         if (!checkElementName(elementName)) {
-            cerr << "Kan element niet herkennen";
+            cerr << "Kan element niet herkennen" << endl;
             continue;
         }
 
@@ -109,7 +109,7 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
     for (it = centraMap.begin(); it != centraMap.end(); it++) {
         int count = 0;
         string n = it->first;
-        for (int i = 0; i < sim.getCentra().size(); i++) {
+        for (unsigned int i = 0; i < sim.getCentra().size(); i++) {
             if (n == sim.getCentra()[i]->getNaam())
                 count++;
 
