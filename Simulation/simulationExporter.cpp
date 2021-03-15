@@ -26,7 +26,7 @@ void simulationExporter::exportSim(ostream &ostream, const simulation &sim) {
     }
     ostream << endl;
     vector<Centrum*> centra = sim.getCentra();
-    for (int i = 0; i < centra.size(); i++) {
+    for (long unsigned int i = 0; i < centra.size(); i++) {
         Centrum* c = centra[i];
         ostream << c->getNaam() << ": " << c->getGevaccineerd() << " gevaccineerd, nog ";
         int teGaan = c->getInwoners() - c->getGevaccineerd();

@@ -65,7 +65,7 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
 //        }
         bool check = true;
         // Vaccinaties uitvoeren
-        for(int i = 0; i < centra.size(); i++){
+        for(long unsigned int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
 //            int beforeV = centrum->getVaccins();            // DEBUG INFO
             simulateVaccinatie(s, centrum, outS);

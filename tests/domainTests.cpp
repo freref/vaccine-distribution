@@ -57,7 +57,8 @@ TEST_F(simulationDomTests, hubConstructor) {
     EXPECT_EQ(100, h_->getVoorraad());
     EXPECT_EQ(2, h_->getInterval());
     EXPECT_EQ(3, h_->getTransport());
-    EXPECT_EQ(1, h_->getCentra().size());
+    long unsigned int i = 1;
+    EXPECT_EQ(i, h_->getCentra().size());
     EXPECT_EQ(c_, h_->getCentra().find("naam")->second);
 }
 
