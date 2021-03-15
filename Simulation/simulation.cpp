@@ -39,10 +39,22 @@ void simulation::addCentrum(Centrum* c) {
     ENSURE(centra[centra.size()-1] == c, "addCentrum postconditions failed");
 }
 
+void simulation::setCentra(const vector<Centrum *> &c) {
+    REQUIRE(this->properlyInitialised(), "simulation zasn't initialised when calling setCentra");
+    REQUIRE(!c.empty(), "simulations must contain at least 1 centrum");
+    centra = c;
+}
+
 Hub* simulation::getHub() const {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling hetHub");
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getHub");
     REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling getHub");
     return hub;
+}
+
+void simulation::setHub(Hub *const h) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub");
+    REQUIRE(h->properlyInitialised(), "hub wasn't initialised when calling setHub");
+    hub = h;
 }
 
 const vector<Centrum*> &simulation::getCentra() const {
@@ -124,17 +136,17 @@ void simulation::verhoogVaccinaties(Centrum* centrum, int vaccins){
            "verhoogVaccinaties postconditions failed");
 }
 
-void simulation::printTransport(Centrum* centrum, int vaccins) const {
+void simulation::printTransport(Centrum* centrum, int vaccins, ostream& onStream) const {
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
     REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
     REQUIRE(vaccins%hub->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
-    cout << "Er werden " << vaccins/hub->getTransport() << " ladingen (" << vaccins << " vaccins)"
+    onStream << "Er werden " << vaccins/hub->getTransport() << " ladingen (" << vaccins << " vaccins)"
          << " getransporteerd naar "<< centrum->getNaam() <<"." << endl;
 }
 
-void simulation::printVaccinatie(Centrum* centrum, int vaccins){
+void simulation::printVaccinatie(Centrum* centrum, int vaccins, ostream& onStream) {
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printVaccinatie");
     REQUIRE(vaccins >= 0, "vaccinated amount can't be negative");
     REQUIRE(vaccins <= centrum->getCapaciteit(), "vaccinated ammount can't exceed capacity");
-    cout << "Er werden " << vaccins << " inwoners gevaccineerd in " << centrum->getNaam() << "." << endl;
+    onStream << "Er werden " << vaccins << " inwoners gevaccineerd in " << centrum->getNaam() << "." << endl;
 }
