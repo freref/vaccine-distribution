@@ -1,10 +1,11 @@
+<!-- WRONG TAG IN CENTRA -->
 <root>
     <HUB>
         <levering>93000</levering>
         <interval>6</interval>
         <transport>2000</transport>
         <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
+            <cent>Park Spoor Oost</cent>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>

@@ -11,7 +11,7 @@
 #include "simulation.h"
 #include "Centrum.h"
 #include "Hub.h"
-#include "../DesignByContract.h"
+#include "DesignByContract.h"
 
 simulation::simulation() {
     _initCheck = this;
@@ -20,19 +20,25 @@ simulation::simulation() {
 }
 
 simulation::~simulation() {
+    clear();
+    _initCheck = NULL;
+}
+
+bool simulation::properlyInitialised() const {
+    return _initCheck == this;
+}
+
+void simulation::clear() {
     if (hub)
         delete hub;
+    hub = NULL;
     if (!centra.empty()) {
         vector<Centrum *>::iterator cIt;
         for (cIt = centra.begin(); cIt != centra.end(); cIt++) {
             delete *cIt;
         }
     }
-    _initCheck = NULL;
-}
-
-bool simulation::properlyInitialised() const {
-    return _initCheck == this;
+    centra = vector<Centrum*>();
 }
 
 void simulation::addCentrum(Centrum* c) {

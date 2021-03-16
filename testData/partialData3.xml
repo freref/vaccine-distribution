@@ -1,4 +1,4 @@
-<!-- WRONG TAG IN VACCINATIECENTRUM -->
+<!-- EMPTY NON EXISTING CENTRUM TAG -->
 <root>
     <HUB>
         <levering>93000</levering>
@@ -6,6 +6,7 @@
         <transport>2000</transport>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
+            <centrum></centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
@@ -13,7 +14,7 @@
     </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
-        <adre>Noordersingel 40, Antwerpen</adre>
+        <adres>Noordersingel 40, Antwerpen</adres>
         <inwoners>540173</inwoners>
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>

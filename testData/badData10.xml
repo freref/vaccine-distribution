@@ -1,4 +1,4 @@
-<!-- HUB CONTAINS UNDEFINED CENTRA -->
+<!-- MISSING CLOSING TAGS -->
 <root>
     <HUB>
         <levering>93000</levering>
@@ -6,6 +6,11 @@
         <transport>2000</transport>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
+            <centrum>AED Studios</centrum>
+            <centrum>De Zoerla</centrum>
+            <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
+    <VACCINATIECENTRUM>
+        <naam>Park
 </root>

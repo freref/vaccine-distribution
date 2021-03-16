@@ -17,15 +17,22 @@ using namespace std;
 int main() {
     simulation s;
 
-    if (simulationImporter::importFile("badData9.xml", s) == 0) {
+    if (simulationImporter::importFile("data1.xml", s, cerr) == 0) {
         simulationExporter::exportSim(cout, s);
+
+        cout << endl;
 
         autoSim::simulate(s, 100, cout);
 //    ofstream myFile("output.txt");
 
-//    simulationExporter exporter;
+        cout << endl;
+
         simulationExporter::exportSim(cout, s);
     }
+
+//    if (simulationImporter::importFile("data1.xml", s, cout) == 0) {
+//        simulationExporter::exportSim(cout, s);
+//    }
 
     return 0;
 }

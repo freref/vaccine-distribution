@@ -29,6 +29,8 @@ public:
     ~simulation();
     bool properlyInitialised() const;
 
+    void clear();
+
     void setHub(Hub* const h);
     void addCentrum(Centrum* c);
     void setCentra(const vector<Centrum*>& c);

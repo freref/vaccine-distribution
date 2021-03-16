@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <sstream>
-#include <map>
 
 #include "Hub.h"
 #include "Centrum.h"
@@ -18,27 +17,34 @@
 #include "simulationImporter.h"
 #include "../XmlParser/tinyxml.h"
 
+// https://stackoverflow.com/questions/4442658/c-parse-int-from-string
 int stoi(string &s) {
+    if (s.empty())
+        throw std::invalid_argument("conversion from invalid string to int");
+    for (long unsigned int j=0; j<s.size(); j++) {
+        if ((s[j] < '0' || s[j] > '9') && s[j] != '-')
+            throw std::invalid_argument("conversion from invalid string to int");
+    }
     int i;
     istringstream(s) >> i;
     return i;
 }
 
-bool simulationImporter::isCoorectCentrum(map<string, string> elements) {
+bool simulationImporter::isCoorectCentrum(map<string, string> elements, ostream& errStr) {
     if (elements["naam"] != "" && elements["adres"] != "" && stoi(elements["inwoners"]) > 0 &&
         stoi(elements["capaciteit"]) > 0)
         return true;
 
-    cerr << "Het bestand bevat foute informatie voor vaccinatiecentrum: " << elements["naam"] << endl;
+    errStr << "Het bestand bevat foute informatie voor vaccinatiecentrum: " << elements["naam"] << endl;
     return false;
 }
 
 
-bool isCorrectHub(map<string, string> elements) {
+bool isCorrectHub(map<string, string> elements, ostream& errStr) {
     if (stoi(elements["levering"]) > 0 && stoi(elements["interval"]) > 0 && stoi(elements["transport"]) > 0)
         return true;
 
-    cerr << "Het bestand bevat foute informatie voor de hub" << endl;
+    errStr << "Het bestand bevat foute informatie voor de hub" << endl;
     return false;
 }
 
@@ -50,7 +56,8 @@ bool simulationImporter::checkElementName(string elementName) {
     return (elementName == "HUB" || elementName == "VACCINATIECENTRUM" );
 }
 
-int simulationImporter::importFile(string inFile, simulation &sim) {
+int simulationImporter::importFile(string inFile, simulation &sim, ostream& errStr) {
+    sim.clear();
     TiXmlDocument doc;
     map<string, Centrum *> centraMap;
     Hub *h;
@@ -59,12 +66,14 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
     int hubCount = 0;
 
     if (!doc.LoadFile(inFile.c_str())) {
-        cerr << "Error reading file: " << doc.ErrorDesc() << endl << endl;
+        errStr << "Error reading " + inFile + ": " << doc.ErrorDesc() << endl;
         return 1;
     }
 
-    if (!doc.FirstChildElement()->FirstChildElement())
-        throw std::invalid_argument("empty or non existing document");
+    if (!doc.FirstChildElement()->FirstChildElement()) {
+        errStr << "empty root in file: " + inFile << endl;
+        return 1;
+    }
 
     TiXmlElement *root = doc.FirstChildElement();
 
@@ -75,7 +84,7 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
         string elementName = elem->Value();
 
         if (!elem->FirstChild()){
-            cerr << "empty element in " << elementName << endl;
+            errStr << "empty element in " << elementName << endl;
             continue;
         }
 
@@ -83,35 +92,47 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
         for (TiXmlElement *ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()) {
             name = ele->Value();
             if (!checkName(name)) {
-                cerr << "Kan element niet herkennen" << endl;
+                errStr << "Kan element " + name + " niet herkennen" << endl;
                 continue;
             }
             if (name != "CENTRA") {
                 if (!ele->FirstChild()){
-                    cerr << "empty element in " << name << endl;
+                    errStr << "empty element in " << name << endl;
                     continue;
                 }
                 elements[ele->Value()] = ele->FirstChild()->ToText()->Value();
             }
             else { // zet centra in een vector (enkel voor hubs)
                 for (TiXmlElement *el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()) {
-                    if (!el->FirstChild())
-                        throw std::invalid_argument("empty name for center in hub");
-                    centraMap.insert(pair<string, Centrum *>(el->FirstChild()->ToText()->Value(), NULL));
+                    if (!el->FirstChild()){
+                        errStr << "empty centrum name in hub" << endl;
+                        continue;
+                    }
+                    string tag = el->Value();
+                    if (tag != "centrum") {
+                        errStr << "Kan element " + tag + " niet herkennen" << endl;
+                        continue;
+                    }
+                    string centerName = el->FirstChild()->ToText()->Value();
+                    if (centraMap.find(centerName) != centraMap.end()) {
+                        errStr << "Dubbele definitie van centrum in hub" << endl;
+                        continue;
+                    }
+                    centraMap.insert(pair<string, Centrum *>(centerName, NULL));
                 }
             }
         }
 
         if (!checkElementName(elementName)) {
-            cerr << "Kan element niet herkennen" << endl;
+            errStr << "Kan element niet herkennen" << endl;
             continue;
         }
 
-        if (elementName == "HUB" && isCorrectHub(elements)) {
+        if (elementName == "HUB" && isCorrectHub(elements, errStr)) {
             hubCount++;
             h = new Hub(stoi(elements["levering"]), stoi(elements["interval"]), stoi(elements["transport"]), centraMap);
             sim.setHub(h);
-        } else if (elementName == "VACCINATIECENTRUM" && isCoorectCentrum(elements)) {
+        } else if (elementName == "VACCINATIECENTRUM" && isCoorectCentrum(elements, errStr)) {
             Centrum *c = new Centrum(elements["naam"], elements["adres"], stoi(elements["inwoners"]),
                                      stoi(elements["capaciteit"]));
             sim.addCentrum(c);
@@ -127,24 +148,30 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
             if (n == sim.getCentra()[i]->getNaam())
                 count++;
 
-            if (centraMap.count(sim.getCentra()[i]->getNaam()) == 0)
-                throw std::invalid_argument("Niet elk vaccinatie centra is verbonden met een hub");
+            if (centraMap.count(sim.getCentra()[i]->getNaam()) == 0) {
+                errStr << "Niet elk vaccinatie centra is verbonden met een hub" << endl;
+                return 2;
+            }
             else
                 centraMap[sim.getCentra()[i]->getNaam()] = sim.getCentra()[i];
         }
 
         if (count == 0) {
-            throw std::invalid_argument("Niet elk centrum van de hub is een geldig vaccinatiecentrum");
+            errStr << "Niet elk centrum van de hub is een geldig vaccinatiecentrum" << endl;
+            return 2;
         }
     }
 
     if (hubCount == 1)
         h->setCentra(centraMap);
 
-    if (hubCount != 1)
-        throw std::invalid_argument("Er is niet exact 1 hub");
+    if (hubCount != 1) {
+        errStr << "Er is niet exact 1 hub" << endl;
+        return 2;
+    }
     else if (sim.getCentra().size() == 0) {
-        throw std::invalid_argument("Er zijn minder dan 1 centra");
+        errStr <<"Er zijn minder dan 1 centra" << endl;
+        return 2;
     }
 
     doc.Clear();

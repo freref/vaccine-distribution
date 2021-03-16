@@ -10,7 +10,7 @@
 #include <iostream>
 #include "autoSim.h"
 #include "Hub.h"
-#include "../DesignByContract.h"
+#include "DesignByContract.h"
 
 using namespace std;
 

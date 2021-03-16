@@ -1,7 +1,7 @@
-<!-- WRONG TAG IN VACCINATIECENTRUM -->
+<!-- NEGATIVE VALUE IN HUB -->
 <root>
     <HUB>
-        <levering>93000</levering>
+        <levering>-1000</levering>
         <interval>6</interval>
         <transport>2000</transport>
         <CENTRA>
@@ -13,8 +13,8 @@
     </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
-        <adre>Noordersingel 40, Antwerpen</adre>
-        <inwoners>540173</inwoners>
+        <adres>Noordersingel 40, Antwerpen</adres>
+        <inwoners>10</inwoners>
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

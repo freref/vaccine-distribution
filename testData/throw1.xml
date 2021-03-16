@@ -1,4 +1,4 @@
-<!-- WRONG TAG IN VACCINATIECENTRUM -->
+<!-- EMPTY INT FIELD IN VACCINATIECENTRUM -->
 <root>
     <HUB>
         <levering>93000</levering>
@@ -13,8 +13,8 @@
     </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
-        <adre>Noordersingel 40, Antwerpen</adre>
-        <inwoners>540173</inwoners>
+        <adres>Noordersingel 40, Antwerpen</adres>
+        <inwoners></inwoners>
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

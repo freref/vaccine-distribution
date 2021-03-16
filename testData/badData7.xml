@@ -1,10 +1,11 @@
+<!-- NO CLOSING TAG -->
 <root>
     <HUB>
         <levering>93000</levering>
         <interval>6</interval>
         <transport>2000</transport>
         <CENTRA>
-            <centrum></centrum>
+            <centrum>Park Spoor Oost<centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>

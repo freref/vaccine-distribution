@@ -9,10 +9,10 @@
 
 #include <gtest/gtest.h>
 
-#include "../Simulation/simulation.h"
-#include "../Simulation/Centrum.h"
-#include "../Simulation/Hub.h"
-#include "../Simulation/simulationExporter.h"
+#include "../simulation.h"
+#include "../Centrum.h"
+#include "../Hub.h"
+#include "../simulationExporter.h"
 
 class exporterTests : public ::testing::Test {
 protected:

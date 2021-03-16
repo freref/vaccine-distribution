@@ -9,9 +9,9 @@
 
 #include <gtest/gtest.h>
 
-#include "../Simulation/simulation.h"
-#include "../Simulation/Hub.h"
-#include "../Simulation/Centrum.h"
+#include "../simulation.h"
+#include "../Hub.h"
+#include "../Centrum.h"
 
 // Test environment
 // Resembles a set of tests

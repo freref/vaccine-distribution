@@ -1,11 +1,11 @@
+<!-- EMPTY CENTRUM TAG IN HUB -->
 <root>
     <HUB>
         <levering>93000</levering>
         <interval>6</interval>
-        <tran></tran>
-        <transport>1000</transport>
+        <transport>2000</transport>
         <CENTRA>
-            <centrum>Park Spoor Oost</centrum>
+            <centrum></centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>

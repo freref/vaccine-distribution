@@ -14,7 +14,7 @@
 #include "simulation.h"
 #include "Hub.h"
 #include "Centrum.h"
-#include "../DesignByContract.h"
+#include "DesignByContract.h"
 
 void simulationExporter::exportSim(ostream &ostream, const simulation &sim) {
     REQUIRE(sim.properlyInitialised(), "simulation wasn't initialised when calling exporter");

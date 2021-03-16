@@ -11,6 +11,8 @@
 #define PROJECTPSE_SIMULATIONIMPORTER_H
 
 #include <string>
+#include <iostream>
+#include <map>
 #include "../XmlParser/tinyxml.h"
 
 using namespace std;
@@ -19,8 +21,8 @@ class simulation;
 
 class simulationImporter {
 public:
-    static int importFile(string inFile, simulation& sim);
-    static bool isCoorectCentrum(map<string, string> elements);
+    static int importFile(string inFile, simulation& sim, ostream& errStr);
+    static bool isCoorectCentrum(map<string, string> elements, ostream& errStr);
     static bool checkName(string name);
     static bool checkElementName(string name);
     };

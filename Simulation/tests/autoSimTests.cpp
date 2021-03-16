@@ -9,10 +9,10 @@
 
 #include <gtest/gtest.h>
 
-#include "../Simulation/autoSim.h"
-#include "../Simulation/simulation.h"
-#include "../Simulation/Hub.h"
-#include "../Simulation/Centrum.h"
+#include "../autoSim.h"
+#include "../simulation.h"
+#include "../Hub.h"
+#include "../Centrum.h"
 
 // Classes to create output stream without output
 // https://stackoverflow.com/questions/11826554/standard-no-output-stream

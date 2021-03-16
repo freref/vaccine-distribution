@@ -8,7 +8,7 @@
  */
 
 #include "Centrum.h"
-#include "../DesignByContract.h"
+#include "DesignByContract.h"
 
 Centrum::Centrum() {
     naam = "";

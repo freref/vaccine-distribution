@@ -8,7 +8,7 @@
  */
 
 #include "Hub.h"
-#include "../DesignByContract.h"
+#include "DesignByContract.h"
 
 Hub::Hub() {
     _initCheck = this;
