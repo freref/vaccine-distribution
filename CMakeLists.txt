@@ -35,7 +35,7 @@ set(DEBUG_FILES tests_main.cpp
         Simulation/simulationExporter.cpp
         Simulation/autoSim.cpp
         tests/autoSimTests.cpp
-        tests/domainTests.cpp tests/exportTests.cpp)
+        tests/domainTests.cpp tests/exportTests.cpp tests/importTests.cpp)
 
 # Create executables
 add_executable(Project ${SOURCE_FILES})

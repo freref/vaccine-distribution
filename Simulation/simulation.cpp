@@ -15,15 +15,18 @@
 
 simulation::simulation() {
     _initCheck = this;
+    hub = NULL;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
 simulation::~simulation() {
-    vector<Hub*>::iterator hIt;
-    delete hub;
-    vector<Centrum*>::iterator cIt;
-    for (cIt = centra.begin(); cIt != centra.end(); cIt++) {
-        delete *cIt;
+    if (hub)
+        delete hub;
+    if (!centra.empty()) {
+        vector<Centrum *>::iterator cIt;
+        for (cIt = centra.begin(); cIt != centra.end(); cIt++) {
+            delete *cIt;
+        }
     }
     _initCheck = NULL;
 }

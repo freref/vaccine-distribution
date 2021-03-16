@@ -63,6 +63,9 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
         return 1;
     }
 
+    if (!doc.FirstChildElement()->FirstChildElement())
+        throw std::invalid_argument("empty or non existing document");
+
     TiXmlElement *root = doc.FirstChildElement();
 
     //intereert over hubs en centra
@@ -77,10 +80,15 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
                 cerr << "Kan element niet herkennen" << endl;
                 continue;
             }
-            if (name != "CENTRA")
+            if (name != "CENTRA") {
+                if (!ele->FirstChild())
+                    throw std::invalid_argument("empty element in " + name);
                 elements[ele->Value()] = ele->FirstChild()->ToText()->Value();
+            }
             else { // zet centra in een vector (enkel voor hubs)
                 for (TiXmlElement *el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()) {
+                    if (!el->FirstChild())
+                        throw std::invalid_argument("empty name for center in hub");
                     centraMap.insert(pair<string, Centrum *>(el->FirstChild()->ToText()->Value(), NULL));
                 }
             }

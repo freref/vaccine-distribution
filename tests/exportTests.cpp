@@ -3,7 +3,7 @@
  * Tests voor simulation exporter
  *
  * @authors Frederic Hamelink & Sander Marinus
- * @date    9/3/2021
+ * @date    15/3/2021
  * @version 1.0
  */
 
