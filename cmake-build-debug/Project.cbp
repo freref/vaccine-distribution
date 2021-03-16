@@ -210,6 +210,9 @@
 		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/exportTests.cpp">
 			<Option target="sim_debug"/>
 		</Unit>
+		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/importTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
 		<Unit filename="C:/Users/Frederic/Documents/PSE/tests_main.cpp">
 			<Option target="sim_debug"/>
 		</Unit>

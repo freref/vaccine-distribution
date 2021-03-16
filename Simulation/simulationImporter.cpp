@@ -72,6 +72,12 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
     for (TiXmlElement *elem = root->FirstChildElement(); elem != NULL; elem = elem->NextSiblingElement()) {
         map<string, string> elements;
         string name;
+        string elementName = elem->Value();
+
+        if (!elem->FirstChild()){
+            cerr << "empty element in " << elementName << endl;
+            continue;
+        }
 
         //ittereert over elementen in hubs en centra
         for (TiXmlElement *ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()) {
@@ -81,8 +87,10 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
                 continue;
             }
             if (name != "CENTRA") {
-                if (!ele->FirstChild())
-                    throw std::invalid_argument("empty element in " + name);
+                if (!ele->FirstChild()){
+                    cerr << "empty element in " << name << endl;
+                    continue;
+                }
                 elements[ele->Value()] = ele->FirstChild()->ToText()->Value();
             }
             else { // zet centra in een vector (enkel voor hubs)
@@ -93,8 +101,6 @@ int simulationImporter::importFile(string inFile, simulation &sim) {
                 }
             }
         }
-
-        string elementName = elem->Value();
 
         if (!checkElementName(elementName)) {
             cerr << "Kan element niet herkennen" << endl;

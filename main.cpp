@@ -17,7 +17,7 @@ using namespace std;
 int main() {
     simulation s;
 
-    if (simulationImporter::importFile("data.xml", s) == 0) {
+    if (simulationImporter::importFile("badData9.xml", s) == 0) {
         simulationExporter::exportSim(cout, s);
 
         autoSim::simulate(s, 100, cout);

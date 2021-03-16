@@ -563,6 +563,33 @@ tests/exportTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/exportTests.cpp.s
 .PHONY : tests/exportTests.cpp.s
 
+tests/importTests.obj: tests/importTests.cpp.obj
+
+.PHONY : tests/importTests.obj
+
+# target to build an object file
+tests/importTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj
+.PHONY : tests/importTests.cpp.obj
+
+tests/importTests.i: tests/importTests.cpp.i
+
+.PHONY : tests/importTests.i
+
+# target to preprocess a source file
+tests/importTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.i
+.PHONY : tests/importTests.cpp.i
+
+tests/importTests.s: tests/importTests.cpp.s
+
+.PHONY : tests/importTests.s
+
+# target to generate assembly for a file
+tests/importTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.s
+.PHONY : tests/importTests.cpp.s
+
 tests_main.obj: tests_main.cpp.obj
 
 .PHONY : tests_main.obj
@@ -642,6 +669,9 @@ help:
 	@echo ... tests/exportTests.obj
 	@echo ... tests/exportTests.i
 	@echo ... tests/exportTests.s
+	@echo ... tests/importTests.obj
+	@echo ... tests/importTests.i
+	@echo ... tests/importTests.s
 	@echo ... tests_main.obj
 	@echo ... tests_main.i
 	@echo ... tests_main.s

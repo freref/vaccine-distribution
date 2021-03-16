@@ -12,6 +12,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj"
   "CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj"
   "CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj"
+  "CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj"
   "CMakeFiles/sim_debug.dir/tests_main.cpp.obj"
   "libsim_debug.dll.a"
   "sim_debug.exe"

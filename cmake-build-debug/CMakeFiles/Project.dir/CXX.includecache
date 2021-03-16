@@ -20,8 +20,20 @@ vector
 map
 -
 
+C:/Users/Frederic/Documents/PSE/Simulation/autoSim.h
+iostream
+-
+simulation.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
+Centrum.h
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
+
 C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
 vector
+-
+
+C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.h
+iostream
 -
 
 C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.cpp
@@ -73,4 +85,32 @@ sstream
 -
 tinystr.h
 C:/Users/Frederic/Documents/PSE/XmlParser/tinystr.h
+
+C:/Users/Frederic/Documents/PSE/main.cpp
+iostream
+-
+XmlParser/tinyxml.h
+C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.h
+vector
+-
+Simulation/Centrum.h
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
+Simulation/Hub.h
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
+Simulation/simulation.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
+Simulation/simulationImporter.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.h
+Simulation/simulationExporter.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.h
+Simulation/autoSim.h
+C:/Users/Frederic/Documents/PSE/Simulation/autoSim.h
+string
+-
+map
+-
+sstream
+-
+fstream
+-
 
