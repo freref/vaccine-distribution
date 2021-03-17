@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Class which represents a vaccination center
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Class which represents a vaccination center
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    25/2/2021

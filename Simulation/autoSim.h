@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Class which handles the automation of the simulation
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Class which handles the automation of the simulation
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    12/3/2021
@@ -18,6 +18,8 @@ class autoSim {
 public:
     /**
      * \n Simulates transport of vaccines from hub to centrum
+     * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport")
+     * \n REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport")
      * @param s Simulation refrence
      * @param c Centrum pointer
      * @param outS void
@@ -25,6 +27,8 @@ public:
     static void simulateTransport(simulation& s, Centrum* c, ostream& outS);
     /**
      * \n Simulates vaccine injection at centrum
+     * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie")
+     * \n REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie")
      * @param s Simulation refrence
      * @param c Centrum pointer
      * @param outS void

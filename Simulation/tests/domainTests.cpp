@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Tests the constructors and contracts
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Tests the constructors and contracts
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    15/3/2021

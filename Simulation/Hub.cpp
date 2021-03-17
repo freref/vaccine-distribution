@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Definitions for the Hub class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the Hub class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    25/2/2021

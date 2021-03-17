@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Definitions for the simulationExporter class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the simulationExporter class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    9/3/2021

@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Definitions for the autoSim class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the autoSim class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    12/3/2021
@@ -15,6 +15,8 @@
 using namespace std;
 
 void autoSim::simulateTransport(simulation &s, Centrum *c, ostream& outS) {
+    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport");
+    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
     Hub* h = s.getHub();
     int ladingen = s.berekenLadingen(c);
     int vaccins = ladingen*h->getTransport();
@@ -25,6 +27,8 @@ void autoSim::simulateTransport(simulation &s, Centrum *c, ostream& outS) {
 }
 
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
+    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie");
+    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie");
     int vaccinaties = s.berekenVaccinatie(c);
     s.verlaagVaccinCentrum(c, vaccinaties);
     s.verhoogVaccinaties(c, vaccinaties);
@@ -33,7 +37,6 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
 }
 
 void autoSim::simulate(simulation& s, int n, ostream& outS){
-    // REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling simulate");
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
     Hub* hub = s.getHub();

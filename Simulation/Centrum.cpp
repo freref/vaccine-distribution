@@ -1,6 +1,6 @@
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Definitions for the Centrum class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the Centrum class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    25/2/2021

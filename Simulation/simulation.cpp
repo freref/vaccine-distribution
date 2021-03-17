@@ -1,6 +1,6 @@
 /**
- \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- \n Definitions for the simulation class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the simulation class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    9/3/2021

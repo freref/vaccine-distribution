@@ -1,7 +1,7 @@
 
 /**
- * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * Definitions for the simulationImporter class
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the simulationImporter class
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    4/3/2021
@@ -50,7 +50,8 @@ bool isCorrectHub(map<string, string> elements, ostream& errStr) {
 }
 
 bool simulationImporter::checkName(string name) {
-    return (name == "levering" || name == "interval" || name == "transport" || name == "CENTRA"  || name == "naam" || name == "adres" || name == "inwoners" || name == "capaciteit");
+    return (name == "levering" || name == "interval" || name == "transport" || name == "CENTRA"
+            || name == "naam" || name == "adres" || name == "inwoners" || name == "capaciteit");
 }
 
 bool simulationImporter::checkElementName(string elementName) {
@@ -131,7 +132,8 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
 
         if (elementName == "HUB" && isCorrectHub(elements, errStr)) {
             hubCount++;
-            h = new Hub(stoi(elements["levering"]), stoi(elements["interval"]), stoi(elements["transport"]), centraMap);
+            h = new Hub(stoi(elements["levering"]), stoi(elements["interval"]),
+                        stoi(elements["transport"]), centraMap);
             sim.setHub(h);
         } else if (elementName == "VACCINATIECENTRUM" && isCoorectCentrum(elements, errStr)) {
             Centrum *c = new Centrum(elements["naam"], elements["adres"], stoi(elements["inwoners"]),

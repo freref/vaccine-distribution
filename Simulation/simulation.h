@@ -1,6 +1,6 @@
 /**
- \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- \n Class which stores and handles the simulation
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Class which stores and handles the simulation
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    9/3/2021
