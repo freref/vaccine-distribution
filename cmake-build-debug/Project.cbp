@@ -174,6 +174,18 @@
 			<Option target="Project"/>
 			<Option target="sim_debug"/>
 		</Unit>
+		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/autoSimTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/domainTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/exportTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/importTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
 		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinystr.cpp">
 			<Option target="Project"/>
 			<Option target="sim_debug"/>
@@ -200,18 +212,6 @@
 		</Unit>
 		<Unit filename="C:/Users/Frederic/Documents/PSE/main.cpp">
 			<Option target="Project"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/autoSimTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/domainTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/exportTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/tests/importTests.cpp">
-			<Option target="sim_debug"/>
 		</Unit>
 		<Unit filename="C:/Users/Frederic/Documents/PSE/tests_main.cpp">
 			<Option target="sim_debug"/>

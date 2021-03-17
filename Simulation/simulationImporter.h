@@ -21,9 +21,32 @@ class simulation;
 
 class simulationImporter {
 public:
+    /**
+     * imports the file into sim object
+     * @param inFile
+     * @param sim
+     * @param errStr
+     * @return int
+     */
     static int importFile(string inFile, simulation& sim, ostream& errStr);
+    /**
+     * checks if centrum has correct input
+     * @param elements
+     * @param errStr
+     * @return
+     */
     static bool isCoorectCentrum(map<string, string> elements, ostream& errStr);
+    /**
+     * checks if element names inside hubs and centrum are correct
+     * @param name
+     * @return
+     */
     static bool checkName(string name);
+    /**
+     * checks if element names are correct (HUB and VACCINATIECENTRUM)
+     * @param name
+     * @return
+     */
     static bool checkElementName(string name);
     };
 

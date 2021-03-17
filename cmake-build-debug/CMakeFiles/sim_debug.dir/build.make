@@ -230,61 +230,61 @@ CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s"
 	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\Simulation\autoSim.cpp -o CMakeFiles\sim_debug.dir\Simulation\autoSim.cpp.s
 
-CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
-CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj: ../tests/autoSimTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\tests\autoSimTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\tests\autoSimTests.cpp
+CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
+CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj: ../Simulation/tests/autoSimTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\Simulation\tests\autoSimTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\Simulation\tests\autoSimTests.cpp
 
-CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\tests\autoSimTests.cpp > CMakeFiles\sim_debug.dir\tests\autoSimTests.cpp.i
+CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\Simulation\tests\autoSimTests.cpp > CMakeFiles\sim_debug.dir\Simulation\tests\autoSimTests.cpp.i
 
-CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\tests\autoSimTests.cpp -o CMakeFiles\sim_debug.dir\tests\autoSimTests.cpp.s
+CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\Simulation\tests\autoSimTests.cpp -o CMakeFiles\sim_debug.dir\Simulation\tests\autoSimTests.cpp.s
 
-CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
-CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj: ../tests/domainTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\tests\domainTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\tests\domainTests.cpp
+CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
+CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj: ../Simulation/tests/domainTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\Simulation\tests\domainTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\Simulation\tests\domainTests.cpp
 
-CMakeFiles/sim_debug.dir/tests/domainTests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/tests/domainTests.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\tests\domainTests.cpp > CMakeFiles\sim_debug.dir\tests\domainTests.cpp.i
+CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\Simulation\tests\domainTests.cpp > CMakeFiles\sim_debug.dir\Simulation\tests\domainTests.cpp.i
 
-CMakeFiles/sim_debug.dir/tests/domainTests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/tests/domainTests.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\tests\domainTests.cpp -o CMakeFiles\sim_debug.dir\tests\domainTests.cpp.s
+CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\Simulation\tests\domainTests.cpp -o CMakeFiles\sim_debug.dir\Simulation\tests\domainTests.cpp.s
 
-CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
-CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj: ../tests/exportTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\tests\exportTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\tests\exportTests.cpp
+CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
+CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj: ../Simulation/tests/exportTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\Simulation\tests\exportTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\Simulation\tests\exportTests.cpp
 
-CMakeFiles/sim_debug.dir/tests/exportTests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/tests/exportTests.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\tests\exportTests.cpp > CMakeFiles\sim_debug.dir\tests\exportTests.cpp.i
+CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\Simulation\tests\exportTests.cpp > CMakeFiles\sim_debug.dir\Simulation\tests\exportTests.cpp.i
 
-CMakeFiles/sim_debug.dir/tests/exportTests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/tests/exportTests.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\tests\exportTests.cpp -o CMakeFiles\sim_debug.dir\tests\exportTests.cpp.s
+CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\Simulation\tests\exportTests.cpp -o CMakeFiles\sim_debug.dir\Simulation\tests\exportTests.cpp.s
 
-CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
-CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj: ../tests/importTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\tests\importTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\tests\importTests.cpp
+CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj: CMakeFiles/sim_debug.dir/includes_CXX.rsp
+CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj: ../Simulation/tests/importTests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Frederic\Documents\PSE\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\sim_debug.dir\Simulation\tests\importTests.cpp.obj -c C:\Users\Frederic\Documents\PSE\Simulation\tests\importTests.cpp
 
-CMakeFiles/sim_debug.dir/tests/importTests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/tests/importTests.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\tests\importTests.cpp > CMakeFiles\sim_debug.dir\tests\importTests.cpp.i
+CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Frederic\Documents\PSE\Simulation\tests\importTests.cpp > CMakeFiles\sim_debug.dir\Simulation\tests\importTests.cpp.i
 
-CMakeFiles/sim_debug.dir/tests/importTests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/tests/importTests.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\tests\importTests.cpp -o CMakeFiles\sim_debug.dir\tests\importTests.cpp.s
+CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Frederic\Documents\PSE\Simulation\tests\importTests.cpp -o CMakeFiles\sim_debug.dir\Simulation\tests\importTests.cpp.s
 
 # Object files for target sim_debug
 sim_debug_OBJECTS = \
@@ -299,10 +299,10 @@ sim_debug_OBJECTS = \
 "CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.obj" \
 "CMakeFiles/sim_debug.dir/Simulation/simulationExporter.cpp.obj" \
 "CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.obj" \
-"CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj" \
-"CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj" \
-"CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj" \
-"CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj"
+"CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj" \
+"CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj" \
+"CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj" \
+"CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj"
 
 # External object files for target sim_debug
 sim_debug_EXTERNAL_OBJECTS =
@@ -318,10 +318,10 @@ sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.obj
 sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.obj
 sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/simulationExporter.cpp.obj
 sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.obj
-sim_debug.exe: CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj
-sim_debug.exe: CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj
-sim_debug.exe: CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj
-sim_debug.exe: CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj
+sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj
+sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj
+sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj
+sim_debug.exe: CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj
 sim_debug.exe: CMakeFiles/sim_debug.dir/build.make
 sim_debug.exe: CMakeFiles/sim_debug.dir/linklibs.rsp
 sim_debug.exe: CMakeFiles/sim_debug.dir/objects1.rsp

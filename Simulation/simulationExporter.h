@@ -19,6 +19,12 @@ class simulation;
 
 class simulationExporter {
 public:
+    /**
+     * \n REQUIRE(sim.properlyInitialised(), "simulation wasn't initialised when calling exporter");
+     * \n export the stream in ostream output
+     * @param ostream
+     * @param sim
+     */
     static void exportSim(ostream& ostream, const simulation& sim);
 };
 

@@ -335,6 +335,114 @@ Simulation/simulationImporter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.s
 .PHONY : Simulation/simulationImporter.cpp.s
 
+Simulation/tests/autoSimTests.obj: Simulation/tests/autoSimTests.cpp.obj
+
+.PHONY : Simulation/tests/autoSimTests.obj
+
+# target to build an object file
+Simulation/tests/autoSimTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.obj
+.PHONY : Simulation/tests/autoSimTests.cpp.obj
+
+Simulation/tests/autoSimTests.i: Simulation/tests/autoSimTests.cpp.i
+
+.PHONY : Simulation/tests/autoSimTests.i
+
+# target to preprocess a source file
+Simulation/tests/autoSimTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i
+.PHONY : Simulation/tests/autoSimTests.cpp.i
+
+Simulation/tests/autoSimTests.s: Simulation/tests/autoSimTests.cpp.s
+
+.PHONY : Simulation/tests/autoSimTests.s
+
+# target to generate assembly for a file
+Simulation/tests/autoSimTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s
+.PHONY : Simulation/tests/autoSimTests.cpp.s
+
+Simulation/tests/domainTests.obj: Simulation/tests/domainTests.cpp.obj
+
+.PHONY : Simulation/tests/domainTests.obj
+
+# target to build an object file
+Simulation/tests/domainTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.obj
+.PHONY : Simulation/tests/domainTests.cpp.obj
+
+Simulation/tests/domainTests.i: Simulation/tests/domainTests.cpp.i
+
+.PHONY : Simulation/tests/domainTests.i
+
+# target to preprocess a source file
+Simulation/tests/domainTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.i
+.PHONY : Simulation/tests/domainTests.cpp.i
+
+Simulation/tests/domainTests.s: Simulation/tests/domainTests.cpp.s
+
+.PHONY : Simulation/tests/domainTests.s
+
+# target to generate assembly for a file
+Simulation/tests/domainTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.s
+.PHONY : Simulation/tests/domainTests.cpp.s
+
+Simulation/tests/exportTests.obj: Simulation/tests/exportTests.cpp.obj
+
+.PHONY : Simulation/tests/exportTests.obj
+
+# target to build an object file
+Simulation/tests/exportTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.obj
+.PHONY : Simulation/tests/exportTests.cpp.obj
+
+Simulation/tests/exportTests.i: Simulation/tests/exportTests.cpp.i
+
+.PHONY : Simulation/tests/exportTests.i
+
+# target to preprocess a source file
+Simulation/tests/exportTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.i
+.PHONY : Simulation/tests/exportTests.cpp.i
+
+Simulation/tests/exportTests.s: Simulation/tests/exportTests.cpp.s
+
+.PHONY : Simulation/tests/exportTests.s
+
+# target to generate assembly for a file
+Simulation/tests/exportTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.s
+.PHONY : Simulation/tests/exportTests.cpp.s
+
+Simulation/tests/importTests.obj: Simulation/tests/importTests.cpp.obj
+
+.PHONY : Simulation/tests/importTests.obj
+
+# target to build an object file
+Simulation/tests/importTests.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.obj
+.PHONY : Simulation/tests/importTests.cpp.obj
+
+Simulation/tests/importTests.i: Simulation/tests/importTests.cpp.i
+
+.PHONY : Simulation/tests/importTests.i
+
+# target to preprocess a source file
+Simulation/tests/importTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.i
+.PHONY : Simulation/tests/importTests.cpp.i
+
+Simulation/tests/importTests.s: Simulation/tests/importTests.cpp.s
+
+.PHONY : Simulation/tests/importTests.s
+
+# target to generate assembly for a file
+Simulation/tests/importTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.s
+.PHONY : Simulation/tests/importTests.cpp.s
+
 XmlParser/tinystr.obj: XmlParser/tinystr.cpp.obj
 
 .PHONY : XmlParser/tinystr.obj
@@ -482,114 +590,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project.dir\build.make CMakeFiles/Project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-tests/autoSimTests.obj: tests/autoSimTests.cpp.obj
-
-.PHONY : tests/autoSimTests.obj
-
-# target to build an object file
-tests/autoSimTests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.obj
-.PHONY : tests/autoSimTests.cpp.obj
-
-tests/autoSimTests.i: tests/autoSimTests.cpp.i
-
-.PHONY : tests/autoSimTests.i
-
-# target to preprocess a source file
-tests/autoSimTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.i
-.PHONY : tests/autoSimTests.cpp.i
-
-tests/autoSimTests.s: tests/autoSimTests.cpp.s
-
-.PHONY : tests/autoSimTests.s
-
-# target to generate assembly for a file
-tests/autoSimTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/autoSimTests.cpp.s
-.PHONY : tests/autoSimTests.cpp.s
-
-tests/domainTests.obj: tests/domainTests.cpp.obj
-
-.PHONY : tests/domainTests.obj
-
-# target to build an object file
-tests/domainTests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.obj
-.PHONY : tests/domainTests.cpp.obj
-
-tests/domainTests.i: tests/domainTests.cpp.i
-
-.PHONY : tests/domainTests.i
-
-# target to preprocess a source file
-tests/domainTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.i
-.PHONY : tests/domainTests.cpp.i
-
-tests/domainTests.s: tests/domainTests.cpp.s
-
-.PHONY : tests/domainTests.s
-
-# target to generate assembly for a file
-tests/domainTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/domainTests.cpp.s
-.PHONY : tests/domainTests.cpp.s
-
-tests/exportTests.obj: tests/exportTests.cpp.obj
-
-.PHONY : tests/exportTests.obj
-
-# target to build an object file
-tests/exportTests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/exportTests.cpp.obj
-.PHONY : tests/exportTests.cpp.obj
-
-tests/exportTests.i: tests/exportTests.cpp.i
-
-.PHONY : tests/exportTests.i
-
-# target to preprocess a source file
-tests/exportTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/exportTests.cpp.i
-.PHONY : tests/exportTests.cpp.i
-
-tests/exportTests.s: tests/exportTests.cpp.s
-
-.PHONY : tests/exportTests.s
-
-# target to generate assembly for a file
-tests/exportTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/exportTests.cpp.s
-.PHONY : tests/exportTests.cpp.s
-
-tests/importTests.obj: tests/importTests.cpp.obj
-
-.PHONY : tests/importTests.obj
-
-# target to build an object file
-tests/importTests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.obj
-.PHONY : tests/importTests.cpp.obj
-
-tests/importTests.i: tests/importTests.cpp.i
-
-.PHONY : tests/importTests.i
-
-# target to preprocess a source file
-tests/importTests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.i
-.PHONY : tests/importTests.cpp.i
-
-tests/importTests.s: tests/importTests.cpp.s
-
-.PHONY : tests/importTests.s
-
-# target to generate assembly for a file
-tests/importTests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sim_debug.dir\build.make CMakeFiles/sim_debug.dir/tests/importTests.cpp.s
-.PHONY : tests/importTests.cpp.s
-
 tests_main.obj: tests_main.cpp.obj
 
 .PHONY : tests_main.obj
@@ -645,6 +645,18 @@ help:
 	@echo ... Simulation/simulationImporter.obj
 	@echo ... Simulation/simulationImporter.i
 	@echo ... Simulation/simulationImporter.s
+	@echo ... Simulation/tests/autoSimTests.obj
+	@echo ... Simulation/tests/autoSimTests.i
+	@echo ... Simulation/tests/autoSimTests.s
+	@echo ... Simulation/tests/domainTests.obj
+	@echo ... Simulation/tests/domainTests.i
+	@echo ... Simulation/tests/domainTests.s
+	@echo ... Simulation/tests/exportTests.obj
+	@echo ... Simulation/tests/exportTests.i
+	@echo ... Simulation/tests/exportTests.s
+	@echo ... Simulation/tests/importTests.obj
+	@echo ... Simulation/tests/importTests.i
+	@echo ... Simulation/tests/importTests.s
 	@echo ... XmlParser/tinystr.obj
 	@echo ... XmlParser/tinystr.i
 	@echo ... XmlParser/tinystr.s
@@ -660,18 +672,6 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... tests/autoSimTests.obj
-	@echo ... tests/autoSimTests.i
-	@echo ... tests/autoSimTests.s
-	@echo ... tests/domainTests.obj
-	@echo ... tests/domainTests.i
-	@echo ... tests/domainTests.s
-	@echo ... tests/exportTests.obj
-	@echo ... tests/exportTests.i
-	@echo ... tests/exportTests.s
-	@echo ... tests/importTests.obj
-	@echo ... tests/importTests.i
-	@echo ... tests/importTests.s
 	@echo ... tests_main.obj
 	@echo ... tests_main.i
 	@echo ... tests_main.s

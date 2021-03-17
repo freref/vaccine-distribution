@@ -1,3 +1,4 @@
+
 /**
  * University of Antwerp - BA1 Informatica - Project Software Engineering 2021
  * Definitions for the simulationImporter class

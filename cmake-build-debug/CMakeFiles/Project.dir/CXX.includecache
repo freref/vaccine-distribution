@@ -6,11 +6,27 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.cpp
+Centrum.h
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
+DesignByContract.h
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
+
 C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
 string
 -
 vector
 -
+
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
+assert.h
+-
+
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.cpp
+Hub.h
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
+DesignByContract.h
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
 
 C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
 string
@@ -20,6 +36,16 @@ vector
 map
 -
 
+C:/Users/Frederic/Documents/PSE/Simulation/autoSim.cpp
+iostream
+-
+autoSim.h
+C:/Users/Frederic/Documents/PSE/Simulation/autoSim.h
+Hub.h
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
+DesignByContract.h
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
+
 C:/Users/Frederic/Documents/PSE/Simulation/autoSim.h
 iostream
 -
@@ -28,9 +54,37 @@ C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
 Centrum.h
 C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
 
+C:/Users/Frederic/Documents/PSE/Simulation/simulation.cpp
+iostream
+-
+simulation.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
+Centrum.h
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
+Hub.h
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
+DesignByContract.h
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
+
 C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
 vector
 -
+
+C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.cpp
+map
+-
+vector
+-
+simulationExporter.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.h
+simulation.h
+C:/Users/Frederic/Documents/PSE/Simulation/simulation.h
+Hub.h
+C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
+Centrum.h
+C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h
+DesignByContract.h
+C:/Users/Frederic/Documents/PSE/Simulation/DesignByContract.h
 
 C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.h
 iostream
@@ -40,8 +94,6 @@ C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.cpp
 iostream
 -
 sstream
--
-map
 -
 Hub.h
 C:/Users/Frederic/Documents/PSE/Simulation/Hub.h
@@ -56,6 +108,10 @@ C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.h
 
 C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.h
 string
+-
+iostream
+-
+map
 -
 ../XmlParser/tinyxml.h
 C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.h

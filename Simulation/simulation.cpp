@@ -130,7 +130,6 @@ void simulation::verhoogVaccinsCentrum(Centrum* centrum, int vaccins){
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinsCentrum");
     REQUIRE(vaccins>=0, "vaccins amount must be positive");
     int oAmount = centrum->getVaccins();
-    int capacity = centrum->getCapaciteit();
     centrum->setVaccins(centrum->getVaccins()+vaccins);
     ENSURE(centrum->getVaccins() == oAmount+vaccins && centrum->getVaccins() <= centrum->getCapaciteit()*2,
            "verhoogVaccinsCentrum postconditions failed");
