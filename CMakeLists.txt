@@ -21,7 +21,8 @@ set(SOURCE_FILES main.cpp
         Simulation/simulation.cpp
         Simulation/simulationImporter.cpp
         Simulation/simulationExporter.cpp
-        Simulation/autoSim.cpp)
+        Simulation/autoSim.cpp
+        Simulation/fileCompare.cpp)
 
 set(DEBUG_FILES tests_main.cpp
         XmlParser/tinystr.cpp
@@ -37,7 +38,8 @@ set(DEBUG_FILES tests_main.cpp
         Simulation/tests/autoSimTests.cpp
         Simulation/tests/domainTests.cpp
         Simulation/tests/exportTests.cpp
-        Simulation/tests/importTests.cpp)
+        Simulation/tests/importTests.cpp
+        Simulation/fileCompare.cpp)
 
 # Create executables
 add_executable(Project ${SOURCE_FILES})

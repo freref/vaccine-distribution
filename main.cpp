@@ -29,10 +29,9 @@ int main() {
 
         simulationExporter::exportSim(cout, s);
     }
-
-//    if (simulationImporter::importFile("data1.xml", s, cout) == 0) {
-//        simulationExporter::exportSim(cout, s);
-//    }
+    if (simulationImporter::importFile("data1.xml", s, cout) == 0) {
+        simulationExporter::exportSim(cout, s);
+    }
 
     return 0;
 }
