@@ -8,215 +8,223 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Project">
-				<Option output="C:/Users/Frederic/Documents/PSE/cmake-build-debug/Project.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/Frederic/Documents/PSE/gtest/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Project/fast">
-				<Option output="C:/Users/Frederic/Documents/PSE/cmake-build-debug/Project.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/Frederic/Documents/PSE/gtest/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project/fast"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sim_debug">
-				<Option output="C:/Users/Frederic/Documents/PSE/cmake-build-debug/sim_debug.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/Frederic/Documents/PSE/gtest/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 sim_debug"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="sim_debug/fast">
-				<Option output="C:/Users/Frederic/Documents/PSE/cmake-build-debug/sim_debug.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="C:/Users/Frederic/Documents/PSE/gtest/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed"/>
-					<Add directory="C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/8.1.0/../../../../x86_64-w64-mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 sim_debug/fast"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/Frederic/Documents/PSE/cmake-build-debug"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/PROGRA~1/MINGW-~1/X86_64~1.0-P/mingw64/bin/mingw32-make.exe -f &quot;C:/Users/Frederic/Documents/PSE/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sim_debug">
+				<Option output="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/sim_debug" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/gtest/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 sim_debug"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sim_debug/fast">
+				<Option output="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/sim_debug" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/gtest/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 sim_debug/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project">
+				<Option output="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/gtest/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Project/fast">
+				<Option output="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Project" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/gtest/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 Project/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/Centrum.cpp">
-			<Option target="Project"/>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.cpp">
 			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/Centrum.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/Hub.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/Hub.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/autoSim.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/autoSim.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulation.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulation.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulationExporter.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/simulationImporter.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/autoSimTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/domainTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/exportTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/Simulation/tests/importTests.cpp">
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinystr.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinystr.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinyxml.h">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinyxmlerror.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/XmlParser/tinyxmlparser.cpp">
-			<Option target="Project"/>
-			<Option target="sim_debug"/>
-		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/main.cpp">
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/tests_main.cpp">
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/autoSimTests.cpp">
 			<Option target="sim_debug"/>
 		</Unit>
-		<Unit filename="C:/Users/Frederic/Documents/PSE/CMakeLists.txt">
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/domainTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/exportTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/importTests.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinystr.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinystr.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxmlerror.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxmlparser.cpp">
+			<Option target="sim_debug"/>
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/main.cpp">
+			<Option target="Project"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/tests_main.cpp">
+			<Option target="sim_debug"/>
+		</Unit>
+		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
