@@ -47,6 +47,8 @@ public:
      */
     void clear();
 
+    void graphicImpression();
+
     /**
      \n Sets the hub in the simulation
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub")

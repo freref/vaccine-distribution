@@ -8,6 +8,7 @@
  */
 
 #include <iostream>
+#include <fstream>
 #include "simulation.h"
 #include "Centrum.h"
 #include "Hub.h"
@@ -45,6 +46,38 @@ void simulation::clear() {
     }
     centra = vector<Centrum*>();
     ENSURE(getHub() == NULL && getCentra().empty(), "clear postconditions failed");
+}
+
+void simulation::graphicImpression(){
+    ofstream MyFile("../graphic_impression.txt");
+    string output;
+
+    for(int i = 0; i < centra.size(); i++){
+        MyFile << centra[i]->getNaam() + ":\n\t- vaccins\t\t[";
+        int vaccins = centra[i]->getVaccins()*100/centra[i]->getCapaciteit();
+
+        for(int idx = 1; idx <= 20; idx++){
+            if(idx <= vaccins/5)
+                MyFile << "=";
+            else
+                MyFile << " ";
+        }
+
+        MyFile << "]"+to_string(vaccins)+"%";
+        MyFile << "\n\t- gevaccineerd\t[";
+        int gevaccineerd = centra[i]->getGevaccineerd()*100/centra[i]->getInwoners();
+
+        for(int idx = 1; idx <= 20; idx++){
+            if(idx <= gevaccineerd/5)
+                MyFile << "=";
+            else
+                MyFile << " ";
+        }
+
+        MyFile << "]"+to_string(gevaccineerd)+"%";
+        MyFile << "\n";
+    }
+    MyFile.close();
 }
 
 //------------------
