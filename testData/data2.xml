@@ -2,7 +2,7 @@
     <HUB>
         <VACCIN>
             <type>Pfizer</type>
-            <levering>93000</levering>
+            <levering>2000</levering>
             <interval>6</interval>
             <transport>2000</transport>
             <hernieuwing>21</hernieuwing>
@@ -10,7 +10,7 @@
         </VACCIN>
         <VACCIN>
             <type>Moderna</type>
-            <levering>46000</levering>
+            <levering>3000</levering>
             <interval>13</interval>
             <transport>1000</transport>
             <hernieuwing>28</hernieuwing>
@@ -18,7 +18,7 @@
         </VACCIN>
         <VACCIN>
             <type>AstraZeneca</type>
-            <levering>67000</levering>
+            <levering>12000</levering>
             <interval>4</interval>
             <transport>1500</transport>
             <hernieuwing>28</hernieuwing>
