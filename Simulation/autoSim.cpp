@@ -23,7 +23,7 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
 
     vaccin->verlaagVaccins(vaccins);
     s.verhoogVaccinsCentrum(c, vaccins);
-    if(vaccins > 0)
+    if (vaccins > 0)
         s.printTransport(c, vaccins, vaccin, outS);
 }
 
@@ -63,7 +63,7 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
             if (centrum->getGevaccineerd() != centrum->getInwoners())
                 check = false;
         }
-
+        cout << endl;
         if(check)
             break;
     }

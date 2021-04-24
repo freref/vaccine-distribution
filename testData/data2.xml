@@ -2,7 +2,7 @@
     <HUB>
         <VACCIN>
             <type>Pfizer</type>
-            <levering>2000</levering>
+            <levering>18000</levering>
             <interval>6</interval>
             <transport>2000</transport>
             <hernieuwing>21</hernieuwing>
@@ -10,7 +10,7 @@
         </VACCIN>
         <VACCIN>
             <type>Moderna</type>
-            <levering>3000</levering>
+            <levering>20000</levering>
             <interval>13</interval>
             <transport>1000</transport>
             <hernieuwing>28</hernieuwing>
@@ -18,7 +18,7 @@
         </VACCIN>
         <VACCIN>
             <type>AstraZeneca</type>
-            <levering>12000</levering>
+            <levering>18000</levering>
             <interval>4</interval>
             <transport>1500</transport>
             <hernieuwing>28</hernieuwing>
@@ -34,7 +34,7 @@
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
+        <inwoners>54173</inwoners>
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>
