@@ -26,7 +26,7 @@ class Hub {
     Hub* _initCheck;
 
     int voorraad;
-    vector<Vaccine> vaccins;
+    vector<Vaccine*> vaccins;
     map<string, Centrum*> centra;
 public:
     //constructor
@@ -42,7 +42,7 @@ public:
      * @param t
      * @param c
      */
-    Hub(vector<Vaccine> vaccins, map<string, Centrum*> c);
+    Hub(vector<Vaccine*> vaccins, map<string, Centrum*> c);
 
     void calculateVoorraad();
     /**
@@ -81,7 +81,7 @@ public:
      */
     const map<string, Centrum*>& getCentra() const;
 
-    vector<Vaccine> getVaccins();
+    vector<Vaccine*> getVaccins();
 };
 
 

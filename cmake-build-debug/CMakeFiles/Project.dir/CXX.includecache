@@ -11,6 +11,10 @@ string
 -
 vector
 -
+map
+-
+Vaccine.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
 assert.h

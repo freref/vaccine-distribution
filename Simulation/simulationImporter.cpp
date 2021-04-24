@@ -63,7 +63,7 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
     sim.clear();
     TiXmlDocument doc;
     map<string, Centrum *> centraMap;
-    vector<Vaccine> vaccins;
+    vector<Vaccine*> vaccins;
     Hub *h;
 
     //Consistentie check
@@ -100,9 +100,10 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
                 continue;
             }
             else if (name == "VACCIN"){
-                Vaccine vaccin;
+                Vaccine *vaccin;
+                vaccin = new Vaccine;
                 for (TiXmlElement *el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()) {
-                    vaccin.insert(el);
+                    vaccin->insert(el);
                 }
                 vaccins.push_back(vaccin);
             }

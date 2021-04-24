@@ -12,6 +12,8 @@
 
 #include <string>
 #include <vector>
+#include <map>
+#include "Vaccine.h"
 
 using namespace std;
 
@@ -26,6 +28,7 @@ class Centrum {
     int inwoners;
     int capaciteit;
     int vaccins;
+    map<Vaccine, int> voorraad;
     int gevaccineerd;
 public:
     //constructor

@@ -24,13 +24,7 @@ public:
     void insert(TiXmlElement* el);
     void verlaagVaccins(int vaccins);
 
-    void setType(string t);
-    void setLevering(int l);
-    void setInterval(int i);
-    void setTransport(int t);
     void setVoorraad(int v);
-    void setHernieuwing(int h);
-    void setTemperatuur(int t);
 
     string getType();
     int getVoorraad();

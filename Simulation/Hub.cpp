@@ -15,7 +15,7 @@ Hub::Hub() {
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
-Hub::Hub(vector<Vaccine> v, map<string, Centrum *> c) {
+Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
     REQUIRE(!c.empty(), "must atleast contain 1 centrum");
     vaccins = v;
     centra = c;
@@ -27,7 +27,7 @@ Hub::Hub(vector<Vaccine> v, map<string, Centrum *> c) {
 int Hub::accessorVoorraad(){
     int v = 0;
     for(int i = 0; i < vaccins.size(); i++){
-        v += vaccins[i].getVoorraad();
+        v += vaccins[i]->getVoorraad();
     }
     voorraad = v;
     return voorraad;
@@ -50,6 +50,6 @@ const map<string, Centrum *>& Hub::getCentra() const {
     return centra;
 }
 
-vector<Vaccine> Hub::getVaccins(){
+vector<Vaccine*> Hub::getVaccins(){
     return vaccins;
 }

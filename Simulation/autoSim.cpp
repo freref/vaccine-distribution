@@ -19,7 +19,7 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
 
     int ladingen = s.berekenLadingen(c, vaccin);
-    int vaccins = ladingen*vaccin->getTransport();
+    int vaccins = ladingen * vaccin->getTransport();
 
     vaccin->verlaagVaccins(vaccins);
     s.verhoogVaccinsCentrum(c, vaccins);
@@ -44,16 +44,16 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     Hub* hub = s.getHub();
     map<string, Centrum*> centraHub = hub->getCentra();
     vector<Centrum*> centra = s.getCentra();
-    vector<Vaccine> vaccins = hub->getVaccins();
+    vector<Vaccine*> vaccins = hub->getVaccins();
 
     for(int j = 1; j < n+1; j++){
         for(int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
-            Vaccine vaccin = vaccins[vaccinIndex];
-            if(j%(vaccin.getInterval()+1)==0){
-                vaccin.setVoorraad(vaccin.getVoorraad()+vaccin.getLevering());
+            Vaccine* vaccin = vaccins[vaccinIndex];
+            if(j%(vaccin->getInterval()+1)==0){
+                vaccin->setVoorraad(vaccin->getVoorraad()+vaccin->getLevering());
             }
             for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
-                simulateTransport(&vaccin, s, it->second, outS);
+                simulateTransport(vaccin, s, it->second, outS);
             }
         }
         bool check = true;
@@ -64,8 +64,6 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
                 check = false;
         }
 
-        cout << endl;
-        
         if(check)
             break;
     }
