@@ -23,7 +23,8 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
 
     vaccin->verlaagVaccins(vaccins);
     s.verhoogVaccinsCentrum(c, vaccins);
-    s.printTransport(c, vaccins, vaccin, outS);
+    if(vaccins > 0)
+        s.printTransport(c, vaccins, vaccin, outS);
 }
 
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
@@ -32,7 +33,8 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
     int vaccinaties = s.berekenVaccinatie(c);
     s.verlaagVaccinCentrum(c, vaccinaties);
     s.verhoogVaccinaties(c, vaccinaties);
-    s.printVaccinatie(c, vaccinaties, outS);
+    if (vaccinaties > 0)
+        s.printVaccinatie(c, vaccinaties, outS);
     // cout << vaccinaties << "\t -> " << centrum->getVaccins() << endl; // DEBUG INFO
 }
 
@@ -61,6 +63,9 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
             if (centrum->getGevaccineerd() != centrum->getInwoners())
                 check = false;
         }
+
+        cout << endl;
+        
         if(check)
             break;
     }
