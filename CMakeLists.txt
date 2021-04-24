@@ -22,7 +22,7 @@ set(SOURCE_FILES main.cpp
         Simulation/simulationImporter.cpp
         Simulation/simulationExporter.cpp
         Simulation/autoSim.cpp
-        Simulation/fileCompare.cpp)
+        Simulation/fileCompare.cpp Simulation/Vaccine.cpp Simulation/Vaccine.h)
 
 set(DEBUG_FILES tests_main.cpp
         XmlParser/tinystr.cpp

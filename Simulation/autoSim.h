@@ -13,6 +13,7 @@
 #include <iostream>
 #include "simulation.h"
 #include "Centrum.h"
+#include "Vaccine.h"
 
 class autoSim {
 public:
@@ -24,7 +25,7 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateTransport(simulation& s, Centrum* c, ostream& outS);
+    static void simulateTransport(Vaccine* vaccin, simulation& s, Centrum* c, ostream& outS);
     /**
      * \n Simulates vaccine injection at centrum
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie")

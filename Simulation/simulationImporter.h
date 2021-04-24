@@ -21,6 +21,7 @@ class simulation;
 
 class simulationImporter {
 public:
+    void vaccinInsert(TiXmlElement* el, Vaccine* v);
     /**
      * imports the file into sim object
      * @param inFile

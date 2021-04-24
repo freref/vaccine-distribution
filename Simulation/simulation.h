@@ -11,6 +11,7 @@
 #define PROJECTPSE_SIMULATION_H
 
 #include <vector>
+#include "Vaccine.h"
 
 using namespace std;
 
@@ -92,7 +93,7 @@ public:
      *  @param centrum  Destination centrum
      *  @return         Amount of loads
      */
-    int berekenLadingen(Centrum* centrum) const;
+    int berekenLadingen(Centrum* centrum, Vaccine* vaccin) const;
     /**
      \n Increases amount of vaccins in the hub
      \n REQUIRE(getHub()->properlyInitialised(), "hub wasn't properly initialised when calling verhoogVaccinsHub")
@@ -128,7 +129,7 @@ public:
      * @param vaccins   The amount of transported vaccins
      * @param onStream  The output stream
      */
-    void printTransport(Centrum* centrum, int vaccins, ostream& onStream) const;
+    void printTransport(Centrum* centrum, int vaccins,Vaccine* vaccin, ostream& onStream) const;
 
     // Vaccinatie functies
     /**

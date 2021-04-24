@@ -87,15 +87,14 @@ const vector<Centrum*> &simulation::getCentra() const {
 // Transport functies
 //--------------------
 
-int simulation::berekenLadingen(Centrum* centrum) const {
+int simulation::berekenLadingen(Centrum* centrum, Vaccine* vaccin) const {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
     REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenLadigen");
-    int transport = hub->getTransport();
+    int transport = vaccin->getTransport();
     int capaciteit = centrum->getCapaciteit();
     int vaccins = centrum->getVaccins();
-    int voorraad = hub->getVoorraad();
+    int voorraad = vaccin->getVoorraad();
     int ladingen = 0;
-
     //for loop met alle condities van appendix B
     // Lading verder kijken dan huidige (om na te kijken) om niet op volgende over parameters te gaan
     while ((ladingen+1)*transport <= voorraad && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
@@ -108,22 +107,6 @@ int simulation::berekenLadingen(Centrum* centrum) const {
     return ladingen;
 }
 
-//verhoogt de vaccins in een hub
-void simulation::verhoogVaccinsHub(int vaccins) {
-    REQUIRE(getHub()->properlyInitialised(), "hub wasn't properly initialised when calling verhoogVaccinsHub");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    hub->setVoorraad(hub->getVoorraad()+vaccins);
-}
-
-//verlaagt het aantal vaccins in de hub met i aantal vaccins
-void simulation::verlaagVaccinsHub(int vaccins){
-    REQUIRE(getHub()->properlyInitialised(), "hub wasn't initialised when calling verlaagVaccinsHub");
-    REQUIRE(vaccins >= 0, "vaccins amount must be positive");
-    int before = hub->getVoorraad();
-    hub->setVoorraad(hub->getVoorraad()-vaccins);
-    ENSURE(getHub()->getVoorraad() == before-vaccins && getHub()->getVoorraad() >= 0,
-           "verlaagVaccinsHub postconditions failed");
-}
 
 //verhoogt de vaccins in gegeven centrum met i aantal vaccins
 void simulation::verhoogVaccinsCentrum(Centrum* centrum, int vaccins){
@@ -135,11 +118,11 @@ void simulation::verhoogVaccinsCentrum(Centrum* centrum, int vaccins){
            "verhoogVaccinsCentrum postconditions failed");
 }
 
-void simulation::printTransport(Centrum* centrum, int vaccins, ostream& onStream) const {
+void simulation::printTransport(Centrum* centrum, int vaccins, Vaccine* vaccin, ostream& onStream) const {
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
     REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
-    REQUIRE(vaccins%getHub()->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
-    onStream << "Er werden " << vaccins/hub->getTransport() << " ladingen (" << vaccins << " vaccins)"
+    //REQUIRE(vaccins%getHub()->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
+    onStream << "Er werden " << vaccins/vaccin->getTransport() << " ladingen " << vaccin->getType() << " (" << vaccins << " vaccins)"
              << " getransporteerd naar "<< centrum->getNaam() <<"." << endl;
 }
 

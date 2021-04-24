@@ -216,6 +216,33 @@ Simulation/Hub.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Simulation/Hub.cpp.s
 .PHONY : Simulation/Hub.cpp.s
 
+Simulation/Vaccine.o: Simulation/Vaccine.cpp.o
+
+.PHONY : Simulation/Vaccine.o
+
+# target to build an object file
+Simulation/Vaccine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o
+.PHONY : Simulation/Vaccine.cpp.o
+
+Simulation/Vaccine.i: Simulation/Vaccine.cpp.i
+
+.PHONY : Simulation/Vaccine.i
+
+# target to preprocess a source file
+Simulation/Vaccine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Simulation/Vaccine.cpp.i
+.PHONY : Simulation/Vaccine.cpp.i
+
+Simulation/Vaccine.s: Simulation/Vaccine.cpp.s
+
+.PHONY : Simulation/Vaccine.s
+
+# target to generate assembly for a file
+Simulation/Vaccine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Simulation/Vaccine.cpp.s
+.PHONY : Simulation/Vaccine.cpp.s
+
 Simulation/autoSim.o: Simulation/autoSim.cpp.o
 
 .PHONY : Simulation/autoSim.o
@@ -664,6 +691,9 @@ help:
 	@echo "... Simulation/Hub.o"
 	@echo "... Simulation/Hub.i"
 	@echo "... Simulation/Hub.s"
+	@echo "... Simulation/Vaccine.o"
+	@echo "... Simulation/Vaccine.i"
+	@echo "... Simulation/Vaccine.s"
 	@echo "... Simulation/autoSim.o"
 	@echo "... Simulation/autoSim.i"
 	@echo "... Simulation/autoSim.s"

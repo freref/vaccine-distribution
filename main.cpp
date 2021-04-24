@@ -17,7 +17,7 @@ using namespace std;
 int main() {
     simulation s;
 
-    if (simulationImporter::importFile("data1.xml", s, cerr) == 0) {
+    if (simulationImporter::importFile("data2.xml", s, cerr) == 0) {
         simulationExporter::exportSim(cout, s);
 
         cout << endl;
@@ -27,9 +27,6 @@ int main() {
 
         cout << endl;
 
-        simulationExporter::exportSim(cout, s);
-    }
-    if (simulationImporter::importFile("data1.xml", s, cout) == 0) {
         simulationExporter::exportSim(cout, s);
     }
 

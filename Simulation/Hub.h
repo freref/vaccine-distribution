@@ -13,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "Vaccine.h"
 
 using namespace std;
 
@@ -24,10 +25,8 @@ class Centrum;
 class Hub {
     Hub* _initCheck;
 
-    int levering;
     int voorraad;
-    int interval;
-    int transport;
+    vector<Vaccine> vaccins;
     map<string, Centrum*> centra;
 public:
     //constructor
@@ -43,8 +42,9 @@ public:
      * @param t
      * @param c
      */
-    Hub(int l, int i, int t, map<string, Centrum*> c);
+    Hub(vector<Vaccine> vaccins, map<string, Centrum*> c);
 
+    void calculateVoorraad();
     /**
      * \n checks of Hub is propperly initialized
      * @return
@@ -52,39 +52,11 @@ public:
     bool properlyInitialised() const { return _initCheck == this; }
 
     //setters
+
     /**
-     * \n setter for delivery
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setLevering");
-       \n REQUIRE(l>=0, "levering amount can't be negative");
-       \n ENSURE(getLevering() == l, "setLevering postconditions failed");
-     * @param l
-     */
-    void setLevering(int l);
-    /**
-     * \n setter for storage
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setVoorraad");
-       \n REQUIRE(v>=0, "stock amount can't be negative");
-       \n ENSURE(getVoorraad() == v, "setVoorraad postconditions failed");
-     * @param v
-     */
-    void setVoorraad(int v);
-    /**
-     * \n setter for interval
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setInterval");
-       \n REQUIRE(i>=0, "interval can't be negative");
-       \n ENSURE(getInterval() == i, "setInterval postconditions failed");
-     * @param i
-     */
-    void setInterval(int i);
-    /**
-     * \n setter for transport
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setTransport");
-       \n REQUIRE(t>=0, "transport amount can't be negative");
-       \n ENSURE(getTransport() == t, "setTransport postconditions failed");
-     * @param t
-     */
-    void setTransport(int t);
-    /**
+
+
+
      * \n setter for centrum
      * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setCentra");
        \n REQUIRE(c.size() >= 1, "hub must at least contain 1 centrum");
@@ -93,34 +65,14 @@ public:
     void setCentra(const map<string, Centrum*>& c);
 
     //getters
-    /**
-     * \n getter for delivery
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getLevering");
-       \n ENSURE(amount>=0, "getLevering postconditions failed");
-     * @return
-     */
-    int getLevering() const;
+
     /**
      * \n getter for supply
      * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVoorraad");
        \n ENSURE(amount>=0, "getVoorraad postconditions failed");
      * @return
      */
-    int getVoorraad() const;
-    /**
-     * \n getter for interval
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getInterval");
-       \n ENSURE(amount>=0, "getInterval postconditions failed");
-     * @return
-     */
-    int getInterval() const;
-    /**
-     * \n getter for transport
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getTransport");
-       \n ENSURE(amount>=0, "getTransport postconditions failed");
-     * @return
-     */
-    int getTransport() const;
+    int accessorVoorraad();
     /**
      * \n getter for centra
      * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");
@@ -128,6 +80,8 @@ public:
      * @return
      */
     const map<string, Centrum*>& getCentra() const;
+
+    vector<Vaccine> getVaccins();
 };
 
 

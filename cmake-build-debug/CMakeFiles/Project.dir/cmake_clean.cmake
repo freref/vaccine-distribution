@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Project.dir/Simulation/Centrum.cpp.o"
   "CMakeFiles/Project.dir/Simulation/Hub.cpp.o"
+  "CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o"
   "CMakeFiles/Project.dir/Simulation/autoSim.cpp.o"
   "CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o"
   "CMakeFiles/Project.dir/Simulation/simulation.cpp.o"

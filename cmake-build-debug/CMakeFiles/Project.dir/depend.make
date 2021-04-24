@@ -8,13 +8,24 @@ CMakeFiles/Project.dir/Simulation/Centrum.cpp.o: ../Simulation/DesignByContract.
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Hub.cpp
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Vaccine.h
+CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../XmlParser/tinystr.h
+CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../XmlParser/tinyxml.h
+
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.cpp
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.h
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../XmlParser/tinystr.h
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../XmlParser/tinyxml.h
 
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/autoSim.cpp
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/autoSim.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/simulation.h
+CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../XmlParser/tinystr.h
+CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../XmlParser/tinyxml.h
 
 CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.cpp
 CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.h
@@ -22,18 +33,25 @@ CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/simulation.cpp
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/simulation.h
+CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../XmlParser/tinystr.h
+CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../XmlParser/tinyxml.h
 
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/simulation.h
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/simulationExporter.cpp
 CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../Simulation/simulationExporter.h
+CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../XmlParser/tinystr.h
+CMakeFiles/Project.dir/Simulation/simulationExporter.cpp.o: ../XmlParser/tinyxml.h
 
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulation.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulationImporter.cpp
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulationImporter.h
@@ -57,6 +75,7 @@ CMakeFiles/Project.dir/XmlParser/tinyxmlparser.cpp.o: ../XmlParser/tinyxmlparser
 
 CMakeFiles/Project.dir/main.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/main.cpp.o: ../Simulation/Hub.h
+CMakeFiles/Project.dir/main.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/main.cpp.o: ../Simulation/autoSim.h
 CMakeFiles/Project.dir/main.cpp.o: ../Simulation/simulation.h
 CMakeFiles/Project.dir/main.cpp.o: ../Simulation/simulationExporter.h

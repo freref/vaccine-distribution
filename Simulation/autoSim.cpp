@@ -14,16 +14,16 @@
 
 using namespace std;
 
-void autoSim::simulateTransport(simulation &s, Centrum *c, ostream& outS) {
+void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostream& outS) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport");
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
-    Hub* h = s.getHub();
-    int ladingen = s.berekenLadingen(c);
-    int vaccins = ladingen*h->getTransport();
 
-    s.verlaagVaccinsHub(vaccins);
+    int ladingen = s.berekenLadingen(c, vaccin);
+    int vaccins = ladingen*vaccin->getTransport();
+
+    vaccin->verlaagVaccins(vaccins);
     s.verhoogVaccinsCentrum(c, vaccins);
-    s.printTransport(c, vaccins, outS);
+    s.printTransport(c, vaccins, vaccin, outS);
 }
 
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
@@ -42,43 +42,22 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     Hub* hub = s.getHub();
     map<string, Centrum*> centraHub = hub->getCentra();
     vector<Centrum*> centra = s.getCentra();
+    vector<Vaccine> vaccins = hub->getVaccins();
+
     for(int j = 1; j < n+1; j++){
-//        cout << endl << "DAG: " << j << endl;               // DEBUG INFO
-//        cout << "Hub: " << hub->getVoorraad() << "\t-> ";   // DEBUG INFO
-        if(j%(hub->getInterval()+1) == 0)
-            s.verhoogVaccinsHub(hub->getLevering());
-//        cout << hub->getVoorraad() << endl;                 // DEBUG INFO
-        // Transporten uitvoeren
-        for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
-//            int before = it->second->getVaccins();          // DEBUG INFO
-            simulateTransport(s, it->second, outS);
-//            cout << "Centrum: " << before << "\t -> " << it->second->getVaccins() << endl; // DEBUG INFO
+        for(int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
+            Vaccine vaccin = vaccins[vaccinIndex];
+            if(j%(vaccin.getInterval()+1)==0){
+                vaccin.setVoorraad(vaccin.getVoorraad()+vaccin.getLevering());
+            }
+            for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
+                simulateTransport(&vaccin, s, it->second, outS);
+            }
         }
-//        for(int i = 0; i < centra.size(); i++){
-//            Centrum* centrum = centra[i];
-//
-//            if(hub->getCentra().count(centrum->getNaam())){
-//                int ladingen = berekenLadingen(centrum);
-//                int vaccins = ladingen*hub->getTransport();
-//
-//                verlaagVaccinsHub(vaccins);
-//                verhoogVaccinsCentrum(centrum, vaccins);
-//                printTransport(centrum, vaccins);
-//            }
-//        }
         bool check = true;
-        // Vaccinaties uitvoeren
         for(long unsigned int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
-//            int beforeV = centrum->getVaccins();            // DEBUG INFO
             simulateVaccinatie(s, centrum, outS);
-//            cout << "Centrum: " << beforeV << "\t-> " << centrum->getVaccins() << endl; // DEBUG INFO
-
-//            int vaccinaties = berekenVaccinatie(centrum);
-//            verlaagVaccinCentrum(centrum, vaccinaties);
-//            verhoogVaccinaties(centrum, vaccinaties);
-//            printVaccinatie(centrum, vaccinaties);
-
             if (centrum->getGevaccineerd() != centrum->getInwoners())
                 check = false;
         }
