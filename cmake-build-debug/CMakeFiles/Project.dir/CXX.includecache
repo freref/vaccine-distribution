@@ -16,10 +16,6 @@ map
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
 
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
-assert.h
--
-
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
 string
 -
@@ -38,16 +34,6 @@ iostream
 ../XmlParser/tinyxml.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
 
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.cpp
-iostream
--
-autoSim.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
-Hub.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
-DesignByContract.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
-
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
 iostream
 -
@@ -63,6 +49,20 @@ vector
 -
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h
+iostream
+-
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
+string
+-
+iostream
+-
+map
+-
+../XmlParser/tinyxml.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinystr.h
 assert.h
@@ -89,4 +89,32 @@ sstream
 -
 tinystr.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinystr.h
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/main.cpp
+iostream
+-
+XmlParser/tinyxml.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
+vector
+-
+Simulation/Centrum.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
+Simulation/Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
+Simulation/simulation.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
+Simulation/simulationImporter.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
+Simulation/simulationExporter.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h
+Simulation/autoSim.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
+string
+-
+map
+-
+sstream
+-
+fstream
+-
 

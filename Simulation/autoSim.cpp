@@ -33,8 +33,10 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie");
 
     map<Vaccine*, int> voorraad = c->getVoorraad();
+    int vaccinated = 0;
     for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
-        int vaccinaties = min(it->second, min(c->getCapaciteit(), c->getInwoners()-c->getGevaccineerd()));
+        int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getGevaccineerd()));
+        vaccinated += vaccinaties;
         c->verlaagVoorraad(it->first, vaccinaties);
         s.verhoogVaccinaties(c, vaccinaties);
         if(vaccinaties > 0)
