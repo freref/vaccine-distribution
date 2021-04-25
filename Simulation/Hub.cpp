@@ -26,7 +26,7 @@ Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
 
 int Hub::accessorTotaleVoorraad(){
     int v = 0;
-    for(int i = 0; i < vaccins.size(); i++){
+    for(unsigned int i = 0; i < vaccins.size(); i++){
         v += vaccins[i]->getVoorraad();
     }
     totaleVoorraad = v;

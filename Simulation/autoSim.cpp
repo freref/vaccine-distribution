@@ -75,7 +75,7 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     vector<Vaccine*> vaccins = hub->getVaccins();
 
     for(int j = 1; j < n+1; j++){
-        for(int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
+        for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
             Vaccine* vaccin = vaccins[vaccinIndex];
             if(j%(vaccin->getInterval()+1)==0){
                 vaccin->setVoorraad(vaccin->getVoorraad()+vaccin->getLevering());
