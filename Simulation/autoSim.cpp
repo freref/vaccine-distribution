@@ -44,7 +44,7 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS, int d
     //        if (vaccinaties < aantal){
     //            c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal-vaccinaties);
     //        }
-    //
+//
     //        c->verlaagVoorraad(it->first, vaccinaties);
     //        c->verhoogGevaccineerd(vaccinaties);
 //
