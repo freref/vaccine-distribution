@@ -28,7 +28,7 @@ class Centrum {
     int inwoners;
     int capaciteit;
     int vaccins;
-    map<Vaccine, int> voorraad;
+    map<Vaccine*, int> voorraad;
     int gevaccineerd;
 public:
     //constructor
@@ -59,6 +59,15 @@ public:
        \n ENSURE(getVaccins() == v, "setVaccins postcondition failed");
      * @param v int vaccines
      */
+
+    void setVoorraad(Vaccine* vac, int aantal);
+
+    map<Vaccine*, int> getVoorraad();
+
+    void verhoogVoorraad(Vaccine* vac, int aantal);
+
+    void verlaagVoorraad(Vaccine* vac, int aantal);
+
     void setVaccins(int v);
 
     /**
@@ -103,7 +112,7 @@ public:
      * \n ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
      * @return int
      */
-    int getVaccins() const;
+    int getVaccins();
     /**
      * \n getter for vaccinated
      * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevaccineerd");

@@ -25,7 +25,7 @@ class Centrum;
 class Hub {
     Hub* _initCheck;
 
-    int voorraad;
+    int totaleVoorraad;
     vector<Vaccine*> vaccins;
     map<string, Centrum*> centra;
 public:
@@ -43,8 +43,6 @@ public:
      * @param c
      */
     Hub(vector<Vaccine*> vaccins, map<string, Centrum*> c);
-
-    void calculateVoorraad();
     /**
      * \n checks of Hub is propperly initialized
      * @return
@@ -63,16 +61,13 @@ public:
      * @param c
      */
     void setCentra(const map<string, Centrum*>& c);
-
-    //getters
-
     /**
      * \n getter for supply
      * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVoorraad");
        \n ENSURE(amount>=0, "getVoorraad postconditions failed");
      * @return
      */
-    int accessorVoorraad();
+    int accessorTotaleVoorraad();
     /**
      * \n getter for centra
      * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");

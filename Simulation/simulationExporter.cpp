@@ -19,7 +19,7 @@
 void simulationExporter::exportSim(ostream &ostream, const simulation &sim) {
     REQUIRE(sim.properlyInitialised(), "simulation wasn't initialised when calling exporter");
     Hub* hub = sim.getHub();
-    ostream << "Hub (" << hub->accessorVoorraad() << ")\n";
+    ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";
     map<string, Centrum*> hCentra = hub->getCentra();
     for (map<string, Centrum*>::iterator it = hCentra.begin(); it != hCentra.end(); it++) {
         ostream << "\t-> " << it->second->getNaam() << " (" << it->second->getVaccins() << " vaccins" << ")\n";

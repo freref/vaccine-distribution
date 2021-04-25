@@ -112,16 +112,7 @@ public:
      * @param vaccins   Amount of vaccins to be subtracted
      */
     void verlaagVaccinsHub(int vaccins);
-    /**
-     \n Increases the amount of vaccins in the centrum
-     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinsCentrum")
-     \n REQUIRE(vaccins>=0, "vaccins amount must be positive")
-     \n ENSURE(centrum->getVaccins() == oAmount+vaccins && centrum->getVaccins() <= centrum->getCapaciteit()*2,
-                "verhoogVaccinsCentrum postconditions failed")
-     * @param centrum   Centrum where to increase vaccins
-     * @param vaccins   Amount of vaccins to add
-     */
-    static void verhoogVaccinsCentrum(Centrum* centrum, int vaccins);
+
     /**
      \n Prints the transport
      \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport")
@@ -142,16 +133,6 @@ public:
      * @return          The amount of vaccins
      */
     static int berekenVaccinatie(Centrum* centrum);
-    /**
-     \n Decrease the amount of vaccins in a given centrum
-     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verlaagVaccinsCentrum")
-     \n REQUIRE(vaccins>=0, "vaccins amount must be positive")
-     \n ENSURE(centrum->getVaccins() == oAmount-vaccins && centrum->getVaccins() >= 0,
-                "verlaagVaccinsCentrum postconditions failed")
-     * @param centrum   Centrum in which to decrease the amount
-     * @param vaccins   Amount of vaccins to subtract
-     */
-    static void verlaagVaccinCentrum(Centrum* centrum, int vaccins);
     /**
      \n Increase the amount of vaccinated people in a center
      \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties")

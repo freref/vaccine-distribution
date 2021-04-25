@@ -4,7 +4,7 @@
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    12/3/2021
- * @version 1.0
+ * @version 2.0
  */
 
 #include <iostream>
@@ -22,7 +22,8 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
     int vaccins = ladingen * vaccin->getTransport();
 
     vaccin->verlaagVaccins(vaccins);
-    s.verhoogVaccinsCentrum(c, vaccins);
+    c->verhoogVoorraad(vaccin, vaccins);
+
     if (vaccins > 0)
         s.printTransport(c, vaccins, vaccin, outS);
 }
@@ -30,12 +31,15 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie");
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie");
-    int vaccinaties = s.berekenVaccinatie(c);
-    s.verlaagVaccinCentrum(c, vaccinaties);
-    s.verhoogVaccinaties(c, vaccinaties);
-    if (vaccinaties > 0)
-        s.printVaccinatie(c, vaccinaties, outS);
-    // cout << vaccinaties << "\t -> " << centrum->getVaccins() << endl; // DEBUG INFO
+
+    map<Vaccine*, int> voorraad = c->getVoorraad();
+    for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
+        int vaccinaties = min(it->second, min(c->getCapaciteit(), c->getInwoners()-c->getGevaccineerd()));
+        c->verlaagVoorraad(it->first, vaccinaties);
+        s.verhoogVaccinaties(c, vaccinaties);
+        if(vaccinaties > 0)
+            cout << "Er werden " << vaccinaties << " inwoners gevaccineerd in " << c->getNaam() << " met het "<< it->first->getType()<<" vaccin." << endl;
+    }
 }
 
 void autoSim::simulate(simulation& s, int n, ostream& outS){

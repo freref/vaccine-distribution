@@ -19,18 +19,18 @@ Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
     REQUIRE(!c.empty(), "must atleast contain 1 centrum");
     vaccins = v;
     centra = c;
-    accessorVoorraad();
+    accessorTotaleVoorraad();
     _initCheck = this;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
-int Hub::accessorVoorraad(){
+int Hub::accessorTotaleVoorraad(){
     int v = 0;
     for(int i = 0; i < vaccins.size(); i++){
         v += vaccins[i]->getVoorraad();
     }
-    voorraad = v;
-    return voorraad;
+    totaleVoorraad = v;
+    return totaleVoorraad;
 }
 
 // Setters
@@ -41,7 +41,6 @@ void Hub::setCentra(const map<string, Centrum *> &c) {
     centra = c;
 }
 
-// Getters
 
 const map<string, Centrum *>& Hub::getCentra() const {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");

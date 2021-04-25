@@ -34,12 +34,20 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
-void Centrum::setVaccins(int v) {
-    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
-    REQUIRE(v>=0, "vaccins can't be set to negative");
-    REQUIRE(v<=getCapaciteit()*2, "vaccins can't exceed capacity*2");
-    vaccins = v;
-    ENSURE(getVaccins() == v, "setVaccins postcondition failed");
+void Centrum::setVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] = aantal;
+}
+
+map<Vaccine*, int> Centrum::getVoorraad(){
+    return voorraad;
+}
+
+void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] = getVoorraad()[vac] + aantal;
+}
+
+void Centrum::verlaagVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] = getVoorraad()[vac] - aantal;
 }
 
 void Centrum::setGevaccineerd(int g) {
@@ -67,10 +75,12 @@ int Centrum::getGevaccineerd() const {
     return amount;
 }
 
-int Centrum::getVaccins() const {
-    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins");
-    int amount = vaccins;
-    ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
+int Centrum::getVaccins() {
+    int amount = 0;
+    map<Vaccine*, int> v = getVoorraad();
+    for (map<Vaccine*, int>::iterator it = v.begin(); it != v.end(); it++) {
+        amount += it->second;
+    }
     return amount;
 }
 

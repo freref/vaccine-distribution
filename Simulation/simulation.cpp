@@ -141,15 +141,7 @@ int simulation::berekenLadingen(Centrum* centrum, Vaccine* vaccin) const {
 }
 
 
-//verhoogt de vaccins in gegeven centrum met i aantal vaccins
-void simulation::verhoogVaccinsCentrum(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinsCentrum");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    int oAmount = centrum->getVaccins();
-    centrum->setVaccins(centrum->getVaccins()+vaccins);
-    ENSURE(centrum->getVaccins() == oAmount+vaccins && centrum->getVaccins() <= centrum->getCapaciteit()*2,
-           "verhoogVaccinsCentrum postconditions failed");
-}
+
 
 void simulation::printTransport(Centrum* centrum, int vaccins, Vaccine* vaccin, ostream& onStream) const {
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
@@ -171,15 +163,7 @@ int simulation::berekenVaccinatie(Centrum* centrum){
 }
 
 
-//verlaagt het aantal vaccins in gegeven centrum
-void simulation::verlaagVaccinCentrum(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verlaagVaccinsCentrum");
-    REQUIRE(vaccins>=0, "vaccins amount must be positive");
-    int oAmount = centrum->getVaccins();
-    centrum->setVaccins(centrum->getVaccins()-vaccins);
-    ENSURE(centrum->getVaccins() == oAmount-vaccins && centrum->getVaccins() >= 0,
-           "verlaagVaccinsCentrum postconditions failed");
-}
+
 
 //verhoogt het aantal gevaccineerden in een centrum
 void simulation::verhoogVaccinaties(Centrum* centrum, int vaccins){
