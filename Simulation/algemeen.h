@@ -5,6 +5,9 @@
 #ifndef PROJECTPSE_ALGEMEEN_H
 #define PROJECTPSE_ALGEMEEN_H
 
-int stoi(std::string s);
+class algemeen{
+public:
+    static int stoi(std::string s);
+};
 
 #endif //PROJECTPSE_ALGEMEEN_H

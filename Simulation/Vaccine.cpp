@@ -10,20 +10,20 @@ void Vaccine::insert(TiXmlElement* el) {
         type = (el->FirstChild()->ToText()->Value());
     }
     else if(strcmp(el->Value(), "levering") == 0){
-        levering = (stoi(el->FirstChild()->ToText()->Value()));
+        levering = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
         voorraad = levering;
     }
     else if(strcmp(el->Value(), "interval") == 0){
-        interval = (stoi(el->FirstChild()->ToText()->Value()));
+        interval = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
     }
     else if(strcmp(el->Value(), "transport") == 0){
-        transport = (stoi(el->FirstChild()->ToText()->Value()));
+        transport = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
     }
     else if(strcmp(el->Value(), "hernieuwing") == 0){
-        hernieuwing = (stoi(el->FirstChild()->ToText()->Value()));
+        hernieuwing = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
     }
     else if(strcmp(el->Value(), "temperatuur") == 0){
-        temperatuur = (stoi(el->FirstChild()->ToText()->Value()));
+        temperatuur = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
     }
 }
 

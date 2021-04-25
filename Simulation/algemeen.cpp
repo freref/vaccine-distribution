@@ -10,7 +10,7 @@
 using namespace std;
 
 // https://stackoverflow.com/questions/4442658/c-parse-int-from-string
-int stoi(string s) {
+int algemeen::stoi(string s) {
     if (s.empty())
         throw std::invalid_argument("conversion from invalid string to int");
     for (long unsigned int j=0; j<s.size(); j++) {

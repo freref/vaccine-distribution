@@ -17,8 +17,12 @@ CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../XmlParser/tinyxml.h
 
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.cpp
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.h
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/algemeen.h
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../XmlParser/tinystr.h
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../XmlParser/tinyxml.h
+
+CMakeFiles/Project.dir/Simulation/algemeen.cpp.o: ../Simulation/algemeen.cpp
+CMakeFiles/Project.dir/Simulation/algemeen.cpp.o: ../Simulation/algemeen.h
 
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/DesignByContract.h

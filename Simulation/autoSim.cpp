@@ -35,22 +35,22 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS, int d
     map<Vaccine*, int> voorraad = c->getVoorraad();
     int vaccinated = 0;
 
-    //for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
-    //    int aantal = c->getGevac()[pair<int, Vaccine *>(dag - it->first->getHernieuwing(), it->first)];
-    //    if (aantal > 0) {
-    //        int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
-    //        vaccinated += vaccinaties;
-//
-    //        if (vaccinaties < aantal){
-    //            c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal-vaccinaties);
-    //        }
-//
-    //        c->verlaagVoorraad(it->first, vaccinaties);
-    //        c->verhoogGevaccineerd(vaccinaties);
-//
-    //        cout << "lol" << endl;
-    //    }
-    //}
+    for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
+        int aantal = c->getGevac()[pair<int, Vaccine *>(dag - it->first->getHernieuwing(), it->first)];
+        if (aantal > 0) {
+            int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
+            vaccinated += vaccinaties;
+
+            if (vaccinaties < aantal){
+                c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal-vaccinaties);
+            }
+
+            c->verlaagVoorraad(it->first, vaccinaties);
+            c->verhoogGevaccineerd(vaccinaties);
+
+            cout << "lol" << endl;
+        }
+    }
 
     for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
         int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
