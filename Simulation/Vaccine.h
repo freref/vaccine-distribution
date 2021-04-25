@@ -31,6 +31,7 @@ public:
     int getInterval();
     int getLevering();
     int getTransport();
+    int getHernieuwing();
 };
 
 

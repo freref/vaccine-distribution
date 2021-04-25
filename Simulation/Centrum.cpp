@@ -16,6 +16,7 @@ Centrum::Centrum() {
     inwoners = 0;
     capaciteit = 0;
     gevaccineerd = 0;
+    eerste = 0;
     _initCheck = this;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
@@ -28,6 +29,7 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
     inwoners = i;
     capaciteit = c;
     gevaccineerd = 0;
+    eerste = 0;
     _initCheck = this;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
@@ -121,6 +123,27 @@ void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) {
              << " getransporteerd naar "<< getNaam() <<"." << endl;
 }
 
-void Centrum::printVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+
     onStream << "Er werden " << vaccinaties << " inwoners gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
+}
+
+void Centrum::verhoogGevaccineerd(int aantal){
+    gevaccineerd += aantal;
+}
+
+void Centrum::zetVaccinatie(int dag, Vaccine* vac, int aantal){
+    gevac[pair<int, Vaccine*>(dag, vac)] += aantal;
+}
+
+map<pair<int, Vaccine*>, int> Centrum::getGevac(){
+    return gevac;
+}
+
+int Centrum::getEerste(){
+    return eerste;
+}
+
+void Centrum::verhoogEerste(int aantal){
+    eerste += aantal;
 }

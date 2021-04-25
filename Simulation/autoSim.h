@@ -34,7 +34,7 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateVaccinatie(simulation& s, Centrum* c, ostream& outS);
+    static void simulateVaccinatie(simulation& s, Centrum* c, ostream& outS, int dag);
     /**
      * \n Loop to continously simulate transport and injections
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");

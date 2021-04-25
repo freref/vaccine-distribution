@@ -21,7 +21,7 @@ int main() {
 
         cout << endl;
 
-        autoSim::simulate(s, 100, cout);
+        autoSim::simulate(s, 1000, cout);
         s.graphicImpression();
 //    ofstream myFile("output.txt");
 

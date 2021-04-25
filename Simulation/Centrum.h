@@ -27,8 +27,10 @@ class Centrum {
     string adres;
     int inwoners;
     int capaciteit;
-    map<Vaccine*, int> voorraad;
     int gevaccineerd;
+    int eerste;
+    map<Vaccine*, int> voorraad;
+    map<pair<int, Vaccine*>, int> gevac;
 public:
     //constructor
     Centrum();
@@ -124,7 +126,17 @@ public:
 
     void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream);
 
-    void printVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
+    void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
+
+    void zetVaccinatie(int dag, Vaccine* vac, int aantal);
+
+    map<pair<int, Vaccine*>, int> getGevac();
+
+    void verhoogGevaccineerd(int aantal);
+
+    int getEerste();
+
+    void verhoogEerste(int aantal);
 };
 
 

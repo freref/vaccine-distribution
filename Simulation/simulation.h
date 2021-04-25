@@ -87,19 +87,7 @@ public:
      */
     const vector<Centrum*> &getCentra() const;
 
-    /**
-     \n Increase the amount of vaccinated people in a center
-     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties")
-     \n REQUIRE(vaccins >= 0, "vaccins amount must be positive")
-     \n ENSURE(centrum->getGevaccineerd() <= centrum->getInwoners(),
-                "verhoogVaccinaties postconditions failed");
-     * @param centrum   Centrum in which to increase amount
-     * @param vaccins   Amount of vaccinated people
-     */
-    static void verhoogVaccinaties(Centrum* centrum, int vaccins);
-
     void exportSim(ostream& ostream);
-
 };
 
 

@@ -5,7 +5,7 @@
             <levering>18000</levering>
             <interval>6</interval>
             <transport>2000</transport>
-            <hernieuwing>21</hernieuwing>
+            <hernieuwing>7</hernieuwing>
             <temperatuur>-70</temperatuur>
         </VACCIN>
         <VACCIN>
@@ -13,7 +13,7 @@
             <levering>20000</levering>
             <interval>13</interval>
             <transport>1000</transport>
-            <hernieuwing>28</hernieuwing>
+            <hernieuwing>7</hernieuwing>
             <temperatuur>-20</temperatuur>
         </VACCIN>
         <VACCIN>
@@ -21,7 +21,7 @@
             <levering>18000</levering>
             <interval>4</interval>
             <transport>1500</transport>
-            <hernieuwing>28</hernieuwing>
+            <hernieuwing>7</hernieuwing>
             <temperatuur>5</temperatuur>
         </VACCIN>
         <CENTRA>

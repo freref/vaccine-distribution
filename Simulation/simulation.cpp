@@ -116,15 +116,6 @@ const vector<Centrum*> &simulation::getCentra() const {
     return centra;
 }
 
-//verhoogt het aantal gevaccineerden in een centrum
-void simulation::verhoogVaccinaties(Centrum* centrum, int vaccins){
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties");
-    REQUIRE(vaccins >= 0, "vaccins amount must be positive");
-    centrum->setGevaccineerd(centrum->getGevaccineerd()+vaccins);
-    ENSURE(centrum->getGevaccineerd() <= centrum->getInwoners(),
-           "verhoogVaccinaties postconditions failed");
-}
-
 void simulation::exportSim(ostream &ostream) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
     ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";

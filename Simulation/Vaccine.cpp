@@ -53,3 +53,7 @@ int Vaccine::getLevering(){
 int Vaccine::getTransport(){
     return transport;
 }
+
+int Vaccine::getHernieuwing(){
+    return hernieuwing;
+}
