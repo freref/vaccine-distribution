@@ -92,8 +92,6 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
                 check = false;
         }
         cout << endl;
-        s.exportSim(cout);
-        cout << endl;
         if(check)
             break;
     }
