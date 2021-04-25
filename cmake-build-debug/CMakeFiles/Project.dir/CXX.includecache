@@ -50,10 +50,6 @@ vector
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
 
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h
-iostream
--
-
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
 string
 -
@@ -105,8 +101,6 @@ Simulation/simulation.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
 Simulation/simulationImporter.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
-Simulation/simulationExporter.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h
 Simulation/autoSim.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
 string

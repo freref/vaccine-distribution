@@ -20,7 +20,6 @@ set(SOURCE_FILES main.cpp
         Simulation/Centrum.cpp
         Simulation/simulation.cpp
         Simulation/simulationImporter.cpp
-        Simulation/simulationExporter.cpp
         Simulation/autoSim.cpp
         Simulation/fileCompare.cpp Simulation/Vaccine.cpp Simulation/Vaccine.h)
 
@@ -33,7 +32,6 @@ set(DEBUG_FILES tests_main.cpp
         Simulation/Centrum.cpp
         Simulation/simulation.cpp
         Simulation/simulationImporter.cpp
-        Simulation/simulationExporter.cpp
         Simulation/autoSim.cpp
         Simulation/tests/autoSimTests.cpp
         Simulation/tests/domainTests.cpp

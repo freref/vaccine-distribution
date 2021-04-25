@@ -172,14 +172,6 @@
 			<Option target="sim_debug"/>
 			<Option target="Project"/>
 		</Unit>
-		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.cpp">
-			<Option target="sim_debug"/>
-			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationExporter.h">
-			<Option target="sim_debug"/>
-			<Option target="Project"/>
-		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.cpp">
 			<Option target="sim_debug"/>
 			<Option target="Project"/>

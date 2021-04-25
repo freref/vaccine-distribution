@@ -5,7 +5,6 @@
 #include "Simulation/Hub.h"
 #include "Simulation/simulation.h"
 #include "Simulation/simulationImporter.h"
-#include "Simulation/simulationExporter.h"
 #include "Simulation/autoSim.h"
 #include <string>
 #include <map>
@@ -18,7 +17,7 @@ int main() {
     simulation s;
 
     if (simulationImporter::importFile("data2.xml", s, cerr) == 0) {
-        simulationExporter::exportSim(cout, s);
+        s.exportSim(cout);
 
         cout << endl;
 
@@ -28,7 +27,7 @@ int main() {
 
         cout << endl;
 
-        simulationExporter::exportSim(cout, s);
+        s.exportSim(cout);
     }
 
     return 0;

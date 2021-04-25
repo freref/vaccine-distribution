@@ -116,55 +116,6 @@ const vector<Centrum*> &simulation::getCentra() const {
     return centra;
 }
 
-//--------------------
-// Transport functies
-//--------------------
-
-int simulation::berekenLadingen(Centrum* centrum, Vaccine* vaccin) const {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
-    REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenLadigen");
-    int transport = vaccin->getTransport();
-    int capaciteit = centrum->getCapaciteit();
-    int vaccins = centrum->getVaccins();
-    int voorraad = vaccin->getVoorraad();
-    int ladingen = 0;
-    //for loop met alle condities van appendix B
-    // Lading verder kijken dan huidige (om na te kijken) om niet op volgende over parameters te gaan
-    while ((ladingen+1)*transport <= voorraad && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
-        // Afbreken wanneer voldaan aan capaciteit
-        if (ladingen*transport + vaccins >= capaciteit)
-            break;
-        ladingen += 1;
-    }
-    ENSURE(ladingen>=0, "berekenLadingen postconditions failed");
-    return ladingen;
-}
-
-
-
-
-void simulation::printTransport(Centrum* centrum, int vaccins, Vaccine* vaccin, ostream& onStream) const {
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
-    REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
-    //REQUIRE(vaccins%getHub()->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
-    onStream << "Er werden " << vaccins/vaccin->getTransport() << " ladingen " << vaccin->getType() << " (" << vaccins << " vaccins)"
-             << " getransporteerd naar "<< centrum->getNaam() <<"." << endl;
-}
-
-//---------------------
-// Vaccinatie functies
-//---------------------
-
-int simulation::berekenVaccinatie(Centrum* centrum){
-    REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenVaccinatie");
-    int result = min(centrum->getVaccins(), min(centrum->getCapaciteit(), centrum->getInwoners()-centrum->getGevaccineerd()));
-    ENSURE(result>=0 && result <= centrum->getCapaciteit(), "berekenVaccinatie postconditions failed");
-    return result;
-}
-
-
-
-
 //verhoogt het aantal gevaccineerden in een centrum
 void simulation::verhoogVaccinaties(Centrum* centrum, int vaccins){
     REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties");
@@ -174,9 +125,18 @@ void simulation::verhoogVaccinaties(Centrum* centrum, int vaccins){
            "verhoogVaccinaties postconditions failed");
 }
 
-void simulation::printVaccinatie(Centrum* centrum, int vaccins, ostream& onStream) {
-    REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printVaccinatie");
-    REQUIRE(vaccins >= 0, "vaccinated amount can't be negative");
-    REQUIRE(vaccins <= centrum->getCapaciteit(), "vaccinated ammount can't exceed capacity");
-    onStream << "Er werden " << vaccins << " inwoners gevaccineerd in " << centrum->getNaam() << "." << endl;
+void simulation::exportSim(ostream &ostream) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
+    ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";
+    map<string, Centrum*> hCentra = hub->getCentra();
+    for (map<string, Centrum*>::iterator it = hCentra.begin(); it != hCentra.end(); it++) {
+        ostream << "\t-> " << it->second->getNaam() << " (" << it->second->getVaccins() << " vaccins" << ")\n";
+    }
+    ostream << endl;
+    for (long unsigned int i = 0; i < centra.size(); i++) {
+        Centrum* c = centra[i];
+        ostream << c->getNaam() << ": " << c->getGevaccineerd() << " gevaccineerd, nog ";
+        int teGaan = c->getInwoners() - c->getGevaccineerd();
+        ostream << teGaan << " inwoners niet gevaccineerd\n";
+    }
 }

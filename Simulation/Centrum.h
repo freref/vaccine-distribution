@@ -27,7 +27,6 @@ class Centrum {
     string adres;
     int inwoners;
     int capaciteit;
-    int vaccins;
     map<Vaccine*, int> voorraad;
     int gevaccineerd;
 public:
@@ -120,6 +119,12 @@ public:
      * @return int
      */
     int getGevaccineerd() const;
+
+    int berekenLadingen(Vaccine* vaccin);
+
+    void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream);
+
+    void printVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
 };
 
 

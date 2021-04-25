@@ -87,52 +87,6 @@ public:
      */
     const vector<Centrum*> &getCentra() const;
 
-    // Transport functies
-    /**
-     \n Calculate amount of needed loads for transport
-     \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen")
-     \n REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenLadigen")
-     *  @param centrum  Destination centrum
-     *  @return         Amount of loads
-     */
-    int berekenLadingen(Centrum* centrum, Vaccine* vaccin) const;
-    /**
-     \n Increases amount of vaccins in the hub
-     \n REQUIRE(getHub()->properlyInitialised(), "hub wasn't properly initialised when calling verhoogVaccinsHub")
-     \n REQUIRE(vaccins>=0, "vaccins amount must be positive")
-     * @param vaccins   Amount of vaccins to add
-     */
-    void verhoogVaccinsHub(int vaccins);
-    /**
-     \n Decrease the amount of vaccins in the hub
-     \n REQUIRE(getHub()->properlyInitialised(), "hub wasn't initialised when calling verlaagVaccinsHub")
-     \n REQUIRE(vaccins >= 0, "vaccins amount must be positive")
-     \n ENSURE(getHub()->getVoorraad() == before-vaccins && getHub()->getVoorraad() >= 0,
-                "verlaagVaccinsHub postconditions failed")
-     * @param vaccins   Amount of vaccins to be subtracted
-     */
-    void verlaagVaccinsHub(int vaccins);
-
-    /**
-     \n Prints the transport
-     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printTransport")
-     \n REQUIRE(vaccins >= 0, "vaccins amount can't be negative")
-     \n REQUIRE(vaccins%getHub()->getTransport() == 0, "vaccins amount must be multiple of transport in hub")
-     * @param centrum   The destination centrum
-     * @param vaccins   The amount of transported vaccins
-     * @param onStream  The output stream
-     */
-    void printTransport(Centrum* centrum, int vaccins,Vaccine* vaccin, ostream& onStream) const;
-
-    // Vaccinatie functies
-    /**
-     \n Calculate the amount of vaccins that can be given in a centrum
-     \n REQUIRE(centrum->properlyInitialised(), "centrum was not initialised when calling berekenVaccinatie")
-     \n ENSURE(result>=0 && result <= centrum->getCapaciteit(), "berekenVaccinatie postconditions failed")
-     * @param centrum   The centrum for which to calculate the amount
-     * @return          The amount of vaccins
-     */
-    static int berekenVaccinatie(Centrum* centrum);
     /**
      \n Increase the amount of vaccinated people in a center
      \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling verhoogVaccinaties")
@@ -143,16 +97,9 @@ public:
      * @param vaccins   Amount of vaccinated people
      */
     static void verhoogVaccinaties(Centrum* centrum, int vaccins);
-    /**
-     \n Prints the vaccinations
-     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't initialised when calling printVaccinatie")
-     \n REQUIRE(vaccins >= 0, "vaccinated amount can't be negative")
-     \n REQUIRE(vaccins <= centrum->getCapaciteit(), "vaccinated ammount can't exceed capacity")
-     * @param centrum   Centrum in which the vaccination took place
-     * @param vaccins   Amount of vaccinated people
-     * @param onStream  Output stream
-     */
-    static void printVaccinatie(Centrum* centrum, int vaccins, ostream& onStream);
+
+    void exportSim(ostream& ostream);
+
 };
 
 

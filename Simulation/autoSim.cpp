@@ -18,14 +18,14 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport");
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
 
-    int ladingen = s.berekenLadingen(c, vaccin);
+    int ladingen = c->berekenLadingen(vaccin);
     int vaccins = ladingen * vaccin->getTransport();
 
     vaccin->verlaagVaccins(vaccins);
     c->verhoogVoorraad(vaccin, vaccins);
 
     if (vaccins > 0)
-        s.printTransport(c, vaccins, vaccin, outS);
+        c->printTransport(vaccins, vaccin, outS);
 }
 
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
@@ -40,7 +40,7 @@ void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS) {
         c->verlaagVoorraad(it->first, vaccinaties);
         s.verhoogVaccinaties(c, vaccinaties);
         if(vaccinaties > 0)
-            cout << "Er werden " << vaccinaties << " inwoners gevaccineerd in " << c->getNaam() << " met het "<< it->first->getType()<<" vaccin." << endl;
+            c->printVaccinatie(vaccinaties, it->first, outS);
     }
 }
 
