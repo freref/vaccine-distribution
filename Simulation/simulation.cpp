@@ -52,9 +52,9 @@ void simulation::graphicImpression(){
     ofstream MyFile("../graphic_impression.txt");
     string output;
 
-    for(int i = 0; i < centra.size(); i++){
+    for(unsigned int i = 0; i < centra.size(); i++){
         MyFile << centra[i]->getNaam() + ":\n\t- vaccins\t\t[";
-        int vaccins = centra[i]->getVaccins()*100/centra[i]->getCapaciteit();
+        int vaccins = centra[i]->getVaccins()*100/(centra[i]->getCapaciteit() * 2);
 
         for(int idx = 1; idx <= 20; idx++){
             if(idx <= vaccins/5)
@@ -63,7 +63,9 @@ void simulation::graphicImpression(){
                 MyFile << " ";
         }
 
-        MyFile << "]"+to_string(vaccins)+"%";
+        MyFile << "]";
+        MyFile << vaccins;
+        MyFile << "%";
         MyFile << "\n\t- gevaccineerd\t[";
         int gevaccineerd = centra[i]->getGevaccineerd()*100/centra[i]->getInwoners();
 
@@ -74,7 +76,9 @@ void simulation::graphicImpression(){
                 MyFile << " ";
         }
 
-        MyFile << "]"+to_string(gevaccineerd)+"%";
+        MyFile << "]";
+        MyFile << gevaccineerd;
+        MyFile << "%";
         MyFile << "\n";
     }
     MyFile.close();

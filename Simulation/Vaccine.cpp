@@ -3,6 +3,7 @@
 //
 
 #include "Vaccine.h"
+#include "algemeen.h"
 
 void Vaccine::insert(TiXmlElement* el) {
     if(strcmp(el->Value(), "type") == 0){
