@@ -14,11 +14,10 @@
 
 using namespace std;
 
-void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostream& outS) {
-    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport");
+void autoSim::simulateTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag) {
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
 
-    int ladingen = c->berekenLadingen(vaccin);
+    int ladingen = c->berekenLadingen(vaccin, dag);
     int vaccins = ladingen * vaccin->getTransport();
 
     vaccin->verlaagVaccins(vaccins);
@@ -28,41 +27,71 @@ void autoSim::simulateTransport(Vaccine* vaccin, simulation &s, Centrum *c, ostr
         c->printTransport(vaccins, vaccin, outS);
 }
 
+void autoSim::simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal){
+    int vaccins = min(aantal, min(vaccin->getVoorraad(), c->getCapaciteit()*2 - c->getVaccins()));
+
+    int ladingen = vaccins/vaccin->getTransport();
+    if (vaccins > 0 && ladingen == 0)
+        ladingen = 1;
+
+    vaccins = ladingen*vaccin->getTransport();
+
+    vaccin->verlaagVaccins(vaccins);
+    c->verhoogVoorraad(vaccin, vaccins);
+    if (vaccins > 0)
+        c->printTransport(vaccins, vaccin, outS);
+}
+
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS, int dag) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie");
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie");
 
-    map<Vaccine*, int> voorraad = c->getVoorraad();
+    map<Vaccine*, int> voorraad1 = c->getVoorraad();
+    //tweede prik voorrang
     int vaccinated = 0;
-
-    for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
+    for (map<Vaccine*, int>::iterator it = voorraad1.begin(); it != voorraad1.end(); it++) {
         int aantal = c->getGevac()[pair<int, Vaccine *>(dag - it->first->getHernieuwing(), it->first)];
-        if (aantal > 0) {
-            int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
-            vaccinated += vaccinaties;
-
-            if (vaccinaties < aantal){
-                c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal-vaccinaties);
+        int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
+        if (vaccinaties >= 0) {
+            if (aantal > vaccinaties){
+                c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal - vaccinaties);
             }
 
             c->verlaagVoorraad(it->first, vaccinaties);
             c->verhoogGevaccineerd(vaccinaties);
-
-            cout << "lol" << endl;
+            if(vaccinaties > 0)
+                c->printTweedeVaccinatie(vaccinaties, it->first, outS);
         }
     }
 
-    for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
+    //zet eerste de vaccins die koel bewaard moeten blijven
+    map<Vaccine*, int> voorraad2 = c->getVoorraad();
+
+    for (map<Vaccine*, int>::iterator it = voorraad2.begin(); it != voorraad2.end(); it++) {
+        if(it->first->getTemperatuur() < 0){
+            int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
+            vaccinated += vaccinaties;
+
+            if(vaccinaties > 0){
+                c->verlaagVoorraad(it->first, vaccinaties);
+                c->zetVaccinatie(dag, it->first, vaccinaties);
+                c->verhoogEerste(vaccinaties);
+                c->printEersteVaccinatie(vaccinaties, it->first, outS);
+            }
+        }
+    }
+
+    map<Vaccine*, int> voorraad3 = c->getVoorraad();
+    for (map<Vaccine*, int>::iterator it = voorraad3.begin(); it != voorraad3.end(); it++) {
         int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
         vaccinated += vaccinaties;
 
-        c->verlaagVoorraad(it->first, vaccinaties);
-        c->zetVaccinatie(dag, it->first, vaccinaties);
-        c->verhoogEerste(vaccinaties);
-        c->verhoogGevaccineerd(vaccinaties);
-
-        if(vaccinaties > 0)
+        if(vaccinaties > 0){
+            c->verlaagVoorraad(it->first, vaccinaties);
+            c->zetVaccinatie(dag, it->first, vaccinaties);
+            c->verhoogEerste(vaccinaties);
             c->printEersteVaccinatie(vaccinaties, it->first, outS);
+        }
     }
 }
 
@@ -74,16 +103,33 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     vector<Centrum*> centra = s.getCentra();
     vector<Vaccine*> vaccins = hub->getVaccins();
 
-    for(int j = 1; j < n+1; j++){
+    for(int j = 0; j < n+1; j++){
+        cout << endl << "Dag " << j+1 << ":" << endl;
         for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
             Vaccine* vaccin = vaccins[vaccinIndex];
             if(j%(vaccin->getInterval()+1)==0){
                 vaccin->setVoorraad(vaccin->getVoorraad()+vaccin->getLevering());
             }
+            //slimme verdeling voorrang aan de 2de prikken
             for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
-                simulateTransport(vaccin, s, it->second, outS);
+                int aantal = it->second->getGevac()[pair<int, Vaccine*>(j - vaccin->getHernieuwing(), vaccin)];
+
+                if(aantal > 0){
+                    simulateTweedePrikTransport(vaccin, it->second, outS, aantal);
+                }
             }
         }
+
+        for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
+            Vaccine* vaccin = vaccins[vaccinIndex];
+
+            for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
+                //stop met 'random' vaccins te verdelen nadat iedereen een eerste prik gekregen heeft
+                if (it->second->getEerste() < it->second->getInwoners())
+                    simulateTransport(vaccin, it->second, outS, j);
+            }
+        }
+
         bool check = true;
         for(long unsigned int i = 0; i < centra.size(); i++){
             Centrum* centrum = centra[i];
@@ -91,7 +137,6 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
             if (centrum->getGevaccineerd() != centrum->getInwoners())
                 check = false;
         }
-        cout << endl;
         if(check)
             break;
     }

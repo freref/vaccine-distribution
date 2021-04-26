@@ -25,7 +25,9 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateTransport(Vaccine* vaccin, simulation& s, Centrum* c, ostream& outS);
+    static void simulateTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int dag);
+
+    static void simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal);
     /**
      * \n Simulates vaccine injection at centrum
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie")

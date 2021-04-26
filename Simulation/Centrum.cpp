@@ -47,7 +47,7 @@ void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
 }
 
 void Centrum::verlaagVoorraad(Vaccine* vac, int aantal){
-    voorraad[vac] = getVoorraad()[vac] - aantal;
+    voorraad[vac] -= aantal;
 }
 
 void Centrum::setGevaccineerd(int g) {
@@ -98,34 +98,54 @@ int Centrum::getInwoners() const {
     return amount;
 }
 
-int Centrum::berekenLadingen(Vaccine* vaccin) {
+int Centrum::berekenLadingen(Vaccine* vaccin, int dag) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
     int transport = vaccin->getTransport();
     int vaccins = getVaccins();
+    int devide = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1)));
     int v = vaccin->getVoorraad();
+    int accounted = v/devide;
     int ladingen = 0;
+
     //for loop met alle condities van appendix B
     // Lading verder kijken dan huidige (om na te kijken) om niet op volgende over parameters te gaan
-    while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
-        // Afbreken wanneer voldaan aan capaciteit
-        if (ladingen*transport + vaccins >= capaciteit)
-            break;
-        ladingen += 1;
+    if(vaccin->getTemperatuur() >= 0){
+        while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
+            // Afbreken wanneer voldaan aan capaciteit
+            if (ladingen*transport + vaccins >= capaciteit || ladingen*transport + vaccins > accounted)
+                break;
+            ladingen += 1;
+        }
     }
+    else{
+        while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= capaciteit) {
+            if (ladingen*transport + vaccins > accounted)
+                break;
+            ladingen += 1;
+        }
+    }
+
     ENSURE(ladingen>=0, "berekenLadingen postconditions failed");
+
     return ladingen;
 }
 
 void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) {
     REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
-    //REQUIRE(vaccins%getHub()->getTransport() == 0, "vaccins amount must be multiple of transport in hub");
-    onStream << "Er werden " << vaccins/vaccin->getTransport() << " ladingen " << vaccin->getType() << " (" << vaccins << " vaccins)"
+    int ladingen = vaccins/vaccin->getTransport();
+    if (ladingen == 0){
+        ladingen = 1;
+    }
+    onStream << "Er werden " << ladingen << " ladingen " << vaccin->getType() << " (" << vaccins << " vaccins)"
              << " getransporteerd naar "<< getNaam() <<"." << endl;
 }
 
 void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+    onStream << "Er werden " << vaccinaties << " inwoners voor de eerste keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
+}
 
-    onStream << "Er werden " << vaccinaties << " inwoners gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
+void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+    onStream << "Er werden " << vaccinaties << " inwoners voor de tweede keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
 void Centrum::verhoogGevaccineerd(int aantal){

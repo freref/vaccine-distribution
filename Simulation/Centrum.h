@@ -122,11 +122,13 @@ public:
      */
     int getGevaccineerd() const;
 
-    int berekenLadingen(Vaccine* vaccin);
+    int berekenLadingen(Vaccine* vaccin, int dag);
 
     void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream);
 
     void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
+
+    void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
 
     void zetVaccinatie(int dag, Vaccine* vac, int aantal);
 

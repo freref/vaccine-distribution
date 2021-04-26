@@ -5,13 +5,16 @@
 #include "Vaccine.h"
 #include "algemeen.h"
 
+Vaccine::Vaccine(){
+    voorraad = 0;
+}
+
 void Vaccine::insert(TiXmlElement* el) {
     if(strcmp(el->Value(), "type") == 0){
         type = (el->FirstChild()->ToText()->Value());
     }
     else if(strcmp(el->Value(), "levering") == 0){
         levering = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
-        voorraad = levering;
     }
     else if(strcmp(el->Value(), "interval") == 0){
         interval = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
@@ -57,4 +60,8 @@ int Vaccine::getTransport(){
 
 int Vaccine::getHernieuwing(){
     return hernieuwing;
+}
+
+int Vaccine::getTemperatuur(){
+    return temperatuur;
 }

@@ -21,6 +21,8 @@ class Vaccine {
     int temperatuur;
 
 public:
+    Vaccine();
+
     void insert(TiXmlElement* el);
     void verlaagVaccins(int vaccins);
 
@@ -32,6 +34,7 @@ public:
     int getLevering();
     int getTransport();
     int getHernieuwing();
+    int getTemperatuur();
 };
 
 
