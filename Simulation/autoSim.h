@@ -24,6 +24,8 @@ public:
 
     static int simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated, Centrum* c, int dag, ostream& outS);
 
+    static void simulateHubDelivery(vector<Vaccine*>* vaccins, int j);
+
     /**
      * \n Simulates transport of vaccines from hub to centrum
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport")
@@ -32,9 +34,9 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateEerstePrikTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag, int devide);
+    static void simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins, ostream& outS, int j);
 
-    static void simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal);
+    static void simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins, ostream& outS, int j);
     /**
      * \n Simulates vaccine injection at centrum
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie")
@@ -43,7 +45,10 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateVaccinatie(simulation& s, Centrum* c, ostream& outS, int dag);
+    static void simulateVaccinatie(Centrum* c, ostream& outS, int dag);
+
+    static void simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int j);
+
     /**
      * \n Loop to continously simulate transport and injections
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
