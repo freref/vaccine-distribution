@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.cpp
+Centrum.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
+DesignByContract.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
+
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
 string
 -
@@ -19,6 +25,14 @@ Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
 assert.h
 -
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.cpp
+Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
+Centrum.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
+DesignByContract.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
 string
@@ -37,6 +51,8 @@ iostream
 -
 ../XmlParser/tinyxml.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.cpp
 iostream
@@ -58,11 +74,45 @@ Centrum.h
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
 
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.cpp
+iostream
+-
+fstream
+-
+simulation.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
+Centrum.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
+Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
+DesignByContract.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
+
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
 vector
 -
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
+
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.cpp
+iostream
+-
+string
+-
+sstream
+-
+Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
+Centrum.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
+simulation.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
+simulationImporter.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
+../XmlParser/tinyxml.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
+algemeen.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h
 string

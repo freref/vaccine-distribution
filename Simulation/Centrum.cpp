@@ -141,7 +141,7 @@ int Centrum::berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal){
     return ladingen;
 }
 
-void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) {
+void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) const {
     REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
     int ladingen = vaccins/vaccin->getTransport();
     if (ladingen == 0){
@@ -151,11 +151,11 @@ void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) {
              << " getransporteerd naar "<< getNaam() <<"." << endl;
 }
 
-void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) const {
     onStream << "Er werden " << vaccinaties << " inwoners voor de eerste keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
-void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) {
+void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) const {
     onStream << "Er werden " << vaccinaties << " inwoners voor de tweede keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
@@ -171,7 +171,7 @@ map<pair<int, Vaccine*>, int> Centrum::getGevac(){
     return gevac;
 }
 
-int Centrum::getEerste(){
+int Centrum::getEerste() const{
     return eerste;
 }
 

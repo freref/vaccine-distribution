@@ -131,7 +131,7 @@ public:
      */
     int berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide);
 
-    int berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal);
+    static int berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal);
 
     /**
      * Print een transport van een bepaald vaccin
@@ -139,7 +139,7 @@ public:
      * @param vaccin
      * @param onStream
      */
-    void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream);
+    void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream) const;
 
     /**
      * Print een eerste vaccinatie
@@ -147,7 +147,7 @@ public:
      * @param vaccin
      * @param onStream
      */
-    void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
+    void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream) const;
 
     /**
      * Print een tweede vaccinatie
@@ -155,7 +155,7 @@ public:
      * @param vaccin
      * @param onStream
      */
-    void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
+    void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream) const;
     // Zet de vaccins
     void zetVaccinatie(int dag, Vaccine* vac, int aantal);
     // vraag lijst eerste vaccinaties { (dag, vaccin): aantal, ... }
@@ -163,7 +163,7 @@ public:
     // Verhoog aantal gevaccineerden
     void verhoogGevaccineerd(int aantal);
     // Vraag aantal mensen met eerste prik
-    int getEerste();
+    int getEerste() const ;
     // Verhoog aantal mensen met eerste prik
     void verhoogEerste(int aantal);
 };
