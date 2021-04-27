@@ -1,2 +1,2 @@
-Het bestand bevat foute informatie voor de hub
-Er is niet exact 1 hub
+Kan element niet herkennen
+Niet elk centrum van de hub is een geldig vaccinatiecentrum

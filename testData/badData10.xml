@@ -1,9 +1,14 @@
 <!-- MISSING CLOSING TAGS -->
 <root>
     <HUB>
-        <levering>93000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>Pfizer</type>
+            <levering>25000</levering>
+            <interval>6</interval>
+            <transport>500</transport>
+            <hernieuwing>2</hernieuwing>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>

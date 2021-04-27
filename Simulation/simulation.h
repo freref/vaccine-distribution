@@ -50,7 +50,7 @@ public:
     /**
      \n REQUIRE(this->properlyInitialised(), "Simulation wasn't initialised when creating graphic impression")
      */
-    void graphicImpression();
+    void graphicImpression(ostream& oStream);
     /**
      \n Export the simulation data
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter")

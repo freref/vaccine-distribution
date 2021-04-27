@@ -40,7 +40,7 @@ public:
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when inserting data")
      * @param el:   The element
      */
-    void insert(TiXmlElement* el);
+    bool insert(TiXmlElement* el, ostream& errStr);
 
     /**
      \n Lower the supply by the given amount
@@ -64,6 +64,7 @@ public:
     /**
      \n Set amount of vaccines per resupply
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting levering")
+     \n REQUIRE(l >= 0, "Vaccine can't have negative levering")
      \n ENSURE(getLevering() == l, "setLevering postcondition failed")
      * @param l:    Amount to resupply
      */
@@ -71,6 +72,7 @@ public:
     /**
      \n Set interval between resupplies
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting interval")
+     \n REQUIRE(i >= 0, "Vaccine can't have negative interval")
      \n ENSURE(getInterval() == i, "setInterval postcondition failed")
      * @param i:    interval amount
      */
@@ -78,6 +80,7 @@ public:
     /**
      \n Set amount of vaccines per transport
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting type")
+     \n REQUIRE(t > 0, "Vaccine transport must be bigger than 0")
      \n ENSURE(getTransport() == t, "setTransport postcondition failed")
      * @param t:    Amount per transport
      */
@@ -85,6 +88,7 @@ public:
     /**
      \n Set current stock amount
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting stock")
+     \n REQUIRE(v >= 0, "Vaccine can't have negative stock")
      \n ENSURE(getVoorraad() == v, "setVoorraad postcondition failed")
      * @param v:    Amount in stock
      */
@@ -92,6 +96,7 @@ public:
     /**
      \n Set time before second injection
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting hernieuwing")
+     \n REQUIRE(h >= 0, "Vaccine can't have negative renewal")
      \n ENSURE(getHernieuwing() == h, "setHernieuwing postcondition failed")
      * @param h:    Interval between injections
      */

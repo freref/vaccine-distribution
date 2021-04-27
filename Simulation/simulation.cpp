@@ -48,41 +48,40 @@ void simulation::clear() {
     ENSURE(getHub() == NULL && getCentra().empty(), "clear postconditions failed");
 }
 
-void simulation::graphicImpression(){
+void simulation::graphicImpression(ostream& oStream){
     REQUIRE(this->properlyInitialised(), "Simulation wasn't initialised when creating graphic impression");
-    ofstream MyFile("../graphic_impression.txt");
+//    ofstream MyFile("../graphic_impression.txt");
     string output;
 
     for(unsigned int i = 0; i < centra.size(); i++){
-        MyFile << centra[i]->getNaam() + ":\n\t- vaccins\t\t[";
+        oStream << centra[i]->getNaam() + ":\n\t- vaccins\t\t[";
         int vaccins = centra[i]->getVaccins()*100/(centra[i]->getCapaciteit() * 2);
 
         for(int idx = 1; idx <= 20; idx++){
             if(idx <= vaccins/5)
-                MyFile << "=";
+                oStream << "=";
             else
-                MyFile << " ";
+                oStream << " ";
         }
 
-        MyFile << "]";
-        MyFile << vaccins;
-        MyFile << "%";
-        MyFile << "\n\t- gevaccineerd\t[";
+        oStream << "] ";
+        oStream << vaccins;
+        oStream << "%";
+        oStream << "\n\t- gevaccineerd\t[";
         int gevaccineerd = centra[i]->getGevaccineerd()*100/centra[i]->getInwoners();
 
         for(int idx = 1; idx <= 20; idx++){
             if(idx <= gevaccineerd/5)
-                MyFile << "=";
+                oStream << "=";
             else
-                MyFile << " ";
+                oStream << " ";
         }
 
-        MyFile << "]";
-        MyFile << gevaccineerd;
-        MyFile << "%";
-        MyFile << "\n";
+        oStream << "] ";
+        oStream << gevaccineerd;
+        oStream << "%";
+        oStream << "\n";
     }
-    MyFile.close();
 }
 
 void simulation::exportSim(ostream &ostream) {

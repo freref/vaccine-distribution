@@ -1,9 +1,14 @@
 <!-- WRONG INT FIELD IN VACCINATIECENTRUM -->
 <root>
     <HUB>
-        <levering>93000</levering>
-        <interval>6</interval>
-        <transport>2000</transport>
+        <VACCIN>
+            <type>Pfizer</type>
+            <levering>25000</levering>
+            <interval>6</interval>
+            <transport>500</transport>
+            <hernieuwing>2</hernieuwing>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -22,17 +27,5 @@
         <adres>Fabriekstraat 38, Lint</adres>
         <inwoners>76935</inwoners>
         <capaciteit>2000</capaciteit>
-    </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
-        <naam>De Zoerla</naam>
-        <adres>Gevaertlaan 1, Westerlo</adres>
-        <inwoners>49451</inwoners>
-        <capaciteit>1000</capaciteit>
-    </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
-        <naam>Flanders Expo</naam>
-        <adres>Maaltekouter 1, Sint-Denijs-Westrem</adres>
-        <inwoners>257029</inwoners>
-        <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
 </root>

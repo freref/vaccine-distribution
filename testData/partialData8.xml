@@ -1,13 +1,21 @@
-<!-- WRONG INT FIELD IN VACCINE ELEMENTS -->
+<!-- EMPTY INT FIELD IN VACCINE ELEMENTS -->
 <root>
     <HUB>
         <VACCIN>
             <type>Pfizer</type>
-            <levering>25000</levering>
+            <levering></levering>
             <interval>6</interval>
             <transport>500</transport>
             <hernieuwing>2</hernieuwing>
-            <temperatuur>qq-70</temperatuur>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
+        <VACCIN>
+            <type>TestVac</type>
+            <levering>200</levering>
+            <interval>6</interval>
+            <transport>500</transport>
+            <hernieuwing>2</hernieuwing>
+            <temperatuur>-70</temperatuur>
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>

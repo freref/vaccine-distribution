@@ -39,7 +39,7 @@ bool isCorrectHub(map<string, string> elements, ostream& errStr) {
 }
 
 bool simulationImporter::checkName(string name) {
-    return (name == "VACCIN" || name == "levering" || name == "interval" || name == "transport" || name == "CENTRA"
+    return (name == "VACCIN" || name == "CENTRA"
             || name == "naam" || name == "adres" || name == "inwoners" || name == "capaciteit");
 }
 
@@ -89,14 +89,22 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
         for (TiXmlElement *ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()) {
             name = ele->Value();
             if (!checkName(name)) {
-                errStr << "Kan element " + name + " niet herkennen" << endl;
+                errStr << "Kan element " + name + " niet herkennen in " << elementName << endl;
                 continue;
             }
             else if (name == "VACCIN"){ // Een vaccins in de hub
                 Vaccine *vaccin;
                 vaccin = new Vaccine;
+                bool insert;
                 for (TiXmlElement *el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()) {
-                    vaccin->insert(el);
+                    insert = vaccin->insert(el, errStr);
+                    if (!insert)
+                        break;
+                }
+                if (!insert) {
+                    errStr << "Het bestand bevat foute informatie voor een VACCIN" << endl;
+                    delete vaccin;
+                    continue;
                 }
                 vaccins.push_back(vaccin);
             }

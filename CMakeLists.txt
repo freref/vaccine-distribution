@@ -11,7 +11,7 @@ include_directories(gtest/include)
 link_directories(gtest/lib)
 
 # Set source files
-set(SOURCE_FILES main.cpp
+set(SOURCE_FILES
         XmlParser/tinystr.cpp
         XmlParser/tinyxml.cpp
         XmlParser/tinyxmlerror.cpp
@@ -21,31 +21,19 @@ set(SOURCE_FILES main.cpp
         Simulation/simulation.cpp
         Simulation/simulationImporter.cpp
         Simulation/autoSim.cpp
-        Simulation/fileCompare.cpp
         Simulation/Vaccine.cpp Simulation/Vaccine.h
         Simulation/algemeen.cpp)
 
-set(DEBUG_FILES tests_main.cpp
-        XmlParser/tinystr.cpp
-        XmlParser/tinyxml.cpp
-        XmlParser/tinyxmlerror.cpp
-        XmlParser/tinyxmlparser.cpp
-        Simulation/Hub.cpp
-        Simulation/Centrum.cpp
-        Simulation/simulation.cpp
-        Simulation/simulationImporter.cpp
-        Simulation/autoSim.cpp
-        Simulation/tests/autoSimTests.cpp
+set(DEBUG_FILES
         Simulation/tests/domainTests.cpp
         Simulation/tests/exportTests.cpp
         Simulation/tests/importTests.cpp
-        Simulation/fileCompare.cpp
-        Simulation/algemeen.cpp)
+        Simulation/fileCompare.cpp)
 
 # Create executables
-add_executable(Project ${SOURCE_FILES})
+add_executable(Project main.cpp ${SOURCE_FILES})
 
-add_executable(sim_debug ${DEBUG_FILES})
+add_executable(sim_debug tests_main.cpp ${SOURCE_FILES} ${DEBUG_FILES})
 
 # Link library
 target_link_libraries(sim_debug gtest)

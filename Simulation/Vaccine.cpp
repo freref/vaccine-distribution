@@ -8,7 +8,13 @@
 
 Vaccine::Vaccine() {
     _initCheck = this;
+    type = "";
+    levering = 0;
+    interval = 0;
+    transport = 0;
     voorraad = 0;
+    hernieuwing = 0;
+    temperatuur = 0;
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
 }
 
@@ -16,26 +22,49 @@ bool Vaccine::properlyInitialised() const {
     return _initCheck == this;
 }
 
-void Vaccine::insert(TiXmlElement* el) {
+bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when inserting data");
+    if (!el->FirstChild()) {
+        errStr << "empty element in vaccine" << endl;
+        return false;
+    }
+    string str = el->FirstChild()->ToText()->Value();
     if(strcmp(el->Value(), "type") == 0){
-        type = (el->FirstChild()->ToText()->Value());
+        // string val = (el->FirstChild()->ToText()->Value());
+        if (str == "")
+            return false;
+        type = str;
     }
     else if(strcmp(el->Value(), "levering") == 0){
-        levering = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        int val = algemeen::stoi(str); // (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        if (val < 0)
+            return false;
+        levering = val;
     }
     else if(strcmp(el->Value(), "interval") == 0){
-        interval = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        int val = algemeen::stoi(str);
+        if (val < 0)
+            return false;
+        interval = val;
     }
     else if(strcmp(el->Value(), "transport") == 0){
-        transport = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        int val = algemeen::stoi(str);
+        if (val < 0)
+            return false;
+        transport = val;
     }
     else if(strcmp(el->Value(), "hernieuwing") == 0){
-        hernieuwing = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        int val = algemeen::stoi(str);
+        if (val < 0)
+            return false;
+        hernieuwing = val;
     }
     else if(strcmp(el->Value(), "temperatuur") == 0){
-        temperatuur = (algemeen::stoi(el->FirstChild()->ToText()->Value()));
+        temperatuur = algemeen::stoi(str);
+    } else {
+        errStr << "Kan element " << el->Value() << " niet herkennen in VACCINE" << endl;
     }
+    return true;
 }
 
 void Vaccine::verlaagVaccins(int vaccins){
@@ -57,30 +86,35 @@ void Vaccine::setType(string &t) {
 
 void Vaccine::setLevering(int l) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting levering");
+    REQUIRE(l >= 0, "Vaccine can't have negative levering");
     levering = l;
     ENSURE(getLevering() == l, "setLevering postcondition failed");
 }
 
 void Vaccine::setInterval(int i) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting interval");
+    REQUIRE(i >= 0, "Vaccine can't have negative interval");
     interval = i;
     ENSURE(getInterval() == i, "setInterval postcondition failed");
 }
 
 void Vaccine::setTransport(int t) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting transport");
+    REQUIRE(t > 0, "Vaccine transport must be bigger than 0");
     transport= t;
     ENSURE(getTransport() == t, "setTransport postcondition failed");
 }
 
 void Vaccine::setVoorraad(int v){
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting stock");
+    REQUIRE(v >= 0, "Vaccine can't have negative stock");
     voorraad = v;
     ENSURE(getVoorraad() == v, "setVoorraad postcondition failed");
 }
 
 void Vaccine::setHernieuwing(int h) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting hernieuwing");
+    REQUIRE(h >= 0, "Vaccine can't have negative renewal");
     hernieuwing = h;
     ENSURE(getHernieuwing() == h, "setHernieuwing postcondition failed");
 }
