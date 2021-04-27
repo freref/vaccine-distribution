@@ -5,7 +5,7 @@
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    4/3/2021
- * @version 1.0
+ * @version 2.0
  */
 
 #include <iostream>
@@ -18,32 +18,20 @@
 
 #include "simulationImporter.h"
 #include "../XmlParser/tinyxml.h"
-
-// https://stackoverflow.com/questions/4442658/c-parse-int-from-string
-int stoi(string &s) {
-    if (s.empty())
-        throw std::invalid_argument("conversion from invalid string to int");
-    for (long unsigned int j=0; j<s.size(); j++) {
-        if ((s[j] < '0' || s[j] > '9') && s[j] != '-')
-            throw std::invalid_argument("conversion from invalid string to int");
-    }
-    int i;
-    istringstream(s) >> i;
-    return i;
-}
+#include "algemeen.h"
 
 bool simulationImporter::isCoorectCentrum(map<string, string> elements, ostream& errStr) {
-    if (elements["naam"] != "" && elements["adres"] != "" && stoi(elements["inwoners"]) > 0 &&
-        stoi(elements["capaciteit"]) > 0)
+    if (elements["naam"] != "" && elements["adres"] != "" && algemeen::stoi(elements["inwoners"]) > 0 &&
+        algemeen::stoi(elements["capaciteit"]) > 0)
         return true;
 
     errStr << "Het bestand bevat foute informatie voor vaccinatiecentrum: " << elements["naam"] << endl;
     return false;
 }
 
-
 bool isCorrectHub(map<string, string> elements, ostream& errStr) {
-    if (stoi(elements["levering"]) > 0 && stoi(elements["interval"]) > 0 && stoi(elements["transport"]) > 0)
+    if (algemeen::stoi(elements["levering"]) > 0 && algemeen::stoi(elements["interval"]) > 0
+        && algemeen::stoi(elements["transport"]) > 0)
         return true;
 
     errStr << "Het bestand bevat foute informatie voor de hub" << endl;
@@ -92,6 +80,11 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
             continue;
         }
 
+        if (!checkElementName(elementName)) {
+            errStr << "Kan element niet herkennen" << endl;
+            continue;
+        }
+
         //ittereert over elementen in hubs en centra
         for (TiXmlElement *ele = elem->FirstChildElement(); ele != NULL; ele = ele->NextSiblingElement()) {
             name = ele->Value();
@@ -99,7 +92,7 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
                 errStr << "Kan element " + name + " niet herkennen" << endl;
                 continue;
             }
-            else if (name == "VACCIN"){
+            else if (name == "VACCIN"){ // Een vaccins in de hub
                 Vaccine *vaccin;
                 vaccin = new Vaccine;
                 for (TiXmlElement *el = ele->FirstChildElement(); el != NULL; el = el->NextSiblingElement()) {
@@ -135,18 +128,13 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
             }
         }
 
-        if (!checkElementName(elementName)) {
-            errStr << "Kan element niet herkennen" << endl;
-            continue;
-        }
-
         if (elementName == "HUB") {
             hubCount++;
             h = new Hub(vaccins, centraMap);
             sim.setHub(h);
         } else if (elementName == "VACCINATIECENTRUM" && isCoorectCentrum(elements, errStr)) {
-            Centrum *c = new Centrum(elements["naam"], elements["adres"], stoi(elements["inwoners"]),
-                                     stoi(elements["capaciteit"]));
+            Centrum *c = new Centrum(elements["naam"], elements["adres"], algemeen::stoi(elements["inwoners"]),
+                                     algemeen::stoi(elements["capaciteit"]));
             sim.addCentrum(c);
         }
     }

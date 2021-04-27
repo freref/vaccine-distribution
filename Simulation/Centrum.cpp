@@ -34,6 +34,7 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
+
 void Centrum::setVoorraad(Vaccine* vac, int aantal){
     voorraad[vac] = aantal;
 }
@@ -49,6 +50,7 @@ void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
 void Centrum::verlaagVoorraad(Vaccine* vac, int aantal){
     voorraad[vac] -= aantal;
 }
+
 
 void Centrum::setGevaccineerd(int g) {
     REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setGevaccineerd");
@@ -68,10 +70,17 @@ const string & Centrum::getAdres() const {
     return adres;
 }
 
-int Centrum::getGevaccineerd() const {
-    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevaccineerd");
-    int amount = gevaccineerd;
-    ENSURE((amount>=0) && (amount<=getInwoners()), "getGevaccineerd postconditions failed");
+int Centrum::getInwoners() const {
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
+    int amount = inwoners;
+    ENSURE(amount>=0, "getInwoners postconditions failed");
+    return amount;
+}
+
+int Centrum::getCapaciteit() const {
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit");
+    int amount = capaciteit;
+    ENSURE(amount>=0, "getCapaciteit postconditions failed");
     return amount;
 }
 
@@ -84,17 +93,10 @@ int Centrum::getVaccins() {
     return amount;
 }
 
-int Centrum::getCapaciteit() const {
-    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit");
-    int amount = capaciteit;
-    ENSURE(amount>=0, "getCapaciteit postconditions failed");
-    return amount;
-}
-
-int Centrum::getInwoners() const {
-    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
-    int amount = inwoners;
-    ENSURE(amount>=0, "getInwoners postconditions failed");
+int Centrum::getGevaccineerd() const {
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevaccineerd");
+    int amount = gevaccineerd;
+    ENSURE((amount>=0) && (amount<=getInwoners()), "getGevaccineerd postconditions failed");
     return amount;
 }
 

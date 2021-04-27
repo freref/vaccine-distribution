@@ -53,64 +53,65 @@ public:
     bool properlyInitialised() const {return _initCheck == this; };
 
     /**
-     * \n setter for vaccines
-       \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
-       \n REQUIRE(v>=0, "vaccins can't be set to negative");
-       \n REQUIRE(v<=getCapaciteit()*2, "vaccins can't exceed capacity*2");
-       \n ENSURE(getVaccins() == v, "setVaccins postcondition failed");
-     * @param v int vaccines
+     * \n set voorraad of certain vaccine
+     * @param vac:      The vaccine
+     * @param aantal:   Stock of the vaccine
      */
-
     void setVoorraad(Vaccine* vac, int aantal);
-
+    /**
+     * Get voorrad map van alle vaccins
+     * @return map<Vaccine*, int> {type: voorraad, ...}
+     */
     map<Vaccine*, int> getVoorraad();
-
+    /**
+     * Voeg toe aan de voorraad van een bepaald vaccin
+     * @param vac:      Vacccin waaraan toe te voegen
+     * @param aantal:   Toe te voegen aantal
+     */
     void verhoogVoorraad(Vaccine* vac, int aantal);
-
+    /**
+     * Verlaag de voorraad van een bepaald vaccin
+     * @param vac:      Te verlagen vaccin
+     * @param aantal:   Te verlagen aantal
+     */
     void verlaagVoorraad(Vaccine* vac, int aantal);
 
-    void setVaccins(int v);
-
     /**
-     * \n setter for injected
-       \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setGevaccineerd");
-       \n REQUIRE(g>=0, "gevaccineerd can't be negative");
-       \n REQUIRE(g<=getInwoners(), "gevaccineerd amount can't be bigger than inhabitants amount");
-       \n ENSURE(getGevaccineerd() == g, "setGevaccineerd postcondition failed");
-     * @param g int injections
+     \n Set amount of vaccinated people in center
+     * @param g :   Amount of vaccinated people
      */
     void setGevaccineerd(int g);
 
     /**
-     * \n getter for name
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getNaam");
+     \n getter for name
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getNaam");
      * @return string name
      */
     const string &getNaam() const;
     /**
-     * \n getter for address
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getAdres");
+     \n getter for address
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getAdres");
      * @return string address
      */
     const string &getAdres() const;
     /**
-     * \n getter for inhabitants
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
-     * \n ENSURE(amount>=0, "getInwoners postconditions failed");
+     \n getter for inhabitants
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
+     \n ENSURE(amount>=0, "getInwoners postconditions failed");
      * @return int inhabitants
      */
     int getInwoners() const;
     /**
-     * getter for capacity
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit");
-     * \n ENSURE(amount>=0, "getCapaciteit postconditions failed");
+     \n getter for capacity
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit");
+     \n ENSURE(amount>=0, "getCapaciteit postconditions failed");
      * @return int
      */
     int getCapaciteit() const;
     /**
-     * getter for vaccines
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins");
-     * \n ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
+     \n Get total amount of vaccines in center
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins");
+     \n ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
      * @return int
      */
     int getVaccins();
@@ -122,22 +123,46 @@ public:
      */
     int getGevaccineerd() const;
 
+    /**
+     \n Calculate amount af deliveries for vaccine
+     * @param vaccin
+     * @param dag
+     * @return
+     */
     int berekenLadingen(Vaccine* vaccin, int dag);
 
+    /**
+     * Print een transport van een bepaald vaccin
+     * @param vaccins
+     * @param vaccin
+     * @param onStream
+     */
     void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream);
 
+    /**
+     * Print een eerste vaccinatie
+     * @param vaccins
+     * @param vaccin
+     * @param onStream
+     */
     void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
 
+    /**
+     * Print een tweede vaccinatie
+     * @param vaccins
+     * @param vaccin
+     * @param onStream
+     */
     void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream);
-
+    // Zet de vaccins
     void zetVaccinatie(int dag, Vaccine* vac, int aantal);
-
+    // vraag lijst eerste vaccinaties { (dag, vaccin): aantal, ... }
     map<pair<int, Vaccine*>, int> getGevac();
-
+    // Verhoog aantal gevaccineerden
     void verhoogGevaccineerd(int aantal);
-
+    // Vraag aantal mensen met eerste prik
     int getEerste();
-
+    // Verhoog aantal mensen met eerste prik
     void verhoogEerste(int aantal);
 };
 

@@ -4,7 +4,7 @@
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    9/3/2021
- * @version 1.0
+ * @version 2.0
  */
 
 #ifndef PROJECTPSE_SIMULATION_H
@@ -47,14 +47,26 @@ public:
      */
     void clear();
 
+    /**
+     \n REQUIRE(this->properlyInitialised(), "Simulation wasn't initialised when creating graphic impression")
+     */
     void graphicImpression();
+    /**
+     \n Export the simulation data
+     \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter")
+     * @param ostream
+     */
+    void exportSim(ostream& ostream);
 
+    //
+    // Getters, Setters
+    //
     /**
      \n Sets the hub in the simulation
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub")
      \n REQUIRE(h->properlyInitialised(), "hub wasn't initialised when calling setHub")
      \n ENSURE(getHub() == h, "setHub postconditions failed")
-     *  @param h The hub to be added
+     *  @param h:   The hub to be added
      */
     void setHub(Hub* const h);
     /**
@@ -62,7 +74,7 @@ public:
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling addCentrum")
      \n REQUIRE(c->properlyInitialised(), "centrum wasn't initialised when calling addCentrum")
      \n ENSURE(getCentra().size() == oSize+1, "addCentrum postconditions failed")
-     *  @param c    to be added centra
+     *  @param c:   to be added centra
      */
     void addCentrum(Centrum* c);
     /**
@@ -70,7 +82,7 @@ public:
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setCentra")
      \n REQUIRE(!c.empty(), "simulations must contain at least 1 centrum")
      \n ENSURE(getCentra().size() == c.size(), "setCentra postcondition failed")
-     *  @param c    The vector containing to ba added centra
+     *  @param c:   The vector containing to ba added centra
      */
     void setCentra(const vector<Centrum*>& c);
 
@@ -86,8 +98,6 @@ public:
      *  @return The centra
      */
     const vector<Centrum*> &getCentra() const;
-
-    void exportSim(ostream& ostream);
 };
 
 

@@ -32,15 +32,11 @@ public:
     //constructor
     Hub();
     /**
-     * \n constructor
-     * \n REQUIRE(l>=0, "levering amount can't be negative");
-       \n REQUIRE(i>=0, "interval can't be negative");
-       \n REQUIRE(t>=0, "transport amount can't be negative");
-       \n REQUIRE(!c.empty(), "must atleast contain 1 centrum");
-     * @param l
-     * @param i
-     * @param t
-     * @param c
+     \n constructor
+     \n REQUIRE(!c.empty(), "hub must at least contain 1 centrum")
+     \n REQUIRE(!v.empty(), "hub must at least contain 1 vaccine")
+     * @param vaccins:  Vaccines in the hub
+     * @param c:        Centra in hub
      */
     Hub(vector<Vaccine*> vaccins, map<string, Centrum*> c);
     /**
@@ -52,30 +48,57 @@ public:
     //setters
 
     /**
+     \n getter for supply
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVoorraad")
+     \n REQUIRE(!getVaccins().empty(), "Hub doesn't contain any vaccines")
+     * @return Total amount of vaccines in hub
+     */
+    int accessorTotaleVoorraad();
 
-
-
-     * \n setter for centrum
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setCentra");
-       \n REQUIRE(c.size() >= 1, "hub must at least contain 1 centrum");
+    /**
+     \n setter for centrum
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setCentra");
+     \n REQUIRE(c.size() >= 1, "hub must at least contain 1 centrum");
      * @param c
      */
     void setCentra(const map<string, Centrum*>& c);
     /**
-     * \n getter for supply
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVoorraad");
-       \n ENSURE(amount>=0, "getVoorraad postconditions failed");
-     * @return
+     \n Set all vaccins in hub
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setVaccins")
+     \n REQUIRE(!vaccines.empty(), "hub must at least contain 1 vaccine");
+     * @param vaccines: Vector containing vaccins
      */
-    int accessorTotaleVoorraad();
+    void setVaccins(const vector<Vaccine*>& vaccines);
+
     /**
-     * \n getter for centra
-     * \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");
-       \n ENSURE(size>=1, "getCentra postconditions failed");
+     \n Add single centrum to the hub
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling addCentrum")
+     \n REQUIRE(centrum->properlyInitialised(), "centrum wasn't intialised when adding to hub")
+     \n ENSURE(getCentra().size() == oSize + 1, "addCentrum postcondition failed")
+     * @param centrum
+     */
+    void addCentrum(Centrum* centrum);
+    /**
+     \n Add single vaccine to the hub
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when callind addVaccine")
+     \n REQUIRE(vaccine->properlyInitialised(), "vaccine wasn't initialised when adding to hub")
+     \n ENSURE(getVaccins().size() == oSize + 1, "addVaccine postcondition failed")
+     * @param vaccine
+     */
+    void addVaccine(Vaccine* vaccine);
+
+    /**
+     \n getter for centra
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getCentra");
+     \n ENSURE(size>=1, "getCentra postconditions failed");
      * @return
      */
     const map<string, Centrum*>& getCentra() const;
-
+    /**
+     \n Get the vaccins
+     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVaccins")
+     * @return
+     */
     vector<Vaccine*> getVaccins();
 };
 

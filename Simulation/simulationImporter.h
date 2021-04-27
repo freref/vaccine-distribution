@@ -4,7 +4,7 @@
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    4/3/2021
- * @version 1.0
+ * @version 2.0
  */
 
 #ifndef PROJECTPSE_SIMULATIONIMPORTER_H
@@ -21,35 +21,34 @@ class simulation;
 
 class simulationImporter {
 public:
-    void vaccinInsert(TiXmlElement* el, Vaccine* v);
     /**
      * imports the file into sim object
-     * @param inFile
-     * @param sim
-     * @param errStr
-     * @return int
+     * @param inFile:   Input filename
+     * @param sim:      Simulation to import to
+     * @param errStr:   Error output stream
+     * @return int  Error code (1: Error reading file, 2: Bad file format)
      */
     static int importFile(string inFile, simulation& sim, ostream& errStr);
     /**
      * checks if centrum has correct input
-     * @param elements
-     * @param errStr
-     * @return
+     * @param elements: Map containing different centrum elements (elemName: elemValue, ...)
+     * @param errStr:   Error output stream
+     * @return bool Correct centrum
      */
     static bool isCoorectCentrum(map<string, string> elements, ostream& errStr);
     /**
      * checks if element names inside hubs and centrum are correct
-     * @param name
-     * @return
+     * @param name: Element name to check
+     * @return bool Correct element name
      */
     static bool checkName(string name);
     /**
      * checks if element names are correct (HUB and VACCINATIECENTRUM)
-     * @param name
-     * @return
+     * @param name: Name of element to check
+     * @return  bool Correct element name
      */
     static bool checkElementName(string name);
-    };
+};
 
 
 #endif //PROJECTPSE_SIMULATIONIMPORTER_H

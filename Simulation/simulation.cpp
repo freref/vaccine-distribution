@@ -4,7 +4,7 @@
  *
  * @authors Frederic Hamelink & Sander Marinus
  * @date    9/3/2021
- * @version 1.0
+ * @version 2.0
  */
 
 #include <iostream>
@@ -49,6 +49,7 @@ void simulation::clear() {
 }
 
 void simulation::graphicImpression(){
+    REQUIRE(this->properlyInitialised(), "Simulation wasn't initialised when creating graphic impression");
     ofstream MyFile("../graphic_impression.txt");
     string output;
 
@@ -82,6 +83,22 @@ void simulation::graphicImpression(){
         MyFile << "\n";
     }
     MyFile.close();
+}
+
+void simulation::exportSim(ostream &ostream) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
+    ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";
+    map<string, Centrum*> hCentra = hub->getCentra();
+    for (map<string, Centrum*>::iterator it = hCentra.begin(); it != hCentra.end(); it++) {
+        ostream << "\t-> " << it->second->getNaam() << " (" << it->second->getVaccins() << " vaccins" << ")\n";
+    }
+    ostream << endl;
+    for (long unsigned int i = 0; i < centra.size(); i++) {
+        Centrum* c = centra[i];
+        ostream << c->getNaam() << ": " << c->getGevaccineerd() << " gevaccineerd, nog ";
+        int teGaan = c->getInwoners() - c->getGevaccineerd();
+        ostream << teGaan << " inwoners niet gevaccineerd\n";
+    }
 }
 
 //------------------
@@ -118,20 +135,4 @@ void simulation::setHub(Hub *const h) {
 const vector<Centrum*> &simulation::getCentra() const {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getCentra");
     return centra;
-}
-
-void simulation::exportSim(ostream &ostream) {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
-    ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";
-    map<string, Centrum*> hCentra = hub->getCentra();
-    for (map<string, Centrum*>::iterator it = hCentra.begin(); it != hCentra.end(); it++) {
-        ostream << "\t-> " << it->second->getNaam() << " (" << it->second->getVaccins() << " vaccins" << ")\n";
-    }
-    ostream << endl;
-    for (long unsigned int i = 0; i < centra.size(); i++) {
-        Centrum* c = centra[i];
-        ostream << c->getNaam() << ": " << c->getGevaccineerd() << " gevaccineerd, nog ";
-        int teGaan = c->getInwoners() - c->getGevaccineerd();
-        ostream << teGaan << " inwoners niet gevaccineerd\n";
-    }
 }
