@@ -14,10 +14,10 @@
 
 using namespace std;
 
-void autoSim::simulateTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag) {
+void autoSim::simulateTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag, int devide) {
     REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
 
-    int ladingen = c->berekenLadingen(vaccin, dag);
+    int ladingen = c->berekenLadingen(vaccin, dag, devide);
     int vaccins = ladingen * vaccin->getTransport();
 
     vaccin->verlaagVaccins(vaccins);
@@ -122,11 +122,13 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
 
         for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins.size(); vaccinIndex++){
             Vaccine* vaccin = vaccins[vaccinIndex];
+            int devide = s.getCentra().size();
 
             for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
                 //stop met 'random' vaccins te verdelen nadat iedereen een eerste prik gekregen heeft
                 if (it->second->getEerste() < it->second->getInwoners())
-                    simulateTransport(vaccin, it->second, outS, j);
+                    simulateTransport(vaccin, it->second, outS, j, devide);
+                devide -= 1;
             }
         }
 

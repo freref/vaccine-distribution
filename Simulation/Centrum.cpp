@@ -100,13 +100,13 @@ int Centrum::getGevaccineerd() const {
     return amount;
 }
 
-int Centrum::berekenLadingen(Vaccine* vaccin, int dag) {
+int Centrum::berekenLadingen(Vaccine* vaccin, int dag, int devide) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
     int transport = vaccin->getTransport();
     int vaccins = getVaccins();
-    int devide = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1)));
+    int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1)));
     int v = vaccin->getVoorraad();
-    int accounted = v/devide;
+    int accounted = v/devide/dev;
     int ladingen = 0;
 
     //for loop met alle condities van appendix B
@@ -114,14 +114,14 @@ int Centrum::berekenLadingen(Vaccine* vaccin, int dag) {
     if(vaccin->getTemperatuur() >= 0){
         while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
             // Afbreken wanneer voldaan aan capaciteit
-            if (ladingen*transport + vaccins >= capaciteit || ladingen*transport + vaccins > accounted)
+            if (ladingen*transport + vaccins >= capaciteit || ladingen*transport + vaccins >= accounted)
                 break;
             ladingen += 1;
         }
     }
     else{
         while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= capaciteit) {
-            if (ladingen*transport + vaccins > accounted)
+            if (ladingen*transport + vaccins >= accounted)
                 break;
             ladingen += 1;
         }

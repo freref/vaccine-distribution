@@ -25,7 +25,7 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int dag);
+    static void simulateTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int dag, int devide);
 
     static void simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal);
     /**

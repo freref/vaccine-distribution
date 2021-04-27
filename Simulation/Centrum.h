@@ -129,7 +129,7 @@ public:
      * @param dag
      * @return
      */
-    int berekenLadingen(Vaccine* vaccin, int dag);
+    int berekenLadingen(Vaccine* vaccin, int dag, int devide);
 
     /**
      * Print een transport van een bepaald vaccin

@@ -8,6 +8,7 @@ CMakeFiles/Project.dir/Simulation/Centrum.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/Centrum.cpp.o: ../XmlParser/tinystr.h
 CMakeFiles/Project.dir/Simulation/Centrum.cpp.o: ../XmlParser/tinyxml.h
 
+CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Hub.cpp
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Hub.h
@@ -15,6 +16,7 @@ CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../XmlParser/tinystr.h
 CMakeFiles/Project.dir/Simulation/Hub.cpp.o: ../XmlParser/tinyxml.h
 
+CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.cpp
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.h
 CMakeFiles/Project.dir/Simulation/Vaccine.cpp.o: ../Simulation/algemeen.h
@@ -49,6 +51,7 @@ CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../XmlParser/tinyxml.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Hub.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/Vaccine.h
+CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/algemeen.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulation.h
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulationImporter.cpp
 CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.o: ../Simulation/simulationImporter.h
