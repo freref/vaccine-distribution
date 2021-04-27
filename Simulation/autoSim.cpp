@@ -40,55 +40,48 @@ void autoSim::simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& 
     simulateTransport(c, vaccin, vaccins, outS);
 }
 
+int autoSim::simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int vaccinated, ostream& outS, int dag){
+    int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
+
+    if(vaccinaties > 0){
+        c->verlaagVoorraad(it->first, vaccinaties);
+        c->zetVaccinatie(dag, it->first, vaccinaties);
+        c->verhoogEerste(vaccinaties);
+        c->printEersteVaccinatie(vaccinaties, it->first, outS);
+    }
+    return vaccinaties;
+}
+
+int autoSim::simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated, Centrum* c, int dag, ostream& outS){
+    int aantal = c->getGevac()[pair<int, Vaccine *>(dag - it->first->getHernieuwing(), it->first)];
+    int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
+
+    if (vaccinaties >= 0) {
+        if (aantal > vaccinaties){
+            c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal - vaccinaties);
+        }
+        
+        c->verlaagVoorraad(it->first, vaccinaties);
+        c->verhoogGevaccineerd(vaccinaties);
+        if(vaccinaties > 0)
+            c->printTweedeVaccinatie(vaccinaties, it->first, outS);
+    }
+    return vaccinaties;
+}
+
+
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS, int dag) {
-    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateVaccinatie");
-    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateVaccinatie");
-
-    map<Vaccine*, int> voorraad1 = c->getVoorraad();
-    //tweede prik voorrang
     int vaccinated = 0;
-    for (map<Vaccine*, int>::iterator it = voorraad1.begin(); it != voorraad1.end(); it++) {
-        int aantal = c->getGevac()[pair<int, Vaccine *>(dag - it->first->getHernieuwing(), it->first)];
-        int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, aantal));
-        if (vaccinaties >= 0) {
-            if (aantal > vaccinaties){
-                c->zetVaccinatie(dag - it->first->getHernieuwing()+1, it->first, aantal - vaccinaties);
-            }
 
-            c->verlaagVoorraad(it->first, vaccinaties);
-            c->verhoogGevaccineerd(vaccinaties);
-            if(vaccinaties > 0)
-                c->printTweedeVaccinatie(vaccinaties, it->first, outS);
-        }
-    }
-
-    //zet eerste de vaccins die koel bewaard moeten blijven
-    map<Vaccine*, int> voorraad2 = c->getVoorraad();
-
-    for (map<Vaccine*, int>::iterator it = voorraad2.begin(); it != voorraad2.end(); it++) {
-        if(it->first->getTemperatuur() < 0){
-            int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
-            vaccinated += vaccinaties;
-
-            if(vaccinaties > 0){
-                c->verlaagVoorraad(it->first, vaccinaties);
-                c->zetVaccinatie(dag, it->first, vaccinaties);
-                c->verhoogEerste(vaccinaties);
-                c->printEersteVaccinatie(vaccinaties, it->first, outS);
-            }
-        }
-    }
-
-    map<Vaccine*, int> voorraad3 = c->getVoorraad();
-    for (map<Vaccine*, int>::iterator it = voorraad3.begin(); it != voorraad3.end(); it++) {
-        int vaccinaties = min(it->second, min(c->getCapaciteit()-vaccinated, c->getInwoners()-c->getEerste()));
-        vaccinated += vaccinaties;
-
-        if(vaccinaties > 0){
-            c->verlaagVoorraad(it->first, vaccinaties);
-            c->zetVaccinatie(dag, it->first, vaccinaties);
-            c->verhoogEerste(vaccinaties);
-            c->printEersteVaccinatie(vaccinaties, it->first, outS);
+    for(int i = 0; i < 3; i++){
+        map<Vaccine*, int> voorraad = c->getVoorraad();
+        for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
+            if(i == 0)
+                vaccinated += simulateTweedePrik(it, vaccinated, c, dag, outS);
+            else if (i == 1 && it->first->getTemperatuur() < 0)
+                vaccinated += simulateEerstePrik(c, it, vaccinated, outS, dag);
+            else if (i == 2)
+                vaccinated += simulateEerstePrik(c, it, vaccinated, outS, dag);
         }
     }
 }

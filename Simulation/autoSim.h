@@ -20,6 +20,10 @@ public:
 
     static void simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS);
 
+    static int simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int vaccinated, ostream& outS, int dag);
+
+    static int simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated, Centrum* c, int dag, ostream& outS);
+
     /**
      * \n Simulates transport of vaccines from hub to centrum
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport")
@@ -28,7 +32,7 @@ public:
      * @param c Centrum pointer
      * @param outS void
      */
-    static void simulateEerstePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int dag, int devide);
+    static void simulateEerstePrikTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag, int devide);
 
     static void simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal);
     /**
