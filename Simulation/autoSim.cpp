@@ -14,12 +14,7 @@
 
 using namespace std;
 
-void autoSim::simulateTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag, int devide) {
-    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
-
-    int ladingen = c->berekenLadingen(vaccin, dag, devide);
-    int vaccins = ladingen * vaccin->getTransport();
-
+void autoSim::simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS){
     vaccin->verlaagVaccins(vaccins);
     c->verhoogVoorraad(vaccin, vaccins);
 
@@ -27,19 +22,22 @@ void autoSim::simulateTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int 
         c->printTransport(vaccins, vaccin, outS);
 }
 
+void autoSim::simulateEerstePrikTransport(Vaccine* vaccin, Centrum *c, ostream& outS, int dag, int devide) {
+    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
+
+    int ladingen = c->berekenEerstePrikLadingen(vaccin, dag, devide);
+    int vaccins = ladingen * vaccin->getTransport();
+
+    simulateTransport(c, vaccin, vaccins, outS);
+}
+
 void autoSim::simulateTweedePrikTransport(Vaccine* vaccin, Centrum* c, ostream& outS, int aantal){
-    int vaccins = min(aantal, min(vaccin->getVoorraad(), c->getCapaciteit()*2 - c->getVaccins()));
+    REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport");
 
-    int ladingen = vaccins/vaccin->getTransport();
-    if (vaccins > 0 && ladingen == 0)
-        ladingen = 1;
+    int ladingen = c->berekenTweedePrikLadingen(c, vaccin, aantal);
+    int vaccins = ladingen*vaccin->getTransport();
 
-    vaccins = ladingen*vaccin->getTransport();
-
-    vaccin->verlaagVaccins(vaccins);
-    c->verhoogVoorraad(vaccin, vaccins);
-    if (vaccins > 0)
-        c->printTransport(vaccins, vaccin, outS);
+    simulateTransport(c, vaccin, vaccins, outS);
 }
 
 void autoSim::simulateVaccinatie(simulation &s, Centrum *c, ostream& outS, int dag) {
@@ -127,7 +125,7 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
             for (map<string, Centrum*>::iterator it = centraHub.begin(); it != centraHub.end(); it++) {
                 //stop met 'random' vaccins te verdelen nadat iedereen een eerste prik gekregen heeft
                 if (it->second->getEerste() < it->second->getInwoners())
-                    simulateTransport(vaccin, it->second, outS, j, devide);
+                    simulateEerstePrikTransport(vaccin, it->second, outS, j, devide);
                 devide -= 1;
             }
         }

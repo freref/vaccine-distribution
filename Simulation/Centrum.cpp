@@ -100,7 +100,7 @@ int Centrum::getGevaccineerd() const {
     return amount;
 }
 
-int Centrum::berekenLadingen(Vaccine* vaccin, int dag, int devide) {
+int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
     int transport = vaccin->getTransport();
     int vaccins = getVaccins();
@@ -128,6 +128,15 @@ int Centrum::berekenLadingen(Vaccine* vaccin, int dag, int devide) {
     }
 
     ENSURE(ladingen>=0, "berekenLadingen postconditions failed");
+    return ladingen;
+}
+
+int Centrum::berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal){
+    int v = min(aantal, min(vaccin->getVoorraad(), c->getCapaciteit()*2 - c->getVaccins()));
+    int ladingen = v/vaccin->getTransport();
+
+    if (v > 0 && ladingen == 0)
+        ladingen = 1;
 
     return ladingen;
 }
