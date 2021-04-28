@@ -65,7 +65,6 @@ int autoSim::simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int
         c->printEersteVaccinatie(vaccinaties, it->first, outS);
         if (it->first->getHernieuwing() == 0) {
             c->verhoogGevaccineerd(vaccinaties);
-            c->removeVaccinatie(dag, it->first);
         }
     }
     return vaccinaties;
@@ -84,7 +83,8 @@ int autoSim::simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated,
         c->verhoogGevaccineerd(vaccinaties);
         if(vaccinaties > 0)
             c->printTweedeVaccinatie(vaccinaties, it->first, outS);
-        c->removeVaccinatie(dag - it->first->getHernieuwing(), it->first);
+        if (dag - it->first->getHernieuwing() >= 0)
+            c->removeVaccinatie(dag - it->first->getHernieuwing(), it->first);
     }
     return vaccinaties;
 }

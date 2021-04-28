@@ -37,19 +37,30 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
 
 
 void Centrum::setVoorraad(Vaccine* vac, int aantal){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVoorraad");
     voorraad[vac] = aantal;
+    ENSURE(getVoorraad()[vac] == aantal, "setVoorraad postcondition failed");
 }
 
 map<Vaccine*, int> Centrum::getVoorraad(){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVoorraad");
     return voorraad;
 }
 
 void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
-    voorraad[vac] = getVoorraad()[vac] + aantal;
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogVoorraad");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verhoogVoorraad");
+    int oAmount = getVoorraad()[vac];
+    voorraad[vac] += aantal;
+    ENSURE(getVoorraad()[vac]-aantal == oAmount, "verhoogVoorraad postcondition failed");
 }
 
 void Centrum::verlaagVoorraad(Vaccine* vac, int aantal){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verlaagVoorraad");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verlaagVoorraad");
+    int oAmount = getVoorraad()[vac];
     voorraad[vac] -= aantal;
+    ENSURE(getVoorraad()[vac]+aantal == oAmount, "verlaagVoorraad postcondition failed");
 }
 
 
@@ -86,11 +97,13 @@ int Centrum::getCapaciteit() const {
 }
 
 int Centrum::getVaccins() {
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins");
     int amount = 0;
     map<Vaccine*, int> v = getVoorraad();
     for (map<Vaccine*, int>::iterator it = v.begin(); it != v.end(); it++) {
         amount += it->second;
     }
+    ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
     return amount;
 }
 
@@ -102,7 +115,12 @@ int Centrum::getGevaccineerd() const {
 }
 
 int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
+    REQUIRE(this->properlyInitialised(),
+            "simulation wasn't initialised when calling berekenEerstePrikLadingen");
+    REQUIRE(vaccin->properlyInitialised(),
+            "vaccine wasn't initialised when calling berekenEerstePrikLadingen");
+    REQUIRE(dag >= 0, "transport day can't be negative");
+    REQUIRE(devide >= 0, "division can't be negative");
     int transport = vaccin->getTransport(); // Vaccins in transport
     int vaccins = getVaccins(); // Huidig aantal aanwezig vaccins
     int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1))); // overig dagen tot nieuwe voorraad vaccins in hub
@@ -127,11 +145,17 @@ int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
         }
     }
 
-    ENSURE(ladingen>=0, "berekenLadingen postconditions failed");
+    ENSURE(ladingen>=0, "berekenEerstePrikLadingen postconditions failed");
     return ladingen;
 }
 
 int Centrum::berekenTweedePrikLadingen(Vaccine* vaccin, int aantal){
+    REQUIRE(this->properlyInitialised(),
+            "simulation wasn't initialised when calling berekenTweedePrikLadingen");
+    REQUIRE(vaccin->properlyInitialised(),
+            "vaccine wasn't initialised when calling berekenTweedePrikLadingen");
+    REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines");
+
     int v = min(aantal, min(vaccin->getVoorraad(), getCapaciteit()*2 - getVaccins()));
     int ladingen = ceil(float (v)/vaccin->getTransport());
 
@@ -145,12 +169,15 @@ int Centrum::berekenTweedePrikLadingen(Vaccine* vaccin, int aantal){
         while (ladingen*vaccin->getTransport() + getVaccins() > getCapaciteit() && ladingen > 0)
             ladingen -= 1;
     }
-
+    ENSURE(ladingen >= 0, "berekenTweedePrikLadingen postconditions failed");
     return ladingen;
 }
 
 void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) const {
-    REQUIRE(vaccins >= 0, "vaccins amount can't be negative");
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling printTransport");
+    REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling printTransport");
+    REQUIRE(vaccins >= 0, "can't transport negative amount of vaccines");
+
     int ladingen = vaccins/vaccin->getTransport();
     if (ladingen == 0){
         ladingen = 1;
@@ -160,33 +187,55 @@ void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) co
 }
 
 void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) const {
+    REQUIRE(this->properlyInitialised(),
+            "centrum wasn't initialised when calling printEersteVaccinatie");
+    REQUIRE(vaccin->properlyInitialised(),
+            "vaccine wasn't initialised when calling printEersteVaccinatie");
+    REQUIRE(vaccinaties >= 0, "can't vaccinate negative amount of people");
+
     onStream << "Er werden " << vaccinaties << " inwoners voor de eerste keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
 void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) const {
+    REQUIRE(this->properlyInitialised(),
+            "centrum wasn't initialised when calling printTweedeVaccinatie");
+    REQUIRE(vaccin->properlyInitialised(),
+            "vaccine wasn't initialised when calling printTweedeVaccinatie");
+    REQUIRE(vaccinaties >= 0, "can't vaccinate negative amount of people");
+
     onStream << "Er werden " << vaccinaties << " inwoners voor de tweede keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
 void Centrum::verhoogGevaccineerd(int aantal){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogGevaccineerd");
     gevaccineerd += aantal;
 }
 
 void Centrum::zetVaccinatie(int dag, Vaccine* vac, int aantal){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling zetVaccinatie");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling zetVaccinatie");
+    REQUIRE(dag >= 0, "vaccination day can't be negative");
     gevac[pair<int, Vaccine*>(dag, vac)] += aantal;
 }
 
 map<pair<int, Vaccine*>, int> Centrum::getGevac(){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevac");
     return gevac;
 }
 
 void Centrum::removeVaccinatie(int dag, Vaccine *vac) {
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling removeVaccinatie");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling removeVaccinatie");
+    REQUIRE(dag >= 0, "day can't be negative");
     gevac.erase(pair<int, Vaccine*>(dag, vac));
 }
 
 int Centrum::getEerste() const{
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getEerste");
     return eerste;
 }
 
 void Centrum::verhoogEerste(int aantal){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogEerste");
     eerste += aantal;
 }

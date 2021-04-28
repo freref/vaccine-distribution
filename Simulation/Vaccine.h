@@ -29,6 +29,15 @@ public:
      */
     Vaccine();
 
+    /**
+     * Constructor
+     * @param t:    Vaccine type
+     * @param l:    Vaccines per restock
+     * @param i:    Interval between restocks
+     * @param tr:   Vaccines per transport
+     * @param h:    Time between vaccine injections
+     * @param temp: Vaccine storage temperature
+     */
     Vaccine(string t, int l, int i, int tr, int h, int temp);
 
     /**
