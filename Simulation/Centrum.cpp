@@ -102,26 +102,25 @@ int Centrum::getGevaccineerd() const {
 
 int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenLadingen");
-    int transport = vaccin->getTransport();
-    int vaccins = getVaccins();
-    int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1)));
-    int v = vaccin->getVoorraad();
-    int accounted = v/devide/dev;
-    int ladingen = 0;
+    int transport = vaccin->getTransport(); // Vaccins in transport
+    int vaccins = getVaccins(); // Huidig aantal aanwezig vaccins
+    int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1))); // overig dagen tot nieuwe voorraad vaccins in hub
+    int v = vaccin->getVoorraad(); // Vaccins van type in hub
+    int accounted = /*v/*/ devide/dev; // Hoeveel mogelijk uit te delen om zo veel mogelijk te stretchen
+    int ladingen = 0; // Aantal ladingen
 
-    //for loop met alle condities van appendix B
-    // Lading verder kijken dan huidige (om na te kijken) om niet op volgende over parameters te gaan
-    if(vaccin->getTemperatuur() >= 0){
+
+    if(vaccin->getTemperatuur() >= 0){ // Vaccin bewaard boven 0 graden, geen speciale conditie
         while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= 2*capaciteit) {
             // Afbreken wanneer voldaan aan capaciteit
-            if (ladingen*transport + vaccins >= capaciteit || ladingen*transport + vaccins >= accounted)
+            if (ladingen*transport + vaccins >= capaciteit || ladingen*transport /*+ vaccins*/ >= accounted)
                 break;
             ladingen += 1;
         }
     }
     else{
         while ((ladingen+1)*transport <= v && (ladingen+1)*transport+vaccins <= capaciteit) {
-            if (ladingen*transport + vaccins >= accounted)
+            if (ladingen*transport /*+ vaccins*/ >= accounted)
                 break;
             ladingen += 1;
         }
@@ -137,6 +136,9 @@ int Centrum::berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal){
 
     if (v > 0 && ladingen == 0)
         ladingen = 1;
+
+    while (ladingen*vaccin->getTransport() + c->getVaccins() > c->getCapaciteit()*2 && ladingen > 0)
+        ladingen -= 1;
 
     return ladingen;
 }

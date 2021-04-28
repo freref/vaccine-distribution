@@ -47,7 +47,7 @@ public:
      */
     static void simulateVaccinatie(Centrum* c, ostream& outS, int dag);
 
-    static void simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int j);
+    static bool simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int j);
 
     /**
      * \n Loop to continously simulate transport and injections

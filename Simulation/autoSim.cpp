@@ -25,7 +25,7 @@ void autoSim::simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostrea
 void autoSim::simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins, ostream& outS, int j) {
     for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins->size(); vaccinIndex++){
         Vaccine* vaccin = vaccins->at(vaccinIndex);
-        int devide = centraHub->size();
+        int devide = vaccin->getVoorraad() / centraHub->size();
 
         for (map<string, Centrum*>::iterator it = centraHub->begin(); it != centraHub->end(); it++) {
             //stop met 'random' vaccins te verdelen nadat iedereen een eerste prik gekregen heeft
@@ -34,7 +34,7 @@ void autoSim::simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vect
                 int v = ladingen * vaccin->getTransport();
                 simulateTransport(it->second, vaccin, v, outS);
             }
-            devide -= 1;
+//            devide -= 1;
         }
     }
 }
@@ -101,7 +101,7 @@ void autoSim::simulateVaccinatie(Centrum *c, ostream& outS, int dag) {
     }
 }
 
-void autoSim::simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int j){
+bool autoSim::simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int j){
     bool check = true;
     for(long unsigned int i = 0; i < centra->size(); i++){
         Centrum* centrum = centra->at(i);
@@ -109,8 +109,7 @@ void autoSim::simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS,
         if (centrum->getGevaccineerd() != centrum->getInwoners())
             check = false;
     }
-    if(check)
-        exit(0);
+    return check;
 }
 
 void autoSim::simulateHubDelivery(vector<Vaccine*>* vaccins, int j){
@@ -135,6 +134,7 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
         simulateHubDelivery(&vaccins, j);
         simulateTweedePrikTransport(&centraHub, &vaccins, outS, j);
         simulateEerstePrikTransport(&centraHub, &vaccins, outS, j);
-        simulateVaccinatieProcess(&centra, outS, j);
+        if (simulateVaccinatieProcess(&centra, outS, j))
+            break;
     }
 }
