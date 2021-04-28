@@ -36,9 +36,6 @@ CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../Simulation/simulation.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../XmlParser/tinystr.h
 CMakeFiles/Project.dir/Simulation/autoSim.cpp.o: ../XmlParser/tinyxml.h
 
-CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.cpp
-CMakeFiles/Project.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.h
-
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/Centrum.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/DesignByContract.h
 CMakeFiles/Project.dir/Simulation/simulation.cpp.o: ../Simulation/Hub.h

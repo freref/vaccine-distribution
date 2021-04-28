@@ -207,22 +207,35 @@ CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.cpp -o CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.s
 
-CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o: ../Simulation/tests/autoSimTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/autoSimTests.cpp
+CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o: ../Simulation/Vaccine.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.cpp
 
-CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/autoSimTests.cpp > CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i
+CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.cpp > CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.i
 
-CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/autoSimTests.cpp -o CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s
+CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.cpp -o CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.s
+
+CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o: CMakeFiles/sim_debug.dir/flags.make
+CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o: ../Simulation/algemeen.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp
+
+CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp > CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i
+
+CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp -o CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s
 
 CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o: CMakeFiles/sim_debug.dir/flags.make
 CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o: ../Simulation/tests/domainTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/domainTests.cpp
 
 CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.i: cmake_force
@@ -235,7 +248,7 @@ CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.s: cmake_force
 
 CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o: CMakeFiles/sim_debug.dir/flags.make
 CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o: ../Simulation/tests/exportTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/exportTests.cpp
 
 CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.i: cmake_force
@@ -248,7 +261,7 @@ CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.s: cmake_force
 
 CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o: CMakeFiles/sim_debug.dir/flags.make
 CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o: ../Simulation/tests/importTests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/importTests.cpp
 
 CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.i: cmake_force
@@ -261,7 +274,7 @@ CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.s: cmake_force
 
 CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o: CMakeFiles/sim_debug.dir/flags.make
 CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o: ../Simulation/fileCompare.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.cpp
 
 CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.i: cmake_force
@@ -271,19 +284,6 @@ CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.i: cmake_force
 CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.cpp -o CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.s
-
-CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o: CMakeFiles/sim_debug.dir/flags.make
-CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o: ../Simulation/algemeen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o -c /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp
-
-CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp > CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.i
-
-CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp -o CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.s
 
 # Object files for target sim_debug
 sim_debug_OBJECTS = \
@@ -297,12 +297,12 @@ sim_debug_OBJECTS = \
 "CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.o" \
 "CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.o" \
 "CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.o" \
-"CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o" \
+"CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o" \
+"CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o" \
 "CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o" \
 "CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o" \
 "CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o" \
-"CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o" \
-"CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o"
+"CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o"
 
 # External object files for target sim_debug
 sim_debug_EXTERNAL_OBJECTS =
@@ -317,12 +317,12 @@ sim_debug: CMakeFiles/sim_debug.dir/Simulation/Centrum.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/autoSim.cpp.o
-sim_debug: CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o
+sim_debug: CMakeFiles/sim_debug.dir/Simulation/Vaccine.cpp.o
+sim_debug: CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o
-sim_debug: CMakeFiles/sim_debug.dir/Simulation/algemeen.cpp.o
 sim_debug: CMakeFiles/sim_debug.dir/build.make
 sim_debug: CMakeFiles/sim_debug.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/frederic/Documents/Informatica/Sem2/PSE/Project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable sim_debug"

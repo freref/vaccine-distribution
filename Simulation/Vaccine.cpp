@@ -1,7 +1,13 @@
-//
-// Created by frehml on 22/04/2021.
-//
 
+/**
+ * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
+ * \n Definitions for the simulationImporter class
+ *
+ * @authors Frederic Hamelink & Sander Marinus
+ * @date    4/3/2021
+ * @version 2.0
+ */
+ 
 #include "Vaccine.h"
 #include "algemeen.h"
 #include "DesignByContract.h"

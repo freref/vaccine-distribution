@@ -143,9 +143,11 @@
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.cpp">
+			<Option target="sim_debug"/>
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h">
+			<Option target="sim_debug"/>
 			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/algemeen.cpp">
@@ -166,11 +168,9 @@
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.cpp">
 			<Option target="sim_debug"/>
-			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/fileCompare.h">
 			<Option target="sim_debug"/>
-			<Option target="Project"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.cpp">
 			<Option target="sim_debug"/>
@@ -187,9 +187,6 @@
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulationImporter.h">
 			<Option target="sim_debug"/>
 			<Option target="Project"/>
-		</Unit>
-		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/autoSimTests.cpp">
-			<Option target="sim_debug"/>
 		</Unit>
 		<Unit filename="/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/tests/domainTests.cpp">
 			<Option target="sim_debug"/>
