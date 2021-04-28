@@ -17,23 +17,29 @@
 
 class autoSim {
 public:
-
+    /**
+     \n Simulates the transport of a vaccine to a center
+     * @param c:        Destination center
+     * @param vaccin:   Vaccine to transport
+     * @param vaccins:  Amount of vaccines in transport
+     * @param outS:     Output stream
+     */
     static void simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS);
-
+    /**
+     * Simulates a first injection with a vaccine
+     * @param c:            Vaccination centre where injection took place
+     * @param it:           Vaccine supply iterator
+     * @param vaccinated:   Amount of vaccinated people
+     * @param outS:         Output stream
+     * @param dag:          Day of injection
+     * @return
+     */
     static int simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int vaccinated, ostream& outS, int dag);
 
     static int simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated, Centrum* c, int dag, ostream& outS);
 
     static void simulateHubDelivery(vector<Vaccine*>* vaccins, int j);
 
-    /**
-     * \n Simulates transport of vaccines from hub to centrum
-     * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulateTransport")
-     * \n REQUIRE(c->properlyInitialised(), "centrum wasn't initialized when calling simulateTransport")
-     * @param s Simulation refrence
-     * @param c Centrum pointer
-     * @param outS void
-     */
     static void simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins, ostream& outS, int j);
 
     static void simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins, ostream& outS, int j);
@@ -53,9 +59,9 @@ public:
      * \n Loop to continously simulate transport and injections
      * \n REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
      * \n REQUIRE(n >= 0, "can't simulate negative amount of days");
-     * @param s Simulation refrence
-     * @param n integer n
-     * @param outS void
+     * @param s:    Simulation refrence
+     * @param n:    Days to simulate
+     * @param outS: Output stream
      */
     static void simulate(simulation& s, int n, ostream& outS);
 };

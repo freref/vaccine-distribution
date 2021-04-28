@@ -53,118 +53,189 @@ public:
     bool properlyInitialised() const {return _initCheck == this; };
 
     /**
-     * \n set voorraad of certain vaccine
+     \n set stock of certain vaccine
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVoorraad")
+     \n ENSURE(getVoorraad()[vac] == aantal, "setVoorraad postcondition failed")
      * @param vac:      The vaccine
      * @param aantal:   Stock of the vaccine
      */
     void setVoorraad(Vaccine* vac, int aantal);
     /**
-     * Get voorrad map van alle vaccins
+     \n Get map of vaccines and stock in center
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVoorraad")
      * @return map<Vaccine*, int> {type: voorraad, ...}
      */
     map<Vaccine*, int> getVoorraad();
     /**
-     * Voeg toe aan de voorraad van een bepaald vaccin
-     * @param vac:      Vacccin waaraan toe te voegen
-     * @param aantal:   Toe te voegen aantal
+     \n Add to stock of vaccine
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogVoorraad")
+     \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verhoogVoorraad")
+     \n ENSURE(getVoorraad()[vac]-aantal == oAmount, "verhoogVoorraad postcondition failed")
+     * @param vac:      Vaccine to add stock toe
+     * @param aantal:   Amount of stock to add
      */
     void verhoogVoorraad(Vaccine* vac, int aantal);
     /**
-     * Verlaag de voorraad van een bepaald vaccin
-     * @param vac:      Te verlagen vaccin
-     * @param aantal:   Te verlagen aantal
+     \n Lower stock of vaccine
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verlaagVoorraad")
+     \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verlaagVoorraad")
+     \n ENSURE(getVoorraad()[vac]+aantal == oAmount, "verlaagVoorraad postcondition failed")
+     * @param vac:      Vaccine to lower stock off
+     * @param aantal:   Amount to lower
      */
     void verlaagVoorraad(Vaccine* vac, int aantal);
 
     /**
      \n Set amount of vaccinated people in center
-     * @param g :   Amount of vaccinated people
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setGevaccineerd")
+     \n REQUIRE(g>=0, "gevaccineerd can't be negative")
+     \n REQUIRE(g<=getInwoners(), "gevaccineerd amount can't be bigger than inhabitants amount")
+     \n ENSURE(getGevaccineerd() == g, "setGevaccineerd postcondition failed")
+     * @param g:    Amount of vaccinated people
      */
     void setGevaccineerd(int g);
 
     /**
      \n getter for name
-     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getNaam");
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getNaam")
      * @return string name
      */
     const string &getNaam() const;
     /**
      \n getter for address
-     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getAdres");
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getAdres")
      * @return string address
      */
     const string &getAdres() const;
     /**
      \n getter for inhabitants
-     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins");
-     \n ENSURE(amount>=0, "getInwoners postconditions failed");
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVacins")
+     \n ENSURE(amount>=0, "getInwoners postconditions failed")
      * @return int inhabitants
      */
     int getInwoners() const;
     /**
      \n getter for capacity
-     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit");
-     \n ENSURE(amount>=0, "getCapaciteit postconditions failed");
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getCapaciteit")
+     \n ENSURE(amount>=0, "getCapaciteit postconditions failed")
      * @return int
      */
     int getCapaciteit() const;
     /**
      \n Get total amount of vaccines in center
-     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins");
-     \n ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed");
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getVaccins")
+     \n ENSURE((amount>=0) && (amount<=getCapaciteit()*2), "getVaccins postconditions failed")
      * @return int
      */
     int getVaccins();
     /**
-     * \n getter for vaccinated
-     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevaccineerd");
-       \n ENSURE((amount>=0) && (amount<=getInwoners()), "getGevaccineerd postconditions failed");
+     * \n Get total amount of fully vaccinated people
+     * \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevaccineerd")
+       \n ENSURE((amount>=0) && (amount<=getInwoners()), "getGevaccineerd postconditions failed")
      * @return int
      */
     int getGevaccineerd() const;
 
     /**
-     \n Calculate amount af deliveries for vaccine
-     * @param vaccin
-     * @param dag
-     * @return
+     \n Calculate amount of shipments for first injection
+     \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenEerstePrikLadingen")
+     \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling berekenEerstePrikLadingen")
+     \n REQUIRE(dag >= 0, "transport day can't be negative")
+     \n REQUIRE(devide >= 0, "division can't be negative")
+     \n ENSURE(ladingen>=0, "berekenEerstePrikLadingen postconditions failed")
+     * @param vaccin:   Vaccine to ship
+     * @param dag:      Day of injection
+     * @return          Amount of shipments
      */
     int berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide);
-
-    static int berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal);
-
     /**
-     * Print een transport van een bepaald vaccin
-     * @param vaccins
-     * @param vaccin
-     * @param onStream
+     \n Calculate amount of shipments for second injection
+     \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenTweedePrikLadingen")
+     \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling berekenTweedePrikLadingen")
+     \n REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines")
+     \n ENSURE(ladingen >= 0, "berekenTweedePrikLadingen postconditions failed")
+     * @param vaccin:   Vaccine to ship
+     * @param aantal:   Necessary amount
+     * @return          Amount of shipments
      */
-    void printTransport(int vaccins,Vaccine* vaccin, ostream& onStream) const;
+    int berekenTweedePrikLadingen(Vaccine* vaccin, int aantal);
 
     /**
-     * Print een eerste vaccinatie
-     * @param vaccins
-     * @param vaccin
-     * @param onStream
+     \n Print a transport
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling printTransport")
+     \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling printTransport")
+     \n REQUIRE(vaccins >= 0, "can't transport negative amount of vaccines")
+     * @param vaccins:  Amount of transported vaccines
+     * @param vaccin:   Transported vaccine
+     * @param onStream: Output stream
+     */
+    void printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) const;
+    /**
+     \n Print a first vaccination
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling printEersteVaccinatie")
+     \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling printEersteVaccinatie")
+     \n REQUIRE(vaccinaties >= 0, "can't vaccinate negative amount of people")
+     * @param vaccins:  Amount of vaccinated people
+     * @param vaccin:   Used vaccine
+     * @param onStream: Output stream
      */
     void printEersteVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream) const;
-
     /**
-     * Print een tweede vaccinatie
-     * @param vaccins
+     \n Print a second vaccination
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling printTweedeVaccinatie")
+     \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling printTweedeVaccinatie")
+     \n REQUIRE(vaccins >= 0, "can't vaccinate negative amount of people")
+     * @param vaccins:  Aount
      * @param vaccin
      * @param onStream
      */
     void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream) const;
-    // Zet de vaccins
+
+    /**
+     \n Add first vaccination information
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling zetVaccinatie")
+     \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling zetVaccinatie")
+     \n REQUIRE(dag >= 0, "day can't be negative")
+     * @param dag:      Day of vaccination
+     * @param vac:      Used vaccine
+     * @param aantal:   Amount to vaccinate
+     */
     void zetVaccinatie(int dag, Vaccine* vac, int aantal);
-    // vraag lijst eerste vaccinaties { (dag, vaccin): aantal, ... }
+    /**
+     \n Remove information of vaccination
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling removeVaccinatie")
+     \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling removeVaccinatie")
+     \n REQUIRE(dag >= 0, "day can't be negative")
+     * @param dag:  Day of vaccination
+     * @param vac:  Used vaccine
+     */
+    void removeVaccinatie(int dag, Vaccine* vac);
+
+    /**
+     \n Get map containing information first vaccinations
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getGevac")
+     * @return { (dag, vaccin): aantal, ... }
+     */
     map<pair<int, Vaccine*>, int> getGevac();
-    // Verhoog aantal gevaccineerden
+
+    /**
+     \n Increase amount of fully vaccinated people
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogGevaccineerd")
+     * @param aantal:   Amount by wich to increase
+     */
     void verhoogGevaccineerd(int aantal);
-    // Vraag aantal mensen met eerste prik
+
+    /**
+     \n Get amount of people with first injection
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling getEerste")
+     * @return  Amount of people
+     */
     int getEerste() const ;
-    // Verhoog aantal mensen met eerste prik
+    /**
+     \n Increase amount of people with first injection
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogEerste")
+     * @param aantal:   Amount to increase by
+     */
     void verhoogEerste(int aantal);
 };
 
