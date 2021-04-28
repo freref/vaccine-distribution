@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sim_debug.dir/Simulation/fileCompare.cpp.o"
   "CMakeFiles/sim_debug.dir/Simulation/simulation.cpp.o"
   "CMakeFiles/sim_debug.dir/Simulation/simulationImporter.cpp.o"
+  "CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o"
+  "CMakeFiles/sim_debug.dir/Simulation/tests/centrumTests.cpp.o"
   "CMakeFiles/sim_debug.dir/Simulation/tests/domainTests.cpp.o"
   "CMakeFiles/sim_debug.dir/Simulation/tests/exportTests.cpp.o"
   "CMakeFiles/sim_debug.dir/Simulation/tests/importTests.cpp.o"

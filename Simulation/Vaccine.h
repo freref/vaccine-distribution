@@ -1,11 +1,10 @@
-
 /**
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * \n Definitions for the simulationImporter class
+ * \n Class which handles the automation of the simulation
  *
  * @authors Frederic Hamelink & Sander Marinus
- * @date    4/3/2021
- * @version 2.0
+ * @date    12/3/2021
+ * @version 1.0
  */
  
 #ifndef PROJECT_VACCINE_H
@@ -34,17 +33,6 @@ public:
      \n ENSURE(this->properlyInitialised(), "Constructor must end properly initialised")
      */
     Vaccine();
-
-    /**
-     * Constructor
-     * @param t:    Vaccine type
-     * @param l:    Vaccines per restock
-     * @param i:    Interval between restocks
-     * @param tr:   Vaccines per transport
-     * @param h:    Time between vaccine injections
-     * @param temp: Vaccine storage temperature
-     */
-    Vaccine(string t, int l, int i, int tr, int h, int temp);
 
     /**
      \n Initialisation check

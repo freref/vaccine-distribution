@@ -1,11 +1,10 @@
-
 /**
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
- * \n Definitions for the simulationImporter class
+ * \n Class which handles the automation of the simulation
  *
  * @authors Frederic Hamelink & Sander Marinus
- * @date    4/3/2021
- * @version 2.0
+ * @date    12/3/2021
+ * @version 1.0
  */
  
 #include "Vaccine.h"
@@ -21,18 +20,6 @@ Vaccine::Vaccine() {
     voorraad = 0;
     hernieuwing = 0;
     temperatuur = 0;
-    ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
-}
-
-Vaccine::Vaccine(string t, int l, int i, int tr, int h, int temp) {
-    _initCheck = this;
-    type = t;
-    levering = l;
-    interval = i;
-    transport = tr;
-    voorraad = l;
-    hernieuwing = h;
-    temperatuur = temp;
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
 }
 

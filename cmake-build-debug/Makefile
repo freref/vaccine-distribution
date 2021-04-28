@@ -393,6 +393,60 @@ Simulation/simulationImporter.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Project.dir/build.make CMakeFiles/Project.dir/Simulation/simulationImporter.cpp.s
 .PHONY : Simulation/simulationImporter.cpp.s
 
+Simulation/tests/autoSimTests.o: Simulation/tests/autoSimTests.cpp.o
+
+.PHONY : Simulation/tests/autoSimTests.o
+
+# target to build an object file
+Simulation/tests/autoSimTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.o
+.PHONY : Simulation/tests/autoSimTests.cpp.o
+
+Simulation/tests/autoSimTests.i: Simulation/tests/autoSimTests.cpp.i
+
+.PHONY : Simulation/tests/autoSimTests.i
+
+# target to preprocess a source file
+Simulation/tests/autoSimTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.i
+.PHONY : Simulation/tests/autoSimTests.cpp.i
+
+Simulation/tests/autoSimTests.s: Simulation/tests/autoSimTests.cpp.s
+
+.PHONY : Simulation/tests/autoSimTests.s
+
+# target to generate assembly for a file
+Simulation/tests/autoSimTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/autoSimTests.cpp.s
+.PHONY : Simulation/tests/autoSimTests.cpp.s
+
+Simulation/tests/centrumTests.o: Simulation/tests/centrumTests.cpp.o
+
+.PHONY : Simulation/tests/centrumTests.o
+
+# target to build an object file
+Simulation/tests/centrumTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/centrumTests.cpp.o
+.PHONY : Simulation/tests/centrumTests.cpp.o
+
+Simulation/tests/centrumTests.i: Simulation/tests/centrumTests.cpp.i
+
+.PHONY : Simulation/tests/centrumTests.i
+
+# target to preprocess a source file
+Simulation/tests/centrumTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/centrumTests.cpp.i
+.PHONY : Simulation/tests/centrumTests.cpp.i
+
+Simulation/tests/centrumTests.s: Simulation/tests/centrumTests.cpp.s
+
+.PHONY : Simulation/tests/centrumTests.s
+
+# target to generate assembly for a file
+Simulation/tests/centrumTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_debug.dir/build.make CMakeFiles/sim_debug.dir/Simulation/tests/centrumTests.cpp.s
+.PHONY : Simulation/tests/centrumTests.cpp.s
+
 Simulation/tests/domainTests.o: Simulation/tests/domainTests.cpp.o
 
 .PHONY : Simulation/tests/domainTests.o
@@ -682,6 +736,12 @@ help:
 	@echo "... Simulation/simulationImporter.o"
 	@echo "... Simulation/simulationImporter.i"
 	@echo "... Simulation/simulationImporter.s"
+	@echo "... Simulation/tests/autoSimTests.o"
+	@echo "... Simulation/tests/autoSimTests.i"
+	@echo "... Simulation/tests/autoSimTests.s"
+	@echo "... Simulation/tests/centrumTests.o"
+	@echo "... Simulation/tests/centrumTests.i"
+	@echo "... Simulation/tests/centrumTests.s"
 	@echo "... Simulation/tests/domainTests.o"
 	@echo "... Simulation/tests/domainTests.i"
 	@echo "... Simulation/tests/domainTests.s"
