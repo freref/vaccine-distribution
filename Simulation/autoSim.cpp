@@ -46,7 +46,7 @@ void autoSim::simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vect
             int aantal = it->second->getGevac()[pair<int, Vaccine*>(j - vaccin->getHernieuwing(), vaccin)];
 
             if(aantal > 0){
-                int ladingen = it->second->berekenTweedePrikLadingen(it->second, vaccin, aantal);
+                int ladingen = it->second->berekenTweedePrikLadingen(vaccin, aantal);
                 int v = ladingen*vaccin->getTransport();
 
                 simulateTransport(it->second, vaccin, v, outS);
@@ -63,6 +63,10 @@ int autoSim::simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int
         c->zetVaccinatie(dag, it->first, vaccinaties);
         c->verhoogEerste(vaccinaties);
         c->printEersteVaccinatie(vaccinaties, it->first, outS);
+        if (it->first->getHernieuwing() == 0) {
+            c->verhoogGevaccineerd(vaccinaties);
+            c->removeVaccinatie(dag, it->first);
+        }
     }
     return vaccinaties;
 }
@@ -80,6 +84,7 @@ int autoSim::simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated,
         c->verhoogGevaccineerd(vaccinaties);
         if(vaccinaties > 0)
             c->printTweedeVaccinatie(vaccinaties, it->first, outS);
+        c->removeVaccinatie(dag - it->first->getHernieuwing(), it->first);
     }
     return vaccinaties;
 }
@@ -129,12 +134,13 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     vector<Centrum*> centra = s.getCentra();
     vector<Vaccine*> vaccins = hub->getVaccins();
 
-    for(int j = 0; j < n+1; j++){
+    for(int j = 0; j < n; j++){
         cout << endl << "Dag " << j+1 << ":" << endl;
         simulateHubDelivery(&vaccins, j);
         simulateTweedePrikTransport(&centraHub, &vaccins, outS, j);
         simulateEerstePrikTransport(&centraHub, &vaccins, outS, j);
-        if (simulateVaccinatieProcess(&centra, outS, j))
+        if (simulateVaccinatieProcess(&centra, outS, j)) {
             break;
+        }
     }
 }

@@ -18,6 +18,18 @@ Vaccine::Vaccine() {
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
 }
 
+Vaccine::Vaccine(string t, int l, int i, int tr, int h, int temp) {
+    _initCheck = this;
+    type = t;
+    levering = l;
+    interval = i;
+    transport = tr;
+    voorraad = l;
+    hernieuwing = h;
+    temperatuur = temp;
+    ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
+}
+
 bool Vaccine::properlyInitialised() const {
     return _initCheck == this;
 }

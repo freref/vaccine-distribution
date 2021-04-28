@@ -25,6 +25,8 @@ set(SOURCE_FILES
         Simulation/algemeen.cpp)
 
 set(DEBUG_FILES
+        Simulation/tests/autoSimTests.cpp
+        Simulation/tests/centrumTests.cpp
         Simulation/tests/domainTests.cpp
         Simulation/tests/exportTests.cpp
         Simulation/tests/importTests.cpp

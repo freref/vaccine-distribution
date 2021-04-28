@@ -29,6 +29,8 @@ public:
      */
     Vaccine();
 
+    Vaccine(string t, int l, int i, int tr, int h, int temp);
+
     /**
      \n Initialisation check
      * @return  Bool whether class object is initialised

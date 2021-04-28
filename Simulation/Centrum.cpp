@@ -7,6 +7,7 @@
  * @version 1.0
  */
 
+#include <cmath>
 #include "Centrum.h"
 #include "DesignByContract.h"
 
@@ -130,15 +131,20 @@ int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
     return ladingen;
 }
 
-int Centrum::berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal){
-    int v = min(aantal, min(vaccin->getVoorraad(), c->getCapaciteit()*2 - c->getVaccins()));
-    int ladingen = v/vaccin->getTransport();
+int Centrum::berekenTweedePrikLadingen(Vaccine* vaccin, int aantal){
+    int v = min(aantal, min(vaccin->getVoorraad(), getCapaciteit()*2 - getVaccins()));
+    int ladingen = ceil(float (v)/vaccin->getTransport());
 
     if (v > 0 && ladingen == 0)
         ladingen = 1;
 
-    while (ladingen*vaccin->getTransport() + c->getVaccins() > c->getCapaciteit()*2 && ladingen > 0)
+    while (ladingen*vaccin->getTransport() + getVaccins() > getCapaciteit()*2 && ladingen > 0)
         ladingen -= 1;
+
+    if (vaccin->getTemperatuur() <= 0) {
+        while (ladingen*vaccin->getTransport() + getVaccins() > getCapaciteit() && ladingen > 0)
+            ladingen -= 1;
+    }
 
     return ladingen;
 }
@@ -171,6 +177,10 @@ void Centrum::zetVaccinatie(int dag, Vaccine* vac, int aantal){
 
 map<pair<int, Vaccine*>, int> Centrum::getGevac(){
     return gevac;
+}
+
+void Centrum::removeVaccinatie(int dag, Vaccine *vac) {
+    gevac.erase(pair<int, Vaccine*>(dag, vac));
 }
 
 int Centrum::getEerste() const{

@@ -78,7 +78,7 @@ public:
 
     /**
      \n Set amount of vaccinated people in center
-     * @param g :   Amount of vaccinated people
+     * @param g:    Amount of vaccinated people
      */
     void setGevaccineerd(int g);
 
@@ -124,14 +124,21 @@ public:
     int getGevaccineerd() const;
 
     /**
-     \n Calculate amount af deliveries for vaccine
-     * @param vaccin
-     * @param dag
-     * @return
+     \n Calculate amount of deliveries for first injection
+     * @param vaccin:   Injection vaccine
+     * @param dag:      Day of injection
+     * @return          Amount of deliveries
      */
     int berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide);
 
-    static int berekenTweedePrikLadingen(Centrum* c, Vaccine* vaccin, int aantal);
+    /**
+     \n Calculate amount of deliveries for second injection
+     * @param c:
+     * @param vaccin
+     * @param aantal
+     * @return
+     */
+    int berekenTweedePrikLadingen(Vaccine* vaccin, int aantal);
 
     /**
      * Print een transport van een bepaald vaccin
@@ -158,6 +165,8 @@ public:
     void printTweedeVaccinatie(int vaccins,Vaccine* vaccin, ostream& onStream) const;
     // Zet de vaccins
     void zetVaccinatie(int dag, Vaccine* vac, int aantal);
+
+    void removeVaccinatie(int dag, Vaccine* vac);
     // vraag lijst eerste vaccinaties { (dag, vaccin): aantal, ... }
     map<pair<int, Vaccine*>, int> getGevac();
     // Verhoog aantal gevaccineerden
