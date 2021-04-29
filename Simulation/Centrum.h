@@ -32,6 +32,9 @@ class Centrum {
     map<Vaccine*, int> voorraad;
     map<pair<int, Vaccine*>, int> gevac;
 public:
+    bool insert(TiXmlElement *ele, ostream& errStr);
+
+    bool empty();
     //constructor
     Centrum();
     /**

@@ -25,7 +25,7 @@ class Centrum;
 class Hub {
     Hub* _initCheck;
 
-    int totaleVoorraad;
+    map<Vaccine*, int> voorraad;
     vector<Vaccine*> vaccins;
     map<string, Centrum*> centra;
 public:
@@ -52,13 +52,15 @@ public:
 
     //setters
 
-    /**
-     \n getter for supply
-     \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVoorraad")
-     \n REQUIRE(!getVaccins().empty(), "Hub doesn't contain any vaccines")
-     * @return Total amount of vaccines in hub
-     */
-    int accessorTotaleVoorraad();
+    void verlaagVoorraad(Vaccine* vac, int aantal);
+
+    void verhoogVoorraad(Vaccine* vac, int aantal);
+
+    void setVoorraad(Vaccine* vac, int aantal);
+
+    int getVoorraad(Vaccine* vac);
+
+    int getTotaleVoorraad();
 
     /**
      \n setter for centrum

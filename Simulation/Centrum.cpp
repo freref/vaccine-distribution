@@ -10,6 +10,7 @@
 #include <cmath>
 #include "Centrum.h"
 #include "DesignByContract.h"
+#include "algemeen.h"
 
 Centrum::Centrum() {
     naam = "";
@@ -33,6 +34,54 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
     eerste = 0;
     _initCheck = this;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
+}
+
+bool Centrum::empty(){
+    return( naam == "" &&
+        adres == "" &&
+        inwoners == 0 &&
+        capaciteit == 0 &&
+        gevaccineerd == 0 &&
+        eerste == 0);
+}
+
+bool Centrum::insert(TiXmlElement *el, ostream& errStr){
+    if (!el->FirstChild()) {
+        errStr << "empty element in vaccine" << endl;
+        return false;
+    }
+    string str = el->FirstChild()->ToText()->Value();
+    if(strcmp(el->Value(), "naam") == 0){
+        if (str == ""){
+            errStr << "Naam is leeg" << endl;
+            return false;
+        }
+        naam = str;
+    }
+    else if(strcmp(el->Value(), "adres") == 0){
+        if (str == ""){
+            errStr << "Adres is leeg" << endl;
+            return false;
+        }
+        adres = str;
+    }
+    else if(strcmp(el->Value(), "inwoners") == 0){
+        int val = algemeen::stoi(str);
+        if (val < 0){
+            errStr << "Inwoners is kleiner dan 0" << endl;
+            return false;
+        }
+        inwoners = val;
+    }
+    else if(strcmp(el->Value(), "capaciteit") == 0){
+        int val = algemeen::stoi(str);
+        if (val < 0){
+            errStr << "Capaciteit is kleiner dan 0" << endl;
+            return false;
+        }
+        capaciteit = val;
+    }
+    return true;
 }
 
 

@@ -51,6 +51,8 @@ public:
      */
     bool properlyInitialised() const;
 
+    bool empty();
+
     /**
      \n Add data from parsed XML element to vaccine
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when inserting data")

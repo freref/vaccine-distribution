@@ -20,7 +20,6 @@
 
 simulation::simulation() {
     _initCheck = this;
-    hub = NULL;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
@@ -35,9 +34,6 @@ bool simulation::properlyInitialised() const {
 
 void simulation::clear() {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling clear");
-    if (hub)
-        delete hub;
-    hub = NULL;
     if (!centra.empty()) {
         vector<Centrum *>::iterator cIt;
         for (cIt = centra.begin(); cIt != centra.end(); cIt++) {
@@ -45,7 +41,6 @@ void simulation::clear() {
         }
     }
     centra = vector<Centrum*>();
-    ENSURE(getHub() == NULL && getCentra().empty(), "clear postconditions failed");
 }
 
 void simulation::graphicImpression(ostream& oStream){
@@ -86,10 +81,11 @@ void simulation::graphicImpression(ostream& oStream){
 
 void simulation::exportSim(ostream &ostream) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
-    ostream << "Hub (" << hub->accessorTotaleVoorraad() << ")\n";
-    map<string, Centrum*> hCentra = hub->getCentra();
-    for (map<string, Centrum*>::iterator it = hCentra.begin(); it != hCentra.end(); it++) {
-        ostream << "\t-> " << it->second->getNaam() << " (" << it->second->getVaccins() << " vaccins" << ")\n";
+    for(int i = 0; i < hubs.size(); i++){
+        ostream << "Hub " << to_string(i+1) << " (" << hubs[i]->getTotaleVoorraad() << ")\n";
+    }
+    for (long unsigned int i = 0; i < centra.size(); i++){
+        ostream << "\t-> " << centra[i]->getNaam() << " (" << centra[i]->getVaccins() << " vaccins" << ")\n";
     }
     ostream << endl;
     for (long unsigned int i = 0; i < centra.size(); i++) {
@@ -119,16 +115,14 @@ void simulation::setCentra(const vector<Centrum *> &c) {
     ENSURE(getCentra().size() == c.size(), "setCentra postcondition failed");
 }
 
-Hub* simulation::getHub() const {
+vector<Hub*> simulation::getHubs() const {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getHub");
-    return hub;
+    return hubs;
 }
 
-void simulation::setHub(Hub *const h) {
+void simulation::setHubs(vector<Hub*> h) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub");
-    REQUIRE(h->properlyInitialised(), "hub wasn't initialised when calling setHub");
-    hub = h;
-    ENSURE(getHub() == h, "setHub postconditions failed");
+    hubs = h;
 }
 
 const vector<Centrum*> &simulation::getCentra() const {

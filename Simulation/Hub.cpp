@@ -22,7 +22,6 @@ Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
     _initCheck = this;
     vaccins = v;
     centra = c;
-    accessorTotaleVoorraad();
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
@@ -32,15 +31,31 @@ Hub::~Hub() {
     }
 }
 
-int Hub::accessorTotaleVoorraad(){
-    REQUIRE(this->properlyInitialised(), "Hub wasn't initialised when getting totale voorraad");
-    REQUIRE(!getVaccins().empty(), "Hub doesn't contain any vaccines");
+void Hub::verhoogVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] += aantal;
+}
+
+void Hub::verlaagVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] -= aantal;
+}
+
+void Hub::setVoorraad(Vaccine* vac, int aantal){
+    voorraad[vac] = aantal;
+}
+
+int Hub::getVoorraad(Vaccine* vac){
+    return voorraad[vac];
+}
+
+int Hub::getTotaleVoorraad(){
     int v = 0;
-    for(unsigned int i = 0; i < vaccins.size(); i++){
-        v += vaccins[i]->getVoorraad();
+    map<Vaccine*, int>::iterator it;
+
+    for(it = voorraad.begin(); it != voorraad.end(); it++){
+        v += it->second;
     }
-    totaleVoorraad = v;
-    return totaleVoorraad;
+
+    return v;
 }
 
 //
@@ -56,7 +71,6 @@ void Hub::setVaccins(const vector<Vaccine *> &vaccines) {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setVaccins");
     REQUIRE(!vaccines.empty(), "hub must at least contain 1 vaccine");
     this->vaccins = vaccines;
-    accessorTotaleVoorraad();
 }
 
 void Hub::addCentrum(Centrum* centrum) {
@@ -73,7 +87,6 @@ void Hub::addVaccine(Vaccine *vaccine) {
     REQUIRE(vaccine->properlyInitialised(), "vaccine wasn't initialised when adding to hub");
     unsigned int oSize = vaccins.size();
     vaccins.push_back(vaccine);
-    accessorTotaleVoorraad();
     ENSURE(getVaccins().size() == oSize + 1, "addVaccine postcondition failed");
 }
 

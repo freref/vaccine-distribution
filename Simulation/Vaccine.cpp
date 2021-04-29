@@ -35,6 +35,16 @@ Vaccine::Vaccine(string t, int l, int i, int tr, int h, int temp) {
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
 }
 
+bool Vaccine::empty(){
+    return( type == "" &&
+            levering == 0 &&
+            interval == 0 &&
+            transport == 0 &&
+            voorraad == 0 &&
+            hernieuwing == 0 &&
+            temperatuur == 0);
+}
+
 bool Vaccine::properlyInitialised() const {
     return _initCheck == this;
 }
@@ -48,32 +58,42 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     string str = el->FirstChild()->ToText()->Value();
     if(strcmp(el->Value(), "type") == 0){
         // string val = (el->FirstChild()->ToText()->Value());
-        if (str == "")
+        if (str == ""){
+            errStr << "Type is leeg";
             return false;
+        }
         type = str;
     }
     else if(strcmp(el->Value(), "levering") == 0){
         int val = algemeen::stoi(str); // (algemeen::stoi(el->FirstChild()->ToText()->Value()));
-        if (val < 0)
+        if (val < 0){
+            errStr << "Levering kleiner dan 0" << endl;
             return false;
+        }
         levering = val;
     }
     else if(strcmp(el->Value(), "interval") == 0){
         int val = algemeen::stoi(str);
-        if (val < 0)
+        if (val < 0){
+            errStr << "Interval is kleiner dan 0" << endl;
             return false;
+        }
         interval = val;
     }
     else if(strcmp(el->Value(), "transport") == 0){
         int val = algemeen::stoi(str);
-        if (val < 0)
+        if (val < 0){
+            errStr << "Transport kleiner dan 0" << endl;
             return false;
+        }
         transport = val;
     }
     else if(strcmp(el->Value(), "hernieuwing") == 0){
         int val = algemeen::stoi(str);
-        if (val < 0)
+        if (val < 0){
+            errStr << "Hernieuwing kleiner dan 0" << endl;
             return false;
+        }
         hernieuwing = val;
     }
     else if(strcmp(el->Value(), "temperatuur") == 0){

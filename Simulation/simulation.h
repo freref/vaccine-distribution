@@ -21,7 +21,7 @@ class Centrum;
 
 
 class simulation {
-    Hub* hub;
+    vector<Hub*> hubs;
     vector<Centrum*> centra;
     simulation* _initCheck;
 public:
@@ -68,7 +68,7 @@ public:
      \n ENSURE(getHub() == h, "setHub postconditions failed")
      *  @param h:   The hub to be added
      */
-    void setHub(Hub* const h);
+    void setHubs(vector<Hub*> h);
     /**
      \n Add a centrum to the centra in the simulation
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling addCentrum")
@@ -91,7 +91,7 @@ public:
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getHub")
      *  @return The hub
      */
-    Hub* getHub() const;
+    vector<Hub*> getHubs() const;
     /**
      \n Get the centra in the simulation
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getCentra")

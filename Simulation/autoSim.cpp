@@ -165,18 +165,20 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
 
-    Hub* hub = s.getHub();
-    map<string, Centrum*> centraHub = hub->getCentra();
+    vector<Hub*> hubs = s.getHubs();
     vector<Centrum*> centra = s.getCentra();
-    vector<Vaccine*> vaccins = hub->getVaccins();
 
     for(int j = 0; j < n; j++){
-        cout << endl << "Dag " << j+1 << ":" << endl;
-        simulateHubDelivery(&vaccins, j);
-        simulateTweedePrikTransport(&centraHub, &vaccins, outS, j);
-        simulateEerstePrikTransport(&centraHub, &vaccins, outS, j);
-        if (simulateVaccinatieProcess(&centra, outS, j)) {
-            break;
+        outS << endl << "Dag " << j+1 << ":" << endl;
+        for (long unsigned int i = 0; i < hubs.size(); i++){
+            map<string, Centrum*> centraHub = hubs[i]->getCentra();
+            vector<Vaccine*> vaccins = hubs[i]->getVaccins();
+
+            simulateHubDelivery(&vaccins, j);
+            simulateTweedePrikTransport(&centraHub, &vaccins, outS, j);
+            simulateEerstePrikTransport(&centraHub, &vaccins, outS, j);
         }
+        if (simulateVaccinatieProcess(&centra, outS, j))
+            break;
     }
 }
