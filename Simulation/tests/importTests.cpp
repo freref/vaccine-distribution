@@ -91,7 +91,7 @@ TEST_F(importTests, badFiles) {
 
 TEST_F(importTests, partialFiles) {
     string baseIn = "partialData";
-    for (int i = 8; i <= 8; ++i) {
+    for (int i = 1; i <= 8; ++i) {
         // cout << i << endl;
 
         ofstream outFile;
@@ -113,7 +113,7 @@ TEST_F(importTests, partialFiles) {
 TEST_F(importTests, badInt) {
     string baseIn = "throw";
     for (int i = 1; i <= 3; ++i) {
-        cout << i << endl;
+        // cout << i << endl;
 
         ostringstream strStream;
         ostringstream convert;

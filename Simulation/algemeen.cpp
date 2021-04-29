@@ -1,5 +1,6 @@
 //
-// Created by sande on 25/04/2021.
+// Created by sander on 25/04/2021.
+// Some general code
 //
 
 #include <string>
