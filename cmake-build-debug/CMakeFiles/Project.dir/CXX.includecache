@@ -15,6 +15,8 @@ map
 -
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
+Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
 assert.h
@@ -38,28 +40,24 @@ iostream
 ../XmlParser/tinyxml.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/XmlParser/tinyxml.h
 
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.cpp
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.cpp
 iostream
 -
-autoSim.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
-Hub.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
-DesignByContract.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
-
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/autoSim.h
-iostream
+fstream
 -
 simulation.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
 Centrum.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Centrum.h
-Vaccine.h
-/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h
+Hub.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Hub.h
+DesignByContract.h
+/Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/DesignByContract.h
 
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/simulation.h
 vector
+-
+map
 -
 Vaccine.h
 /Users/frederic/Documents/Informatica/Sem2/PSE/Project/Simulation/Vaccine.h

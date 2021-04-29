@@ -14,6 +14,7 @@
 #include <vector>
 #include <map>
 #include "Vaccine.h"
+#include "Hub.h"
 
 using namespace std;
 
@@ -150,7 +151,7 @@ public:
      * @param dag:      Day of injection
      * @return          Amount of shipments
      */
-    int berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide);
+    int berekenEerstePrikLadingen(Hub* hub, Vaccine* vaccin, int dag, int devide);
     /**
      \n Calculate amount of shipments for second injection
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenTweedePrikLadingen")
@@ -161,7 +162,7 @@ public:
      * @param aantal:   Necessary amount
      * @return          Amount of shipments
      */
-    int berekenTweedePrikLadingen(Vaccine* vaccin, int aantal);
+    int berekenTweedePrikLadingen(Hub* hub, Vaccine* vaccin, int aantal);
 
     /**
      \n Print a transport

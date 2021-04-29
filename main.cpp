@@ -29,6 +29,10 @@ int main() {
         cout << endl;
 
         s.exportSim(cout);
+
+        cout << endl;
+
+        s.stats(cout);
     }
 
     return 0;

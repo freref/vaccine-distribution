@@ -11,6 +11,7 @@
 #define PROJECTPSE_SIMULATION_H
 
 #include <vector>
+#include <map>
 #include "Vaccine.h"
 
 using namespace std;
@@ -21,6 +22,7 @@ class Centrum;
 
 
 class simulation {
+    map<string, int> deliveries_by_type;
     vector<Hub*> hubs;
     vector<Centrum*> centra;
     simulation* _initCheck;
@@ -98,6 +100,10 @@ public:
      *  @return The centra
      */
     const vector<Centrum*> &getCentra() const;
+
+    void stats(ostream& oStream);
+
+    void addDelivery(string type, int aantal);
 };
 
 

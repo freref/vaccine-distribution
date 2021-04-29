@@ -17,7 +17,6 @@ Vaccine::Vaccine() {
     levering = 0;
     interval = 0;
     transport = 0;
-    voorraad = 0;
     hernieuwing = 0;
     temperatuur = 0;
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
@@ -29,7 +28,6 @@ Vaccine::Vaccine(string t, int l, int i, int tr, int h, int temp) {
     levering = l;
     interval = i;
     transport = tr;
-    voorraad = l;
     hernieuwing = h;
     temperatuur = temp;
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
@@ -40,7 +38,6 @@ bool Vaccine::empty(){
             levering == 0 &&
             interval == 0 &&
             transport == 0 &&
-            voorraad == 0 &&
             hernieuwing == 0 &&
             temperatuur == 0);
 }
@@ -104,12 +101,6 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     return true;
 }
 
-void Vaccine::verlaagVaccins(int vaccins){
-    REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when lowering vaccines");
-    int oVoorraad = voorraad;
-    setVoorraad(getVoorraad()-vaccins);
-    ENSURE(oVoorraad == getVoorraad() + vaccins, "Vaccine supply didn't lower correctly");
-}
 
 //
 // Setters
@@ -142,12 +133,6 @@ void Vaccine::setTransport(int t) {
     ENSURE(getTransport() == t, "setTransport postcondition failed");
 }
 
-void Vaccine::setVoorraad(int v){
-    REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting stock");
-    REQUIRE(v >= 0, "Vaccine can't have negative stock");
-    voorraad = v;
-    ENSURE(getVoorraad() == v, "setVoorraad postcondition failed");
-}
 
 void Vaccine::setHernieuwing(int h) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting hernieuwing");
@@ -184,11 +169,6 @@ int Vaccine::getInterval() const {
 int Vaccine::getTransport() const {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when getting transport");
     return transport;
-}
-
-int Vaccine::getVoorraad() const {
-    REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when getting stock");
-    return voorraad;
 }
 
 int Vaccine::getHernieuwing() const {

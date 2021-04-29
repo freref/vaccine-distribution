@@ -14,19 +14,19 @@
 
 using namespace std;
 
-void autoSim::simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS){
+void autoSim::simulateTransport(Hub* hub, Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS){
     REQUIRE(c->properlyInitialised(), "center wasn't initialised when simulating transport");
     REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when simulating transport");
     REQUIRE(vaccins >= 0, "can't simulate transport of negative amount of vaccines");
 
-    vaccin->verlaagVaccins(vaccins);
+    hub->verlaagVoorraad(vaccin, vaccins);
     c->verhoogVoorraad(vaccin, vaccins);
 
     if (vaccins > 0)
         c->printTransport(vaccins, vaccin, outS);
 }
 
-void autoSim::simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
+void autoSim::simulateEerstePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
                                           ostream& outS, int dag) {
     REQUIRE(centraHub->size() > unsigned (0), "no centra when simulationg first injection transport");
     REQUIRE(vaccins->size() > unsigned (0), "no vaccines when simulationd first injection transport");
@@ -34,21 +34,21 @@ void autoSim::simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vect
 
     for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins->size(); vaccinIndex++){
         Vaccine* vaccin = vaccins->at(vaccinIndex);
-        int devide = vaccin->getVoorraad() / centraHub->size();
+        int devide = hub->getVoorraad(vaccin) / centraHub->size();
 
         for (map<string, Centrum*>::iterator it = centraHub->begin(); it != centraHub->end(); it++) {
             //stop met 'random' vaccins te verdelen nadat iedereen een eerste prik gekregen heeft
             if (it->second->getEerste() < it->second->getInwoners()){
-                int ladingen = it->second->berekenEerstePrikLadingen(vaccin, dag, devide);
+                int ladingen = it->second->berekenEerstePrikLadingen(hub, vaccin, dag, devide);
                 int v = ladingen * vaccin->getTransport();
-                simulateTransport(it->second, vaccin, v, outS);
+                simulateTransport(hub, it->second, vaccin, v, outS);
             }
 //            devide -= 1;
         }
     }
 }
 
-void autoSim::simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
+void autoSim::simulateTweedePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
                                           ostream& outS, int dag){
     REQUIRE(centraHub->size() > unsigned (0), "no centra when simulationg second injection transport");
     REQUIRE(vaccins->size() > unsigned (0), "no vaccines when simulationd second injection transport");
@@ -60,10 +60,10 @@ void autoSim::simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vect
             int aantal = it->second->getGevac()[pair<int, Vaccine*>(dag - vaccin->getHernieuwing(), vaccin)];
 
             if(aantal > 0){
-                int ladingen = it->second->berekenTweedePrikLadingen(vaccin, aantal);
+                int ladingen = it->second->berekenTweedePrikLadingen(hub, vaccin, aantal);
                 int v = ladingen*vaccin->getTransport();
 
-                simulateTransport(it->second, vaccin, v, outS);
+                simulateTransport(hub, it->second, vaccin, v, outS);
             }
         }
     }
@@ -149,14 +149,15 @@ bool autoSim::simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS,
     return check;
 }
 
-void autoSim::simulateHubDelivery(vector<Vaccine*>* vaccins, int dag){
+void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine*>* vaccins, int dag){
     REQUIRE(vaccins->size() > unsigned (0), "No vaccines in hub on delivery simulation");
     REQUIRE(dag >= 0, "can't deliver to hub on negative day");
 
     for(unsigned int vaccinIndex = 0; vaccinIndex < vaccins->size(); vaccinIndex++){
         Vaccine* vaccin = vaccins->at(vaccinIndex);
         if(dag % (vaccin->getInterval() + 1) == 0){
-            vaccin->setVoorraad(vaccin->getVoorraad()+vaccin->getLevering());
+            s.addDelivery(vaccin->getType(), vaccin->getLevering());
+            hub->setVoorraad(vaccin, hub->getVoorraad(vaccin) + vaccin->getLevering());
         }
     }
 }
@@ -174,9 +175,9 @@ void autoSim::simulate(simulation& s, int n, ostream& outS){
             map<string, Centrum*> centraHub = hubs[i]->getCentra();
             vector<Vaccine*> vaccins = hubs[i]->getVaccins();
 
-            simulateHubDelivery(&vaccins, j);
-            simulateTweedePrikTransport(&centraHub, &vaccins, outS, j);
-            simulateEerstePrikTransport(&centraHub, &vaccins, outS, j);
+            simulateHubDelivery(hubs[i], s, &vaccins, j);
+            simulateTweedePrikTransport(hubs[i], &centraHub, &vaccins, outS, j);
+            simulateEerstePrikTransport(hubs[i], &centraHub, &vaccins, outS, j);
         }
         if (simulateVaccinatieProcess(&centra, outS, j))
             break;

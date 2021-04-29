@@ -1,4 +1,3 @@
-
 /**
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
  * \n Definitions for the simulationImporter class
@@ -150,6 +149,5 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
 
     loadSim(&sim, &centraMap, &hubs);
     doc.Clear();
-
     return 0;
 }

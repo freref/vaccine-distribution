@@ -23,7 +23,6 @@ class Vaccine {
     int levering; // Aantal geleverde vaccins per interval
     int interval;
     int transport; // Aantal vaccins per transport
-    int voorraad;
     int hernieuwing; // Tijd tussen hernieuwing
     int temperatuur;
 
@@ -60,13 +59,6 @@ public:
      */
     bool insert(TiXmlElement* el, ostream& errStr);
 
-    /**
-     \n Lower the supply by the given amount
-     \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when lowering vaccines")
-     \n ENSURE(oVoorraad = getVoorraad() + vaccins, "Vaccine supply didn't lower correctly")
-     * @param vaccins:  Amount to lower supply by
-     */
-    void verlaagVaccins(int vaccins);
 
     //
     // Setters
@@ -103,14 +95,6 @@ public:
      * @param t:    Amount per transport
      */
     void setTransport(int t);
-    /**
-     \n Set current stock amount
-     \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting stock")
-     \n REQUIRE(v >= 0, "Vaccine can't have negative stock")
-     \n ENSURE(getVoorraad() == v, "setVoorraad postcondition failed")
-     * @param v:    Amount in stock
-     */
-    void setVoorraad(int v);
     /**
      \n Set time before second injection
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting hernieuwing")
@@ -155,12 +139,6 @@ public:
      * @return  Amount per transport
      */
     int getTransport() const;
-    /**
-     \n Get current stock
-     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when getting stock");
-     * @return  Current stock
-     */
-    int getVoorraad() const;
     /**
      \n Get time before renewal of injection
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when getting renewal");

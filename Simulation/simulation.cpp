@@ -129,3 +129,22 @@ const vector<Centrum*> &simulation::getCentra() const {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getCentra");
     return centra;
 }
+
+void simulation::stats(ostream& oStream){
+    int gevac = 0;
+    map<string, int>::iterator it;
+
+    for (int i = 0; i < centra.size(); i++){
+        gevac += centra[i]->getGevaccineerd();
+    }
+
+    oStream << "Er zijn in het totaal " << gevac << " gevaccineerde inwoners" << endl;
+
+    for (it = deliveries_by_type.begin(); it != deliveries_by_type.end(); it++){
+        oStream << "Er zijn " << it->second << " " << it->first << " vaccins geleverd" << endl;
+    }
+}
+
+void simulation::addDelivery(string type, int aantal){
+    deliveries_by_type[type] += aantal;
+}

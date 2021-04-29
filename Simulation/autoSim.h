@@ -27,7 +27,7 @@ public:
      * @param vaccins:  Amount of vaccines in transport
      * @param outS:     Output stream
      */
-    static void simulateTransport(Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS);
+    static void simulateTransport(Hub* hub, Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS);
 
     /**
      \n Simulates transport for first injection vaccines
@@ -39,7 +39,7 @@ public:
      * @param outS:         Output stream
      * @param dag:          Day of transport
      */
-    static void simulateEerstePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
+    static void simulateEerstePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
                                             ostream& outS, int dag);
     /**
      \n Simulates transport for second injection vaccines
@@ -51,7 +51,7 @@ public:
      * @param outS:         Output stream
      * @param dag:          Day of transport
      */
-    static void simulateTweedePrikTransport(map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
+    static void simulateTweedePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
                                             ostream& outS, int dag);
 
     /**
@@ -110,7 +110,7 @@ public:
      * @param vaccins:  All vaccines in the hub
      * @param dag:      Day of delivery
      */
-    static void simulateHubDelivery(vector<Vaccine*>* vaccins, int dag);
+    static void simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine*>* vaccins, int dag);
 
     /**
      * \n Loop to continously simulate transport and injections

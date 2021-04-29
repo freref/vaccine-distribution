@@ -163,7 +163,7 @@ int Centrum::getGevaccineerd() const {
     return amount;
 }
 
-int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
+int Centrum::berekenEerstePrikLadingen(Hub* hub, Vaccine* vaccin, int dag, int devide) {
     REQUIRE(this->properlyInitialised(),
             "simulation wasn't initialised when calling berekenEerstePrikLadingen");
     REQUIRE(vaccin->properlyInitialised(),
@@ -173,7 +173,7 @@ int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
     int transport = vaccin->getTransport(); // Vaccins in transport
     int vaccins = getVaccins(); // Huidig aantal aanwezig vaccins
     int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1))); // overig dagen tot nieuwe voorraad vaccins in hub
-    int v = vaccin->getVoorraad(); // Vaccins van type in hub
+    int v = hub->getVoorraad(vaccin); // Vaccins van type in hub
     int accounted = /*v/*/ devide/dev; // Hoeveel mogelijk uit te delen om zo veel mogelijk te stretchen
     int ladingen = 0; // Aantal ladingen
 
@@ -198,14 +198,14 @@ int Centrum::berekenEerstePrikLadingen(Vaccine* vaccin, int dag, int devide) {
     return ladingen;
 }
 
-int Centrum::berekenTweedePrikLadingen(Vaccine* vaccin, int aantal){
+int Centrum::berekenTweedePrikLadingen(Hub* hub, Vaccine* vaccin, int aantal){
     REQUIRE(this->properlyInitialised(),
             "simulation wasn't initialised when calling berekenTweedePrikLadingen");
     REQUIRE(vaccin->properlyInitialised(),
             "vaccine wasn't initialised when calling berekenTweedePrikLadingen");
     REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines");
 
-    int v = min(aantal, min(vaccin->getVoorraad(), getCapaciteit()*2 - getVaccins()));
+    int v = min(aantal, min(hub->getVoorraad(vaccin), getCapaciteit()*2 - getVaccins()));
     int ladingen = ceil(float (v)/vaccin->getTransport());
 
     if (v > 0 && ladingen == 0)
