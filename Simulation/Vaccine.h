@@ -33,6 +33,17 @@ public:
      \n ENSURE(this->properlyInitialised(), "Constructor must end properly initialised")
      */
     Vaccine();
+    /**
+     \n contructor
+     \n ENSURE(this->properlyInitialised(), "Constructor must end properly initialised")
+     * @param t:    type
+     * @param l:    delivery
+     * @param i:    interval
+     * @param tr:   transport
+     * @param h:    renewal
+     * @param temp: temperature
+     */
+    Vaccine(string t, int l, int i, int tr, int h, int temp);
 
     /**
      \n Initialisation check

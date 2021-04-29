@@ -26,6 +26,12 @@ Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
 }
 
+Hub::~Hub() {
+    for (unsigned int i = 0; i < vaccins.size(); i++) {
+        delete vaccins[i];
+    }
+}
+
 int Hub::accessorTotaleVoorraad(){
     REQUIRE(this->properlyInitialised(), "Hub wasn't initialised when getting totale voorraad");
     REQUIRE(!getVaccins().empty(), "Hub doesn't contain any vaccines");
