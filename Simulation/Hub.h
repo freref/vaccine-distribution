@@ -40,6 +40,11 @@ public:
      */
     Hub(vector<Vaccine*> vaccins, map<string, Centrum*> c);
     /**
+     * Destructor
+     */
+    ~Hub();
+
+    /**
      * \n checks of Hub is propperly initialized
      * @return
      */
