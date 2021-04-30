@@ -131,14 +131,17 @@ const vector<Centrum*> &simulation::getCentra() const {
 }
 
 void simulation::stats(ostream& oStream){
-    int gevac = 0;
+    int eerste = 0;
+    int tweede = 0;
     map<string, int>::iterator it;
 
     for (int i = 0; i < centra.size(); i++){
-        gevac += centra[i]->getGevaccineerd();
+        eerste += centra[i]->getEerste();
+        tweede += centra[i]->getGevaccineerd();
     }
 
-    oStream << "Er zijn in het totaal " << gevac << " gevaccineerde inwoners" << endl;
+    oStream << "Er zijn in het totaal " << eerste-tweede << " inwoners die nog maar één vaccinatie gekregen hebben" << endl;
+    oStream << "Er zijn in het totaal " << tweede << " inwoners die twee vaccinaties gekregen hebben" << endl;
 
     for (it = deliveries_by_type.begin(); it != deliveries_by_type.end(); it++){
         oStream << "Er zijn " << it->second << " " << it->first << " vaccins geleverd" << endl;
