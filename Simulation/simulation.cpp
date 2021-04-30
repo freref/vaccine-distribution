@@ -81,13 +81,18 @@ void simulation::graphicImpression(ostream& oStream){
 
 void simulation::exportSim(ostream &ostream) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
+
     for(unsigned int i = 0; i < hubs.size(); i++){
         ostream << "Hub " << i+1 << " (" << hubs[i]->getTotaleVoorraad() << ")\n";
+        map<string, Centrum*> cMap = hubs[i]->getCentra();
+        map<string, Centrum*>::iterator cIt;
+        for (cIt = cMap.begin(); cIt != cMap.end(); ++cIt) {
+            ostream << "\t-> " << cIt->second->getNaam() << " (" << cIt->second->getVaccins() << " vaccins)\n";
+        }
     }
-    for (long unsigned int i = 0; i < centra.size(); i++){
-        ostream << "\t-> " << centra[i]->getNaam() << " (" << centra[i]->getVaccins() << " vaccins" << ")\n";
-    }
+
     ostream << endl;
+
     for (long unsigned int i = 0; i < centra.size(); i++) {
         Centrum* c = centra[i];
         ostream << c->getNaam() << ": " << c->getGevaccineerd() << " gevaccineerd, nog ";
