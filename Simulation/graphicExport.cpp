@@ -4,6 +4,7 @@
 
 #include "graphicExport.h"
 #include <sstream>
+#include <cmath>
 
 vector<double> graphicExport::getCenterColor(Centrum* c) {
     int maxCap = c->getCapaciteit() * 2;
@@ -60,8 +61,14 @@ void graphicExport::createIni(map<Centrum *, int> &transports, int day, string& 
     oFile.close();
 }
 
+inline double calculateCenterOffset(int cNum, int cOffset) {
+    return (pow(-1, cNum) * cOffset/2.0) + (pow(-1, cNum) * floor(cNum/2.0) * cOffset);
+}
+
 void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, ofstream &oFile) {
     vector<double> color = getCenterColor(c); // Get color of center
+
+    double xOffset = calculateCenterOffset(cNum, cOffset);
 
     ostringstream convert;
     convert << figNum; // Get figure number in file
@@ -75,7 +82,7 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
     oFile << "center = (";
     // Calculate offset
     convert.str("");
-    convert << cNum * cOffset;
+    convert << xOffset;
     oFile << convert.str() << ", 0, 0)" << endl;
     // Add color of center
     oFile << "ambientReflection = (";
@@ -113,7 +120,7 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
         oFile << "center = (";
         // X offset
         convert.str("");
-        convert << centerNum * cOffset;
+        convert << calculateCenterOffset(centerNum, cOffset);
         oFile << convert.str() << ", ";
         // Y offset
         convert.str("");
@@ -128,8 +135,9 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
 }
 
 void graphicExport::iniGeneral(int figAmount, int cAmount, int maxTrans, int cOffset, ofstream &oFile) {
-    double xOffset = ((cAmount - 1) * cOffset)/2.0;
+//    double xOffset = ((cAmount - 1) * cOffset)/2.0;
     int yOffset = maxTrans * 10;
+    double xOffset = 0;
 
     ostringstream conv;
 
