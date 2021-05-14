@@ -22,7 +22,8 @@ set(SOURCE_FILES
         Simulation/simulationImporter.cpp
         Simulation/autoSim.cpp
         Simulation/Vaccine.cpp Simulation/Vaccine.h
-        Simulation/algemeen.cpp)
+        Simulation/algemeen.cpp
+        Simulation/graphicExport.cpp Simulation/graphicExport.h)
 
 set(DEBUG_FILES
         Simulation/tests/autoSimTests.cpp

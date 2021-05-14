@@ -39,8 +39,8 @@ public:
      * @param outS:         Output stream
      * @param dag:          Day of transport
      */
-    static void simulateEerstePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
-                                            ostream& outS, int dag);
+    static void simulateEerstePrikTransport(Hub *hub, map<string, Centrum *> &centraHub, vector<Vaccine *> &vaccins,
+                                            map<Centrum *, int> &transports, ostream &outS, int dag);
     /**
      \n Simulates transport for second injection vaccines
      \n REQUIRE(centraHub->size() > unsigned (0), "no centra when simulationg second injection transport")
@@ -51,8 +51,8 @@ public:
      * @param outS:         Output stream
      * @param dag:          Day of transport
      */
-    static void simulateTweedePrikTransport(Hub* hub, map<string, Centrum*>* centraHub, vector<Vaccine*>* vaccins,
-                                            ostream& outS, int dag);
+    static void simulateTweedePrikTransport(Hub *hub, map<string, Centrum *> &centraHub, vector<Vaccine *> &vaccins,
+                                            map<Centrum *, int> &transports, ostream &outS, int dag);
 
     /**
      \n Simulates a first injection with a vaccine
@@ -101,7 +101,7 @@ public:
      * @param dag:      Day of vaccinations
      * @return      bool whether everyone vaccinated in all centra
      */
-    static bool simulateVaccinatieProcess(vector<Centrum*>* centra, ostream& outS, int dag);
+    static bool simulateVaccinatieProcess(vector<Centrum *> &centra, ostream& outS, int dag);
 
     /**
      \n Simulates delivery to the hub
@@ -110,7 +110,7 @@ public:
      * @param vaccins:  All vaccines in the hub
      * @param dag:      Day of delivery
      */
-    static void simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine*>* vaccins, int dag);
+    static void simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &vaccins, int dag);
 
     /**
      * \n Loop to continously simulate transport and injections
@@ -120,7 +120,7 @@ public:
      * @param n:    Days to simulate
      * @param outS: Output stream
      */
-    static void simulate(simulation& s, int n, ostream& outS);
+    static void simulate(simulation &s, int n, string graphicPath, ostream &outS);
 };
 
 
