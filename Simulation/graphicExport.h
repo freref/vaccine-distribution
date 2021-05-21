@@ -21,7 +21,7 @@ public:
      * @param c:    Center for which to calculate color
      * @return      {red, green, blue} as doubles between 0 and 1
      */
-    static vector<double> getCenterColor(Centrum* c);
+    static vector<double> calculateGradient(int maxVal, int curVal);
 
     /**
      \n Creates the ini file for a given day in the simulation
@@ -29,7 +29,10 @@ public:
      * @param day:          Day in the simulation
      * @param path:         Path to directory for ini files
      */
-    static void createIni(map<Centrum *, int> &transports, int day, string& path);
+    static void createIni(const Hub *hub, unsigned int hubNum, map<Centrum *, int> &transports, int day,
+                          const string &path);
+
+    static void iniAddHub(const Hub *h, int figNum, ofstream &oFile);
 
     /**
      \n Adds a center to the ini file

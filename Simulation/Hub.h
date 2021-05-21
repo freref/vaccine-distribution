@@ -106,7 +106,7 @@ public:
      \n REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVaccins")
      * @return
      */
-    vector<Vaccine*> getVaccins();
+    vector<Vaccine*> getVaccins() const;
 };
 
 

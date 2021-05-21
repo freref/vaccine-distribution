@@ -208,10 +208,10 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, ostream &outS) 
     for(int j = 0; j < n; j++){
         outS << endl << "Dag " << j+1 << ":" << endl;
 
-        map<Centrum*, int> transports;
-
         // Loop over hubs
-        for (long unsigned int i = 0; i < hubs.size(); i++){
+        for (unsigned int i = 0; i < hubs.size(); i++){
+            map<Centrum*, int> transports;
+
             map<string, Centrum*> centraHub = hubs[i]->getCentra();
             vector<Vaccine*> vaccins = hubs[i]->getVaccins();
 
@@ -221,9 +221,9 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, ostream &outS) 
             // Delivery for second injections gets priority
             simulateTweedePrikTransport(hubs[i], centraHub, vaccins, transports, outS, j);
             simulateEerstePrikTransport(hubs[i], centraHub, vaccins, transports, outS, j);
-        }
 
-        graphicExport::createIni(transports, j+1, graphicPath);
+            graphicExport::createIni(hubs[i], i, transports, j + 1, graphicPath);
+        }
 
         // Simulate possible vaccinations
         if (simulateVaccinatieProcess(centra, outS, j))

@@ -100,7 +100,7 @@ const map<string, Centrum *>& Hub::getCentra() const {
     return centra;
 }
 
-vector<Vaccine*> Hub::getVaccins(){
+vector<Vaccine*> Hub::getVaccins() const {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling getVaccins");
     return vaccins;
 }
