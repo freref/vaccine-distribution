@@ -32,7 +32,11 @@ public:
     static void createIni(const Hub *hub, unsigned int hubNum, map<Centrum *, int> &transports, int day,
                           const string &path);
 
+    static void iniAddColorSegment(string colorType, double red, double green, double blue, ofstream& oFile);
+
     static void iniAddHub(const Hub *h, int figNum, ofstream &oFile);
+
+    static int iniAddHubStock(const Hub *h, int figNum, int stockDivide, int sOffset, ofstream& oFile);
 
     /**
      \n Adds a center to the ini file

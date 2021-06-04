@@ -60,7 +60,7 @@ public:
 
     int getVoorraad(Vaccine* vac);
 
-    int getTotaleVoorraad();
+    int getTotaleVoorraad() const;
 
     /**
      \n setter for centrum

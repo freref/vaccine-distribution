@@ -47,9 +47,9 @@ int Hub::getVoorraad(Vaccine* vac){
     return voorraad[vac];
 }
 
-int Hub::getTotaleVoorraad(){
+int Hub::getTotaleVoorraad() const {
     int v = 0;
-    map<Vaccine*, int>::iterator it;
+    map<Vaccine*, int>::const_iterator it = voorraad.begin();
 
     for(it = voorraad.begin(); it != voorraad.end(); it++){
         v += it->second;

@@ -13,18 +13,18 @@ inline double calculateCenterOffset(int cNum, int cOffset) {
 vector<double> graphicExport::calculateGradient(int maxVal, int curVal) {
     // Calculate capacity load
     double percent = double (curVal) / maxVal;
-    double redRef = (percent * 2);
-    double greenRef = 1;
-    if (redRef > 1)
+    double green = (percent * 2);
+    double red = 1;
+    if (green > 1)
         // Red caps at 1 when center halfway stocked
-        redRef = 1;
-    if (redRef == 1)
+        green = 1;
+    if (green == 1)
         // Green starts to decrease once over halfway mark
-        greenRef -= (percent - 0.50) * 2.0;
+        red -= (percent - 0.50) * 2.0;
 
     vector<double> color;
-    color.push_back(redRef);
-    color.push_back( greenRef);
+    color.push_back(red);
+    color.push_back(green);
     color.push_back(0);
 
     return color;
@@ -52,6 +52,7 @@ void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *
     // Hub toevoegen aan ini
     iniAddHub(hub, figAmount, oFile);
     figAmount += 1;
+    figAmount = iniAddHubStock(hub, figAmount, 10000, 2, oFile);
 
     // Centra en transporten toevoegen aan ini
     map<string, Centrum*> centra = hub->getCentra();
@@ -75,6 +76,24 @@ void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *
     oFile.close();
 }
 
+void graphicExport::iniAddColorSegment(string colorType, double red, double green, double blue, ofstream& oFile) {
+    ostringstream conv;
+
+    oFile << colorType << " = (";
+    // Rood
+    conv.str("");
+    conv << red;
+    oFile << conv.str() << ", ";
+    // Groen
+    conv.str("");
+    conv << green;
+    oFile << conv.str() << ", ";
+    // Blauw
+    conv.str("");
+    conv << blue;
+    oFile << conv.str() << ")" << endl;
+}
+
 void graphicExport::iniAddHub(const Hub *h, int figNum, ofstream &oFile) {
     ostringstream conv;
 
@@ -96,14 +115,48 @@ void graphicExport::iniAddHub(const Hub *h, int figNum, ofstream &oFile) {
              "reflectionCoefficient = 10\n\n";
 }
 
-void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, ofstream &oFile) {
-    vector<double> color = calculateGradient(c->getInwoners(), c->getGevaccineerd()); // Get color of center
+int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int sOffset, ofstream &oFile) {
+    ostringstream conv;
 
+    int stockAmount = ceil(float (h->getTotaleVoorraad()) / stockDivide);
+
+    for (int i = 0; i < stockAmount; ++i) {
+        conv.str("");
+        conv << figNum;
+
+        oFile << "[Figure" << conv.str() << "]\n";
+        oFile << "type = \"Cube\"\n"
+                 "scale = 0.5\n"
+                 "rotateX = 0\n"
+                 "rotateY = 0\n"
+                 "rotateZ = 0\n"
+                 "ambientReflection = (0.2, 0.2, 0.2)\n"
+                 "diffuseReflection = (0.1, 0.1, 0.7)\n"
+                 "specularReflection = (0.5, 0.5, 0.5)\n"
+                 "reflectionCoefficient = 10\n"
+                 "center = (";
+        conv.str("");
+        conv << calculateCenterOffset(i, sOffset);
+        oFile << conv.str() << ", -4, 1)\n\n";
+
+        figNum += 1;
+    }
+
+    return figNum;
+}
+
+void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, ofstream &oFile) {
     double xOffset = calculateCenterOffset(cNum, cOffset);
+
+    // Get color gradient for center based on percentage vaccinated
+    vector<double> color = calculateGradient(c->getInwoners(), c->getGevaccineerd());
+    double red = color[0];
+    double green = color[1];
+    double blue = color[2];
 
     ostringstream convert;
     convert << figNum; // Get figure number in file
-
+    // Add a figure to represent the center
     oFile << "[Figure" << convert.str() << "]\n";
     oFile << "type = \"Cube\"\n"
              "scale = 1\n"
@@ -111,46 +164,26 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
              "rotateY = 0\n"
              "rotateZ = 0\n";
     oFile << "center = (";
-    // Calculate offset
+    // Set center depending on center offset
     convert.str("");
     convert << xOffset;
     oFile << convert.str() << ", 0, 0)" << endl;
     // Add color of center
-    oFile << "ambientReflection = (";
-    // Rood
-    convert.str("");
-    convert << color[0] / 4.0;
-    oFile << convert.str() << ", ";
-    // Groen
-    convert.str("");
-    convert << color[1] / 4.0;
-    oFile << convert.str() << ", ";
-    // Blauw
-    convert.str("");
-    convert << color[2] / 4.0;
-    oFile << convert.str() << ")" << endl;
-    // Other light parameters
-    oFile << "diffuseReflection = (";
-    // Rood
-    convert.str("");
-    convert << color[0];
-    oFile << convert.str() << ", ";
-    // Groen
-    convert.str("");
-    convert << color[1];
-    oFile << convert.str() << ", ";
-    // Blauw
-    convert.str("");
-    convert << color[2];
-    oFile << convert.str() << ")" << endl;
+    iniAddColorSegment("ambientReflection", red/4, green/4, blue/4, oFile);
+    iniAddColorSegment("diffuseReflection", red, green, blue, oFile);
     oFile << "specularReflection = (0.5, 0.5, 0.5)" << endl;
     oFile << "reflectionCoefficient = 10" << endl;
     oFile << endl;
 
+    // Get color gradient depending on remaining storage capacity
     color = calculateGradient(c->getCapaciteit() * 2, c->getVaccins());
+    red = color[0];
+    green = color[1];
+    blue = color[2];
 
     convert.str("");
     convert << figNum + 1;
+    // Add roof to center to show storage capacity
     oFile << "[Figure" << convert.str() << "]\n";
     oFile << "type = \"Sphere\"\n"
              "n = 3\n"
@@ -164,33 +197,8 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
     convert << xOffset;
     oFile << convert.str() << ", 0, 1)" << endl;
     // Add color of center
-    oFile << "ambientReflection = (";
-    // Rood
-    convert.str("");
-    convert << color[0] / 4.0;
-    oFile << convert.str() << ", ";
-    // Groen
-    convert.str("");
-    convert << color[1] / 4.0;
-    oFile << convert.str() << ", ";
-    // Blauw
-    convert.str("");
-    convert << color[2] / 4.0;
-    oFile << convert.str() << ")" << endl;
-    // Other light parameters
-    oFile << "diffuseReflection = (";
-    // Rood
-    convert.str("");
-    convert << color[0];
-    oFile << convert.str() << ", ";
-    // Groen
-    convert.str("");
-    convert << color[1];
-    oFile << convert.str() << ", ";
-    // Blauw
-    convert.str("");
-    convert << color[2];
-    oFile << convert.str() << ")" << endl;
+    iniAddColorSegment("ambientReflection", red/4, green/4, blue/4, oFile);
+    iniAddColorSegment("diffuseReflection", red, green, blue, oFile);
     oFile << "specularReflection = (0.5, 0.5, 0.5)" << endl;
     oFile << "reflectionCoefficient = 10" << endl;
     oFile << endl;
