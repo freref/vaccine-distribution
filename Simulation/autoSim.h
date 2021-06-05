@@ -120,7 +120,7 @@ public:
      * @param n:    Days to simulate
      * @param outS: Output stream
      */
-    static void simulate(simulation &s, int n, string graphicPath, ostream &outS);
+    static void simulate(simulation &s, int n, string graphicPath, bool graphicOutput, ostream &outS);
 };
 
 

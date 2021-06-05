@@ -197,7 +197,7 @@ void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &va
 }
 
 // Simulate the process for amount of days
-void autoSim::simulate(simulation &s, int n, string graphicPath, ostream &outS) {
+void autoSim::simulate(simulation &s, int n, string graphicPath, bool graphicOutput, ostream &outS) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
 
@@ -222,7 +222,8 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, ostream &outS) 
             simulateTweedePrikTransport(hubs[i], centraHub, vaccins, transports, outS, j);
             simulateEerstePrikTransport(hubs[i], centraHub, vaccins, transports, outS, j);
 
-            graphicExport::createIni(hubs[i], i, transports, j + 1, graphicPath);
+            if (graphicOutput)
+                graphicExport::createIni(hubs[i], i, transports, j + 1, graphicPath);
         }
 
         // Simulate possible vaccinations

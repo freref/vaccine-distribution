@@ -27,7 +27,11 @@ protected:
         vector<Vaccine*> vaccines;
         vaccines.push_back(v_);
         h_ = new Hub(vaccines, cMap);
-        sim_.setHub(h_);
+
+        vector<Hub*> hubs;
+        hubs.push_back(h_);
+
+        sim_.setHubs(hubs);
         sim_.addCentrum(c_);
     }
     virtual void TearDown() {

@@ -205,6 +205,9 @@ int Centrum::berekenTweedePrikLadingen(Hub* hub, Vaccine* vaccin, int aantal){
             "vaccine wasn't initialised when calling berekenTweedePrikLadingen");
     REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines");
 
+    if (aantal <= voorraad[vaccin])
+        return 0;
+
     int v = min(aantal, min(hub->getVoorraad(vaccin), getCapaciteit()*2 - getVaccins()));
     int ladingen = ceil(float (v)/vaccin->getTransport());
 
@@ -215,7 +218,7 @@ int Centrum::berekenTweedePrikLadingen(Hub* hub, Vaccine* vaccin, int aantal){
         ladingen -= 1;
 
     if (vaccin->getTemperatuur() <= 0) {
-        while (ladingen*vaccin->getTransport() + getVaccins() > getCapaciteit() && ladingen > 0)
+        while (ladingen*vaccin->getTransport() + getVaccins() > getCapaciteit() && ladingen-1 > 0)
             ladingen -= 1;
     }
     ENSURE(ladingen >= 0, "berekenTweedePrikLadingen postconditions failed");

@@ -170,12 +170,12 @@ TEST_F(simulationSimTests, hubRestock) {
 
 TEST_F(simulationSimTests, autoSimulation) {
     v_->setVoorraad(0);
-    autoSim::simulate(sim_, 3, null_stream);
+    autoSim::simulate(sim_, 3, null_stream, false, <#initializer#>);
     EXPECT_EQ(685, h_->accessorTotaleVoorraad());
     EXPECT_EQ(15, c_->getVaccins());
     EXPECT_EQ(100, c_->getGevaccineerd());
     EXPECT_EQ(200, c_->getEerste());
-    autoSim::simulate(sim_, 10, null_stream);
+    autoSim::simulate(sim_, 10, null_stream, false, <#initializer#>);
     EXPECT_EQ(500, c_->getGevaccineerd());
     EXPECT_EQ(500, c_->getEerste());
     EXPECT_EQ(35, c_->getVaccins());

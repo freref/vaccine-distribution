@@ -52,7 +52,7 @@ void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *
     // Hub toevoegen aan ini
     iniAddHub(hub, figAmount, oFile);
     figAmount += 1;
-    figAmount = iniAddHubStock(hub, figAmount, 10000, 2, oFile);
+    figAmount = iniAddHubStock(hub, figAmount, 10000, 1, oFile);
 
     // Centra en transporten toevoegen aan ini
     map<string, Centrum*> centra = hub->getCentra();
@@ -126,7 +126,7 @@ int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int
 
         oFile << "[Figure" << conv.str() << "]\n";
         oFile << "type = \"Cube\"\n"
-                 "scale = 0.5\n"
+                 "scale = 0.25\n"
                  "rotateX = 0\n"
                  "rotateY = 0\n"
                  "rotateZ = 0\n"
@@ -136,8 +136,11 @@ int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int
                  "reflectionCoefficient = 10\n"
                  "center = (";
         conv.str("");
-        conv << calculateCenterOffset(i, sOffset);
-        oFile << conv.str() << ", -4, 1)\n\n";
+        conv << calculateCenterOffset(i % 10, sOffset);
+        oFile << conv.str() << ", -4, ";
+        conv.str("");
+        conv << 2 + (floor(float (i) / 10) * sOffset);
+        oFile << conv.str() << ")\n\n";
 
         figNum += 1;
     }
@@ -185,12 +188,12 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
     convert << figNum + 1;
     // Add roof to center to show storage capacity
     oFile << "[Figure" << convert.str() << "]\n";
-    oFile << "type = \"Sphere\"\n"
+    oFile << "type = \"Octahedron\"\n"
              "n = 3\n"
-             "scale = 1\n"
+             "scale = 1.40\n"
              "rotateX = 0\n"
              "rotateY = 0\n"
-             "rotateZ = 0\n";
+             "rotateZ = 45\n";
     oFile << "center = (";
     // Calculate offset
     convert.str("");
