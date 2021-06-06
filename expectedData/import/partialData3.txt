@@ -1,1 +1,1 @@
-empty centrum name in hub
+Centrum in hub is empty

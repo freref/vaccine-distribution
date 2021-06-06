@@ -1,1 +1,1 @@
-Het bestand bevat foute informatie voor vaccinatiecentrum: Cetrum Naam
+Center containing invalid data

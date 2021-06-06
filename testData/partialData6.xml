@@ -7,7 +7,7 @@
             <interval>6</interval>
             <transport>500</transport>
             <hernieuwing>2</hernieuwing>
-            <badTag>-70</badTag>
+            <badTag>-70</badTag> <!-- WRONG TAG-->
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>

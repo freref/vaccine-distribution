@@ -1,2 +1,2 @@
-empty centrum name in hub
-Niet elk vaccinatie centra is verbonden met een hub
+Centrum in hub is empty
+Centrum is not linked to hub

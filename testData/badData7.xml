@@ -10,7 +10,7 @@
             <temperatuur>-70</temperatuur>
         </VACCIN>
         <CENTRA>
-            <centrum>Park Spoor Oost<centrum>
+            <centrum>Park Spoor Oost<centrum> <!-- NO CLOSING TAG -->
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>

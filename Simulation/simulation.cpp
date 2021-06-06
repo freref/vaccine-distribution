@@ -50,15 +50,15 @@ void simulation::clear() {
     hubs = vector<Hub*>();
     deliveries_by_type = map<string, int>();
 
-    ENSURE(getCentra().size() == unsigned (0), "centra didn't clear correctly");
-    ENSURE(getHubs().size() == unsigned (0), "hubs didn't clear correctly");
-    ENSURE(getDeliveries().size() == unsigned (0), "deliveries didn't clear correctly");
+    ENSURE(getCentra().empty(), "centra didn't clear correctly");
+    ENSURE(getHubs().empty(), "hubs didn't clear correctly");
+    ENSURE(getDeliveries().empty(), "deliveries didn't clear correctly");
 }
 
 void simulation::graphicImpression(ostream& oStream){
     REQUIRE(this->properlyInitialised(), "Simulation wasn't initialised when creating graphic impression");
-//    ofstream MyFile("../graphic_impression.txt");
-    string output;
+    REQUIRE(!getHubs().empty(), "Simulation didn't contain hubs when creating simple impression");
+    REQUIRE(!getCentra().empty(), "Simulation didn't contain centra when creating simple impression");
 
     for(unsigned int i = 0; i < centra.size(); i++){
         oStream << centra[i]->getNaam() + ":\n\t- vaccins\t\t[";
@@ -93,6 +93,8 @@ void simulation::graphicImpression(ostream& oStream){
 
 void simulation::exportSim(ostream &ostream) {
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling exporter");
+    REQUIRE(!getHubs().empty(), "Simulation didn't contain hubs when exporting simulation");
+    REQUIRE(!getCentra().empty(), "Simulation didn't contain centra when exporting simulation");
 
     for(unsigned int i = 0; i < hubs.size(); i++){
         ostream << "Hub " << i+1 << " (" << hubs[i]->getTotaleVoorraad() << ")\n";
@@ -113,41 +115,10 @@ void simulation::exportSim(ostream &ostream) {
     }
 }
 
-//------------------
-// Getters, setters
-//------------------
-
-void simulation::addCentrum(Centrum* c) {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling addCentrum");
-    REQUIRE(c->properlyInitialised(), "centrum wasn't initialised when calling addCentrum");
-    long unsigned int oSize = centra.size();
-    centra.push_back(c);
-    ENSURE(getCentra().size() == oSize+1, "addCentrum postconditions failed");
-}
-
-void simulation::setCentra(const vector<Centrum *> &c) {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setCentra");
-    REQUIRE(!c.empty(), "simulations must contain at least 1 centrum");
-    centra = c;
-    ENSURE(getCentra().size() == c.size(), "setCentra postcondition failed");
-}
-
-vector<Hub*> simulation::getHubs() const {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getHub");
-    return hubs;
-}
-
-void simulation::setHubs(vector<Hub*> h) {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub");
-    hubs = h;
-}
-
-const vector<Centrum*> &simulation::getCentra() const {
-    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getCentra");
-    return centra;
-}
-
-void simulation::stats(ostream& oStream){
+void simulation::stats(ostream& oStream) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when exporting stats");
+    REQUIRE(!getHubs().empty(), "Simulation didn't contain hubs when exporting stats");
+    REQUIRE(!getCentra().empty(), "Simulation didn't contain centra when exporting stats");
     int eerste = 0;
     int tweede = 0;
     map<string, int>::iterator it;
@@ -165,8 +136,46 @@ void simulation::stats(ostream& oStream){
     }
 }
 
+//------------------
+// Getters, setters
+//------------------
+
+void simulation::setHubs(vector<Hub*> h) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setHub");
+    REQUIRE(!h.empty(), "simulation must contain at least 1 hub");
+    hubs = h;
+    ENSURE(getHubs() == h, "setHubs postcondition failed");
+}
+
+void simulation::addCentrum(Centrum* c) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling addCentrum");
+    REQUIRE(c->properlyInitialised(), "centrum wasn't initialised when calling addCentrum");
+    long unsigned int oSize = centra.size();
+    centra.push_back(c);
+    ENSURE(getCentra().size() == oSize+1, "addCentrum postconditions failed");
+}
+
+void simulation::setCentra(const vector<Centrum *> &c) {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling setCentra");
+    REQUIRE(!c.empty(), "simulations must contain at least 1 centrum");
+    centra = c;
+    ENSURE(getCentra() == c, "setCentra postcondition failed");
+}
+
+vector<Hub*> simulation::getHubs() const {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getHub");
+    return hubs;
+}
+
+const vector<Centrum*> &simulation::getCentra() const {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling getCentra");
+    return centra;
+}
+
 void simulation::addDelivery(string type, int aantal){
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when adding delivery");
+    REQUIRE(!getHubs().empty(), "simulation didn't contain hubs when adding delivery");
+    REQUIRE(!getCentra().empty(), "simulation didn't contain centra when adding delivery");
     REQUIRE(getDeliveries()[type] + aantal >= 0, "deliveries can't go into negative");
     int oAmount = deliveries_by_type[type];
     deliveries_by_type[type] += aantal;

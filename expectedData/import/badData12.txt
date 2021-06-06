@@ -1,2 +1,2 @@
-Kan element niet herkennen
-Niet elk centrum van de hub is een geldig vaccinatiecentrum
+Invalid element, neither HUB nor VACCINATIECENTRUM
+Hub contains an invalid center

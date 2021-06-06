@@ -1,1 +1,1 @@
-empty element in VACCINATIECENTRUM
+Center containing invalid data

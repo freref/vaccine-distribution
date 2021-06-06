@@ -40,6 +40,6 @@
         <inwoners>257029</inwoners>
         <capaciteit>3000</capaciteit>
     </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
+    <VACCINATIECENTRUM> <!-- EMPTY CENTER -->
     </VACCINATIECENTRUM>
 </root>

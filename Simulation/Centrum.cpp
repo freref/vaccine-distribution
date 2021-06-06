@@ -48,20 +48,20 @@ bool Centrum::empty(){
 
 bool Centrum::insert(TiXmlElement *el, ostream& errStr){
     if (!el->FirstChild()) {
-        errStr << "empty element in vaccine" << endl;
+        errStr << "empty element in centrum" << endl;
         return false;
     }
     string str = el->FirstChild()->ToText()->Value();
     if(strcmp(el->Value(), "naam") == 0){
         if (str == ""){
-            errStr << "Naam is leeg" << endl;
+            errStr << "Naam is empty" << endl;
             return false;
         }
         naam = str;
     }
     else if(strcmp(el->Value(), "adres") == 0){
         if (str == ""){
-            errStr << "Adres is leeg" << endl;
+            errStr << "Adres is empty" << endl;
             return false;
         }
         adres = str;
@@ -69,7 +69,7 @@ bool Centrum::insert(TiXmlElement *el, ostream& errStr){
     else if(strcmp(el->Value(), "inwoners") == 0){
         int val = algemeen::stoi(str);
         if (val < 0){
-            errStr << "Inwoners is kleiner dan 0" << endl;
+            errStr << "Inwoners is less than 0" << endl;
             return false;
         }
         inwoners = val;
@@ -77,10 +77,13 @@ bool Centrum::insert(TiXmlElement *el, ostream& errStr){
     else if(strcmp(el->Value(), "capaciteit") == 0){
         int val = algemeen::stoi(str);
         if (val < 0){
-            errStr << "Capaciteit is kleiner dan 0" << endl;
+            errStr << "Capaciteit is less than 0" << endl;
             return false;
         }
         capaciteit = val;
+    } else {
+        errStr << "Couldn't recognise element " << el->Value() << " in VACCIN" << endl;
+        return false;
     }
     return true;
 }

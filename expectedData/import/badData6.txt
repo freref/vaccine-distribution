@@ -1,2 +1,2 @@
-Kan element cent niet herkennen
-Niet elk vaccinatie centra is verbonden met een hub
+Couldn't recoginize element cent in hub
+Centrum is not linked to hub

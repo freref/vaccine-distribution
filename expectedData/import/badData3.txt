@@ -1,1 +1,2 @@
-Niet elk centrum van de hub is een geldig vaccinatiecentrum
+Simulation must contain at least 1 valid center
+Hub contains an invalid center

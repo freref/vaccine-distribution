@@ -16,7 +16,7 @@
             <centrum>Flanders Expo</centrum>
         </CENTRA>
     </HUB>
-    <VACCINATIECE>
+    <VACCINATIECE> <!-- WRONG TAG -->
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
         <inwoners>540173</inwoners>

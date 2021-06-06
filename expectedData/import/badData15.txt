@@ -1,2 +1,1 @@
-Kan element niet herkennen
-Er is niet exact 1 hub
+Every hub must al least contain 1 valid vaccine

@@ -1,6 +1,14 @@
-<!-- NO VACCINE IN HUB -->
+<!-- EMPTY INT FIELD IN VACCINATIECENTRUM -->
 <root>
     <HUB>
+        <VACCIN>
+            <type>Pfizer</type>
+            <levering>25000</levering>
+            <interval>6</interval>
+            <transport>500</transport>
+            <hernieuwing>2</hernieuwing>
+            <temperatuur>-70</temperatuur>
+        </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
@@ -11,7 +19,7 @@
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>540173</inwoners>
+        <inwoners></inwoners>
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

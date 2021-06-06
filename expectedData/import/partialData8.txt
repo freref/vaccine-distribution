@@ -1,2 +1,2 @@
 empty element in vaccine
-Het bestand bevat foute informatie voor een VACCIN
+Invalid vaccine in hub

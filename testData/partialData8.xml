@@ -3,7 +3,7 @@
     <HUB>
         <VACCIN>
             <type>Pfizer</type>
-            <levering></levering>
+            <levering></levering> <!-- EMPTY FIELD -->
             <interval>6</interval>
             <transport>500</transport>
             <hernieuwing>2</hernieuwing>

@@ -11,7 +11,7 @@
         </VACCIN>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
-            <centrum></centrum>
+            <centrum></centrum> <!-- EMPTY -->
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>

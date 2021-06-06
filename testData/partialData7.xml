@@ -9,7 +9,7 @@
             <hernieuwing>2</hernieuwing>
             <temperatuur>-70</temperatuur>
         </VACCIN>
-        <badTag>1000</badTag>
+        <badTag>1000</badTag> <!-- WRONG TAG -->
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>

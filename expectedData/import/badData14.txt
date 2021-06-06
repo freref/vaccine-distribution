@@ -1,1 +1,2 @@
-Niet elk vaccinatie centra is verbonden met een hub
+Hub contains an invalid center
+Centrum is not linked to hub

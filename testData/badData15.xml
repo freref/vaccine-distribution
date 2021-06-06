@@ -1,21 +1,13 @@
-<!-- WRONG HUB TAG -->
+<!-- NO VACCINE IN HUB -->
 <root>
-    <HU>
-        <VACCIN>
-            <type>Pfizer</type>
-            <levering>25000</levering>
-            <interval>6</interval>
-            <transport>500</transport>
-            <hernieuwing>2</hernieuwing>
-            <temperatuur>-70</temperatuur>
-        </VACCIN>
+    <HUB>
         <CENTRA>
             <centrum>Park Spoor Oost</centrum>
             <centrum>AED Studios</centrum>
             <centrum>De Zoerla</centrum>
             <centrum>Flanders Expo</centrum>
         </CENTRA>
-    </HU>
+    </HUB>
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>

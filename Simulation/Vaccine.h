@@ -50,6 +50,11 @@ public:
      */
     bool properlyInitialised() const;
 
+    /**
+     \n Checks whether vaccine is empty
+     \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when checking empty")
+     * @return  Bool whether
+     */
     bool empty();
 
     /**
@@ -67,6 +72,7 @@ public:
     /**
      \n Set the type of the vaccine
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting type")
+     \n REQUIRE(t.size() > unsigned (0), "Vaccine type is empty")
      \n ENSURE(getType() == t, "setType postcondition failed")
      * @param t:    Given type
      */
@@ -74,7 +80,7 @@ public:
     /**
      \n Set amount of vaccines per resupply
      \n REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting levering")
-     \n REQUIRE(l >= 0, "Vaccine can't have negative levering")
+     \n REQUIRE(l > 0, "Vaccine leveringen must be bigger than 0")
      \n ENSURE(getLevering() == l, "setLevering postcondition failed")
      * @param l:    Amount to resupply
      */

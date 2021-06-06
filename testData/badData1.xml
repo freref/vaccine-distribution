@@ -49,7 +49,7 @@
         <inwoners>49451</inwoners>
         <capaciteit>1000</capaciteit>
     </VACCINATIECENTRUM>
-    <VACCINATIECENTRUM>
+    <VACCINATIECENTRUM> <!-- NOT IN HUB -->
         <naam>Flanders Expo</naam>
         <adres>Maaltekouter 1, Sint-Denijs-Westrem</adres>
         <inwoners>257029</inwoners>

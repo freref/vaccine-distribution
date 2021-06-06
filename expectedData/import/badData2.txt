@@ -1,2 +1,6 @@
-Dubbele definitie van centrum in hub
-Er is niet exact 1 hub
+Invalid element, neither HUB nor VACCINATIECENTRUM
+Simulation must contain at least 1 valid hub
+Centrum is not linked to hub
+Centrum is not linked to hub
+Centrum is not linked to hub
+Centrum is not linked to hub

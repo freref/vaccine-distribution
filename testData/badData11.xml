@@ -19,7 +19,7 @@
     <VACCINATIECENTRUM>
         <naam>Park Spoor Oost</naam>
         <adres>Noordersingel 40, Antwerpen</adres>
-        <inwoners>-10</inwoners>
+        <inwoners>-10</inwoners> <!-- NEGATIVE VALUE -->
         <capaciteit>7500</capaciteit>
     </VACCINATIECENTRUM>
     <VACCINATIECENTRUM>

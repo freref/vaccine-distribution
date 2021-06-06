@@ -33,7 +33,8 @@ Vaccine::Vaccine(string t, int l, int i, int tr, int h, int temp) {
     ENSURE(this->properlyInitialised(), "Constructor must end properly initialised");
 }
 
-bool Vaccine::empty(){
+bool Vaccine::empty() {
+    REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when checking empty");
     return( type == "" &&
             levering == 0 &&
             interval == 0 &&
@@ -56,7 +57,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     if(strcmp(el->Value(), "type") == 0){
         // string val = (el->FirstChild()->ToText()->Value());
         if (str == ""){
-            errStr << "Type is leeg";
+            errStr << "Type is empty";
             return false;
         }
         type = str;
@@ -64,7 +65,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     else if(strcmp(el->Value(), "levering") == 0){
         int val = algemeen::stoi(str); // (algemeen::stoi(el->FirstChild()->ToText()->Value()));
         if (val < 0){
-            errStr << "Levering kleiner dan 0" << endl;
+            errStr << "Levering is less than 0" << endl;
             return false;
         }
         levering = val;
@@ -72,7 +73,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     else if(strcmp(el->Value(), "interval") == 0){
         int val = algemeen::stoi(str);
         if (val < 0){
-            errStr << "Interval is kleiner dan 0" << endl;
+            errStr << "Interval is less than 0" << endl;
             return false;
         }
         interval = val;
@@ -80,7 +81,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     else if(strcmp(el->Value(), "transport") == 0){
         int val = algemeen::stoi(str);
         if (val < 0){
-            errStr << "Transport kleiner dan 0" << endl;
+            errStr << "Transport is less than 0" << endl;
             return false;
         }
         transport = val;
@@ -88,7 +89,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     else if(strcmp(el->Value(), "hernieuwing") == 0){
         int val = algemeen::stoi(str);
         if (val < 0){
-            errStr << "Hernieuwing kleiner dan 0" << endl;
+            errStr << "Hernieuwing is less than 0" << endl;
             return false;
         }
         hernieuwing = val;
@@ -96,7 +97,7 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
     else if(strcmp(el->Value(), "temperatuur") == 0){
         temperatuur = algemeen::stoi(str);
     } else {
-        errStr << "Kan element " << el->Value() << " niet herkennen in VACCINE" << endl;
+        errStr << "Couldn't recognise element " << el->Value() << " in VACCIN" << endl;
     }
     return true;
 }
@@ -108,13 +109,14 @@ bool Vaccine::insert(TiXmlElement* el, ostream& errStr) {
 
 void Vaccine::setType(string &t) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting type");
+    REQUIRE(t.size() > unsigned (0), "Vaccine type is empty");
     type = t;
     ENSURE(getType() == t, "setType postcondition failed");
 }
 
 void Vaccine::setLevering(int l) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting levering");
-    REQUIRE(l >= 0, "Vaccine can't have negative levering");
+    REQUIRE(l > 0, "Vaccine leveringen must be bigger than 0");
     levering = l;
     ENSURE(getLevering() == l, "setLevering postcondition failed");
 }
@@ -132,7 +134,6 @@ void Vaccine::setTransport(int t) {
     transport= t;
     ENSURE(getTransport() == t, "setTransport postcondition failed");
 }
-
 
 void Vaccine::setHernieuwing(int h) {
     REQUIRE(this->properlyInitialised(), "Vaccine wasn't initialised when setting hernieuwing");

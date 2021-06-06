@@ -23,6 +23,7 @@ Hub::Hub(vector<Vaccine*> v, map<string, Centrum *> c) {
     vaccins = v;
     centra = c;
     ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
+    ENSURE(getVaccins() == v && getCentra() == c, "Hub constructor postconditions failed");
 }
 
 Hub::~Hub() {
@@ -31,23 +32,39 @@ Hub::~Hub() {
     }
 }
 
-void Hub::verhoogVoorraad(Vaccine* vac, int aantal){
-    voorraad[vac] += aantal;
-}
-
-void Hub::verlaagVoorraad(Vaccine* vac, int aantal){
+void Hub::verlaagVoorraad(Vaccine* vac, int aantal) {
+    REQUIRE(this->properlyInitialised(), "hub was't initialised when decreasing stock");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when decreasing stock");
+    REQUIRE(getVoorraad(vac) - aantal >= 0, "vaccine stock can't go negative");
+    int oAmount = voorraad[vac];
     voorraad[vac] -= aantal;
+    ENSURE(oAmount - aantal == getVoorraad(vac), "verlaagVoorraad postcondition failed");
 }
 
-void Hub::setVoorraad(Vaccine* vac, int aantal){
+void Hub::verhoogVoorraad(Vaccine* vac, int aantal) {
+    REQUIRE(this->properlyInitialised(), "hub was't initialised when increasing stock");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when increasing stock");
+    int oAmount = voorraad[vac];
+    voorraad[vac] += aantal;
+    ENSURE(oAmount + aantal == getVoorraad(vac), "verhoogVoorraad postcondition failed");
+}
+
+void Hub::setVoorraad(Vaccine* vac, int aantal) {
+    REQUIRE(this->properlyInitialised(), "hub wasn't initialised when setting stock");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when setting stock");
+    REQUIRE(aantal >= 0, "vaccine stock can't be negative");
     voorraad[vac] = aantal;
+    ENSURE(getVoorraad(vac) == aantal, "setVoorraad postcondition failed");
 }
 
-int Hub::getVoorraad(Vaccine* vac){
+int Hub::getVoorraad(Vaccine* vac) {
+    REQUIRE(this->properlyInitialised(), "hub wasn't initialised when getting stock of vacine");
+    REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when getting stock");
     return voorraad[vac];
 }
 
 int Hub::getTotaleVoorraad() const {
+    REQUIRE(this->properlyInitialised(), "hub wasn't initialised when getting stock");
     int v = 0;
     map<Vaccine*, int>::const_iterator it = voorraad.begin();
 
@@ -63,14 +80,16 @@ int Hub::getTotaleVoorraad() const {
 //
 void Hub::setCentra(const map<string, Centrum *> &c) {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setCentra");
-    REQUIRE(c.size() >= 1, "hub must at least contain 1 centrum");
+    REQUIRE(!c.empty(), "hub must at least contain 1 centrum");
     centra = c;
+    ENSURE(getCentra() == c, "setCentra postcondition failed");
 }
 
 void Hub::setVaccins(const vector<Vaccine *> &vaccines) {
     REQUIRE(this->properlyInitialised(), "hub wasn't initialised when calling setVaccins");
     REQUIRE(!vaccines.empty(), "hub must at least contain 1 vaccine");
     this->vaccins = vaccines;
+    ENSURE(getVaccins() == vaccines, "setVaccins postcondition failed");
 }
 
 void Hub::addCentrum(Centrum* centrum) {

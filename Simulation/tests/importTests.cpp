@@ -94,8 +94,8 @@ TEST_F(importTests, empty_nonexistingFile) {
 TEST_F(importTests, badFiles) {
     string baseIn = "badData";
     ofstream outFile;
-    for (int i = 1; i <= 15; ++i) {
-        cout << i << endl;
+    for (int i = 1; i <= 16; ++i) {
+//        cout << i << endl;
 
         ostringstream convert;
         // Iteratie int to string
@@ -113,42 +113,42 @@ TEST_F(importTests, badFiles) {
     }
 }
 
-//TEST_F(importTests, partialFiles) {
-//    string baseIn = "partialData";
-//    ofstream outFile;
-//    for (int i = 1; i <= 8; ++i) {
-//        // cout << i << endl;
-//
-//        ostringstream convert;
-//        // Iteratie int to string
-//        convert << i;
-//        // Create filenames
-//        string compare = outBase + "outPartialData" + convert.str() + ".txt"; // Output file
-//        string file = baseIn + convert.str() + ".xml"; // Import file
-//        string expected = compBase + baseIn + convert.str() + ".txt"; // Expected output
-//
-//        outFile.open(compare.c_str());
-//
-//        // Tests uitvoeren
-//        EXPECT_EQ(0, simulationImporter::importFile(file, sim_, outFile));
-//        outFile.close();
-//        EXPECT_TRUE(FileCompare(compare, expected));
-//    }
-//}
-//
-//TEST_F(importTests, badInt) {
-//    string baseIn = "throw";
-//    for (int i = 1; i <= 3; ++i) {
-//        // cout << i << endl;
-//
-//        ostringstream strStream;
-//        ostringstream convert;
-//        convert << i;
-//        string file = baseIn + convert.str() + ".xml";
-//        EXPECT_ANY_THROW(simulationImporter::importFile(file, sim_, strStream));
-//    }
-//}
-//
+TEST_F(importTests, partialFiles) {
+    string baseIn = "partialData";
+    ofstream outFile;
+    for (int i = 1; i <= 8; ++i) {
+        // cout << i << endl;
+
+        ostringstream convert;
+        // Iteratie int to string
+        convert << i;
+        // Create filenames
+        string compare = outBase + "outPartialData" + convert.str() + ".txt"; // Output file
+        string file = baseIn + convert.str() + ".xml"; // Import file
+        string expected = compBase + baseIn + convert.str() + ".txt"; // Expected output
+
+        outFile.open(compare.c_str());
+
+        // Tests uitvoeren
+        EXPECT_EQ(0, simulationImporter::importFile(file, sim_, outFile));
+        outFile.close();
+        EXPECT_TRUE(FileCompare(compare, expected));
+    }
+}
+
+TEST_F(importTests, badInt) {
+    string baseIn = "throw";
+    for (int i = 1; i <= 2; ++i) {
+        // cout << i << endl;
+
+        ostringstream strStream;
+        ostringstream convert;
+        convert << i;
+        string file = baseIn + convert.str() + ".xml";
+        EXPECT_ANY_THROW(simulationImporter::importFile(file, sim_, strStream));
+    }
+}
+
 //TEST_F(importTests, death) {
 //    string baseIn = "death";
 //    for (int i = 1; i <= 1; ++i) {

@@ -1,1 +1,1 @@
-Kan element badTag niet herkennen in VACCINE
+Couldn't recognise element badTag in VACCIN
