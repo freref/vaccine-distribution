@@ -1,0 +1,6 @@
+Centrum 1:
+	- vaccins		[                    ] 0%
+	- gevaccineerd	[                    ] 0%
+Centrum 2:
+	- vaccins		[===                 ] 16%
+	- gevaccineerd	[======              ] 30%

@@ -21,13 +21,18 @@ class importTests : public ::testing::Test {
 protected:
 
     virtual void SetUp() {
+        outBase = "../testOutput/import/";
+        compBase = "../expectedData/import/";
     }
 
     virtual void TearDown() {
+        sim_.clear();
     }
 
     // Variables to use in the tests
     simulation sim_;
+    string outBase;
+    string compBase;
 };
 
 TEST_F(importTests, testFileFunctions) {
@@ -44,15 +49,33 @@ TEST_F(importTests, happyDayImport) {
     simulationImporter::importFile("data1.xml", sim_, strStream);
     EXPECT_TRUE(strStream.str().empty());
 
-    EXPECT_EQ((long unsigned int) (4), sim_.getHub()->getCentra().size());
+    EXPECT_EQ((long unsigned int) (1), sim_.getHubs().size());
+    EXPECT_EQ((long unsigned int) (4), sim_.getHubs()[0]->getCentra().size());
     EXPECT_EQ((long unsigned int) (4), sim_.getCentra().size());
-    EXPECT_EQ((unsigned int) (3), sim_.getHub()->getVaccins().size());
+    EXPECT_EQ((unsigned int) (3), sim_.getHubs()[0]->getVaccins().size());
 
-    EXPECT_EQ(0, sim_.getHub()->accessorTotaleVoorraad());
-    Vaccine* vac = sim_.getHub()->getVaccins()[0];
+    EXPECT_EQ(0, sim_.getHubs()[0]->getTotaleVoorraad());
+    Vaccine* vac = sim_.getHubs()[0]->getVaccins()[0];
     EXPECT_EQ(25000, vac->getLevering());
     EXPECT_EQ(500, vac->getTransport());
     EXPECT_EQ(-70, vac->getTemperatuur());
+}
+
+TEST_F(importTests, correctData) {
+    stringstream conv;
+    ofstream oFile;
+    for (int i = 1; i <= 4; ++i) {
+        conv.str("");
+        conv << i;
+        string inFile = "data" + conv.str() + ".xml";
+        string outFile = outBase + "outData" + conv.str() + ".txt";
+
+        oFile.open(outFile.c_str());
+        simulationImporter::importFile(inFile, sim_, oFile);
+        oFile.close();
+
+        EXPECT_TRUE(FileIsEmpty(outFile));
+    }
 }
 
 TEST_F(importTests, empty_nonexistingFile) {
@@ -70,68 +93,71 @@ TEST_F(importTests, empty_nonexistingFile) {
 
 TEST_F(importTests, badFiles) {
     string baseIn = "badData";
+    ofstream outFile;
     for (int i = 1; i <= 15; ++i) {
-        //cout << i << endl;
+        cout << i << endl;
 
-        ofstream outFile;
         ostringstream convert;
-        // Iteratie int naar string
+        // Iteratie int to string
         convert << i;
-        string compare = "compare.txt";
-        // Open met trunc om leeg te maken
-        outFile.open(compare.c_str(), std::ofstream::out | std::ofstream::trunc);
-        // File namen opstellen
-        string file = baseIn + convert.str() + ".xml";
-        string expected = "../expectedData/" + baseIn + convert.str() + ".txt";
+        // Create filenames
+        string compare = outBase + "outBadData" + convert.str() + ".txt"; // Output file
+        string file = baseIn + convert.str() + ".xml"; // Import file
+        string expected = compBase + baseIn + convert.str() + ".txt"; // Expected output
+
+        outFile.open(compare.c_str());
         // Tests uitvoeren
         EXPECT_NE(0, simulationImporter::importFile(file, sim_, outFile));
+        outFile.close();
         EXPECT_TRUE(FileCompare(compare, expected));
     }
 }
 
-TEST_F(importTests, partialFiles) {
-    string baseIn = "partialData";
-    for (int i = 1; i <= 8; ++i) {
-        // cout << i << endl;
-
-        ofstream outFile;
-        ostringstream convert;
-        // Iteratie int naar string
-        convert << i;
-        string compare = "compare.txt";
-        // Open met trunc om leeg te maken
-        outFile.open(compare.c_str(), std::ofstream::out | std::ofstream::trunc);
-        // File namen opstellen
-        string file = baseIn + convert.str() + ".xml";
-        string expected = "../expectedData/" + baseIn + convert.str() + ".txt";
-        // Tests uitvoeren
-        EXPECT_EQ(0, simulationImporter::importFile(file, sim_, outFile));
-        EXPECT_TRUE(FileCompare(compare, expected));
-    }
-}
-
-TEST_F(importTests, badInt) {
-    string baseIn = "throw";
-    for (int i = 1; i <= 3; ++i) {
-        // cout << i << endl;
-
-        ostringstream strStream;
-        ostringstream convert;
-        convert << i;
-        string file = baseIn + convert.str() + ".xml";
-        EXPECT_ANY_THROW(simulationImporter::importFile(file, sim_, strStream));
-    }
-}
-
-TEST_F(importTests, death) {
-    string baseIn = "death";
-    for (int i = 1; i <= 1; ++i) {
-        // cout << i << endl;
-
-        ostringstream strStream;
-        ostringstream convert;
-        convert << i;
-        string file = baseIn + convert.str() + ".xml";
-        EXPECT_DEATH(simulationImporter::importFile(file, sim_, strStream), "Assertion.*");
-    }
-}
+//TEST_F(importTests, partialFiles) {
+//    string baseIn = "partialData";
+//    ofstream outFile;
+//    for (int i = 1; i <= 8; ++i) {
+//        // cout << i << endl;
+//
+//        ostringstream convert;
+//        // Iteratie int to string
+//        convert << i;
+//        // Create filenames
+//        string compare = outBase + "outPartialData" + convert.str() + ".txt"; // Output file
+//        string file = baseIn + convert.str() + ".xml"; // Import file
+//        string expected = compBase + baseIn + convert.str() + ".txt"; // Expected output
+//
+//        outFile.open(compare.c_str());
+//
+//        // Tests uitvoeren
+//        EXPECT_EQ(0, simulationImporter::importFile(file, sim_, outFile));
+//        outFile.close();
+//        EXPECT_TRUE(FileCompare(compare, expected));
+//    }
+//}
+//
+//TEST_F(importTests, badInt) {
+//    string baseIn = "throw";
+//    for (int i = 1; i <= 3; ++i) {
+//        // cout << i << endl;
+//
+//        ostringstream strStream;
+//        ostringstream convert;
+//        convert << i;
+//        string file = baseIn + convert.str() + ".xml";
+//        EXPECT_ANY_THROW(simulationImporter::importFile(file, sim_, strStream));
+//    }
+//}
+//
+//TEST_F(importTests, death) {
+//    string baseIn = "death";
+//    for (int i = 1; i <= 1; ++i) {
+//        // cout << i << endl;
+//
+//        ostringstream strStream;
+//        ostringstream convert;
+//        convert << i;
+//        string file = baseIn + convert.str() + ".xml";
+//        EXPECT_DEATH(simulationImporter::importFile(file, sim_, strStream), "Assertion.*");
+//    }
+//}

@@ -44,9 +44,9 @@ protected:
     Hub* h_;
 };
 
-TEST_F(simulationDomTests, simulationConstructor) {
+TEST_F(simulationDomTests, simulationSetup) {
     EXPECT_TRUE(sim_.properlyInitialised());
-    EXPECT_EQ(h_, sim_.getHub());
+    EXPECT_EQ(h_, sim_.getHubs()[0]);
     EXPECT_EQ(c_, sim_.getCentra()[0]);
 }
 
@@ -67,7 +67,7 @@ TEST_F(simulationDomTests, centrumConstructor) {
 
 TEST_F(simulationDomTests, hubConstructor) {
     EXPECT_TRUE(h_->properlyInitialised());
-    EXPECT_EQ(0, h_->accessorTotaleVoorraad());
+    EXPECT_EQ(0, h_->getTotaleVoorraad());
     long unsigned int i = 1;
     EXPECT_EQ(i, h_->getCentra().size());
     EXPECT_EQ(c_, h_->getCentra().find("naam")->second);
@@ -88,7 +88,6 @@ TEST_F(simulationDomTests, vaccineConstructor) {
     EXPECT_EQ(0, v_->getLevering());
     EXPECT_EQ(0, v_->getInterval());
     EXPECT_EQ(0, v_->getTransport());
-    EXPECT_EQ(0, v_->getVoorraad());
     EXPECT_EQ(0, v_->getHernieuwing());
     EXPECT_EQ(0, v_->getTemperatuur());
 }
@@ -97,6 +96,5 @@ TEST_F(simulationDomTests, vaccineViolations) {
     EXPECT_DEATH(v_->setLevering(-10), "Assertion.*failed");
     EXPECT_DEATH(v_->setInterval(-10), "Assertion.*failed");
     EXPECT_DEATH(v_->setTransport(0), "Assertion.*failed");
-    EXPECT_DEATH(v_->setVoorraad(-10), "Assertion.*failed");
     EXPECT_DEATH(v_->setHernieuwing(-10), "Assertion.*failed");
 }

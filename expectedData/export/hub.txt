@@ -1,0 +1,14 @@
+[Figure0]
+type = "Cone"
+scale = 1
+rotateX = 0
+rotateY = 0
+rotateZ = 0
+n = 10
+height = 2
+ambientReflection = (0.2, 0.2, 0.2)
+diffuseReflection = (0.1, 0.1, 0.1)
+specularReflection = (0.5, 0.5, 0.5)
+center = (0, -4, 0)
+reflectionCoefficient = 10
+

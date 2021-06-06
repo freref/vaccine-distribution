@@ -1,0 +1,36 @@
+[Figure0]
+type = "Cube"
+scale = 0.25
+rotateX = 0
+rotateY = 0
+rotateZ = 0
+ambientReflection = (0.2, 0.2, 0.2)
+diffuseReflection = (0.1, 0.1, 0.7)
+specularReflection = (0.5, 0.5, 0.5)
+reflectionCoefficient = 10
+center = (0.5, -4, 2)
+
+[Figure1]
+type = "Cube"
+scale = 0.25
+rotateX = 0
+rotateY = 0
+rotateZ = 0
+ambientReflection = (0.2, 0.2, 0.2)
+diffuseReflection = (0.1, 0.1, 0.7)
+specularReflection = (0.5, 0.5, 0.5)
+reflectionCoefficient = 10
+center = (-0.5, -4, 2)
+
+[Figure2]
+type = "Cube"
+scale = 0.25
+rotateX = 0
+rotateY = 0
+rotateZ = 0
+ambientReflection = (0.2, 0.2, 0.2)
+diffuseReflection = (0.1, 0.1, 0.7)
+specularReflection = (0.5, 0.5, 0.5)
+reflectionCoefficient = 10
+center = (1.5, -4, 2)
+

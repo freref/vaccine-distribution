@@ -197,7 +197,7 @@ void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &va
 }
 
 // Simulate the process for amount of days
-void autoSim::simulate(simulation &s, int n, string graphicPath, bool graphicOutput, ostream &outS) {
+void autoSim::simulate(simulation &s, int n, string graphicPath, int stockDivide, bool graphicOutput, ostream &outS) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
 
@@ -206,7 +206,7 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, bool graphicOut
 
     // Loop over days
     for(int j = 0; j < n; j++){
-        outS << endl << "Dag " << j+1 << ":" << endl;
+        outS << "Dag " << j+1 << ":" << endl;
 
         // Loop over hubs
         for (unsigned int i = 0; i < hubs.size(); i++){
@@ -223,11 +223,12 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, bool graphicOut
             simulateEerstePrikTransport(hubs[i], centraHub, vaccins, transports, outS, j);
 
             if (graphicOutput)
-                graphicExport::createIni(hubs[i], i, transports, j + 1, graphicPath);
+                graphicExport::createIni(hubs[i], i, stockDivide, transports, j + 1, graphicPath);
         }
 
         // Simulate possible vaccinations
         if (simulateVaccinatieProcess(centra, outS, j))
             break;
+        outS << endl;
     }
 }

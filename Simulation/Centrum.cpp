@@ -37,6 +37,7 @@ Centrum::Centrum(const string &n, const string &a, int i, int c) {
 }
 
 bool Centrum::empty(){
+    REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when checking empty");
     return( naam == "" &&
         adres == "" &&
         inwoners == 0 &&
@@ -172,7 +173,8 @@ int Centrum::berekenEerstePrikLadingen(Hub* hub, Vaccine* vaccin, int dag, int d
     REQUIRE(devide >= 0, "division can't be negative");
     int transport = vaccin->getTransport(); // Vaccins in transport
     int vaccins = getVaccins(); // Huidig aantal aanwezig vaccins
-    int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1))); // overig dagen tot nieuwe voorraad vaccins in hub
+    // overig dagen tot nieuwe voorraad vaccins in hub
+    int dev = (vaccin->getInterval()+1-(dag%(vaccin->getInterval()+1)));
     int v = hub->getVoorraad(vaccin); // Vaccins van type in hub
     int accounted = /*v/*/ devide/dev; // Hoeveel mogelijk uit te delen om zo veel mogelijk te stretchen
     int ladingen = 0; // Aantal ladingen
@@ -231,9 +233,9 @@ void Centrum::printTransport(int vaccins, Vaccine* vaccin, ostream& onStream) co
     REQUIRE(vaccins >= 0, "can't transport negative amount of vaccines");
 
     int ladingen = vaccins/vaccin->getTransport();
-    if (ladingen == 0){
-        ladingen = 1;
-    }
+//    if (ladingen == 0){
+//        ladingen = 1;
+//    }
     onStream << "Er werden " << ladingen << " ladingen " << vaccin->getType() << " (" << vaccins << " vaccins)"
              << " getransporteerd naar "<< getNaam() <<"." << endl;
 }
@@ -245,7 +247,8 @@ void Centrum::printEersteVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& o
             "vaccine wasn't initialised when calling printEersteVaccinatie");
     REQUIRE(vaccinaties >= 0, "can't vaccinate negative amount of people");
 
-    onStream << "Er werden " << vaccinaties << " inwoners voor de eerste keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
+    onStream << "Er werden " << vaccinaties << " inwoners voor de eerste keer gevaccineerd in " << getNaam()
+             << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
 void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& onStream) const {
@@ -255,7 +258,8 @@ void Centrum::printTweedeVaccinatie(int vaccinaties, Vaccine* vaccin, ostream& o
             "vaccine wasn't initialised when calling printTweedeVaccinatie");
     REQUIRE(vaccinaties >= 0, "can't vaccinate negative amount of people");
 
-    onStream << "Er werden " << vaccinaties << " inwoners voor de tweede keer gevaccineerd in " << getNaam() << " met het "<< vaccin->getType()<<" vaccin." << endl;
+    onStream << "Er werden " << vaccinaties << " inwoners voor de tweede keer gevaccineerd in " << getNaam()
+             << " met het "<< vaccin->getType()<<" vaccin." << endl;
 }
 
 void Centrum::verhoogGevaccineerd(int aantal){

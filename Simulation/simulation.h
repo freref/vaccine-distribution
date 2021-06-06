@@ -104,6 +104,8 @@ public:
     void stats(ostream& oStream);
 
     void addDelivery(string type, int aantal);
+
+    map<string, int>& getDeliveries();
 };
 
 

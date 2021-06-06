@@ -24,18 +24,44 @@ public:
     static vector<double> calculateGradient(int maxVal, int curVal);
 
     /**
-     \n Creates the ini file for a given day in the simulation
-     * @param transports:   Map containing amount of transports to the centers
-     * @param day:          Day in the simulation
-     * @param path:         Path to directory for ini files
+     \n Creates the ini file for a given day and hub in te simulation
+     * @param hub:          Hub for which to create ini
+     * @param hubNum:       Number of the hub
+     * @param transports:   All transports that happened that day from the hub
+     * @param day:          Day of the simulation
+     * @param path:         Path to output location (not ending on '/')
      */
-    static void createIni(const Hub *hub, unsigned int hubNum, map<Centrum *, int> &transports, int day,
-                          const string &path);
+    static void
+    createIni(const Hub *hub, unsigned int hubNum, int stockDivide, map<Centrum *, int> &transports, int day,
+              const string &path);
 
-    static void iniAddColorSegment(string colorType, double red, double green, double blue, ofstream& oFile);
+    /**
+     \n Adds a segment for a 3d vector type = (x, y, z) to the file
+     * @param type:     Type of the vector
+     * @param x:        x value
+     * @param y:        y value
+     * @param z:        z value
+     * @param oFile:    File to output to
+     */
+    static void iniAdd3dVectorSegment(string type, double x, double y, double z, ofstream& oFile);
 
-    static void iniAddHub(const Hub *h, int figNum, ofstream &oFile);
+    /**
+     \n Add representation of the hub to the ini
+     * @param h:        Hub pointer
+     * @param figNum:   Current figure number
+     * @param oFile:    File to output to
+     */
+    static void iniAddHub(int figNum, ofstream &oFile);
 
+    /**
+     \n Add figure per X amount of vaccines in the hub
+     * @param h:            Pointer to hub
+     * @param figNum:       Number of current figure
+     * @param stockDivide:  Amount of vaccines per new figure
+     * @param sOffset:      Offset between vaccine figures
+     * @param oFile:        File to output to
+     * @return          New figure number
+     */
     static int iniAddHubStock(const Hub *h, int figNum, int stockDivide, int sOffset, ofstream& oFile);
 
     /**
@@ -67,7 +93,7 @@ public:
      * @param cOffset:      Offset between centers
      * @param oFile:        File to add to
      */
-    static void iniGeneral(int figAmount, int cAmount, int maxTrans, int cOffset, ofstream &oFile);
+    static void iniGeneral(int figAmount, int maxTrans, ofstream &oFile);
 };
 
 

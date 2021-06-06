@@ -1,0 +1,12 @@
+Dag 1:
+Er werden 3 ladingen vac (135 vaccins) getransporteerd naar Centrum.
+Er werden 100 inwoners voor de eerste keer gevaccineerd in Centrum met het vac vaccin.
+
+Dag 2:
+Er werden 3 ladingen vac (135 vaccins) getransporteerd naar Centrum.
+Er werden 100 inwoners voor de tweede keer gevaccineerd in Centrum met het vac vaccin.
+
+Dag 3:
+Er werden 1 ladingen vac (45 vaccins) getransporteerd naar Centrum.
+Er werden 100 inwoners voor de eerste keer gevaccineerd in Centrum met het vac vaccin.
+

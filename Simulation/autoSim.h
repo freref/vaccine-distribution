@@ -22,6 +22,7 @@ public:
      \n REQUIRE(c->properlyInitialised(), "center wasn't initialised when simulating transport")
      \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when simulating transport")
      \n REQUIRE(vaccins >= 0, "can't simulate transport of negative amount of vaccines")
+     * @param hub:      Hub from where to transport
      * @param c:        Destination center
      * @param vaccin:   Vaccine to transport
      * @param vaccins:  Amount of vaccines in transport
@@ -120,7 +121,7 @@ public:
      * @param n:    Days to simulate
      * @param outS: Output stream
      */
-    static void simulate(simulation &s, int n, string graphicPath, bool graphicOutput, ostream &outS);
+    static void simulate(simulation &s, int n, string graphicPath, int stockDivide, bool graphicOutput, ostream &outS);
 };
 
 

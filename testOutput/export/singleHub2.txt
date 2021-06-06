@@ -1,0 +1,6 @@
+Hub 1 (600)
+	-> Centrum 1 (0 vaccins)
+	-> Centrum 2 (100 vaccins)
+
+Centrum 1: 0 gevaccineerd, nog 500 inwoners niet gevaccineerd
+Centrum 2: 300 gevaccineerd, nog 700 inwoners niet gevaccineerd

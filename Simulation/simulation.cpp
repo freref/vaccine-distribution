@@ -40,7 +40,19 @@ void simulation::clear() {
             delete *cIt;
         }
     }
+    if (!hubs.empty()) {
+        vector<Hub *>::iterator hIt;
+        for (hIt = hubs.begin(); hIt != hubs.end(); hIt++) {
+            delete *hIt;
+        }
+    }
     centra = vector<Centrum*>();
+    hubs = vector<Hub*>();
+    deliveries_by_type = map<string, int>();
+
+    ENSURE(getCentra().size() == unsigned (0), "centra didn't clear correctly");
+    ENSURE(getHubs().size() == unsigned (0), "hubs didn't clear correctly");
+    ENSURE(getDeliveries().size() == unsigned (0), "deliveries didn't clear correctly");
 }
 
 void simulation::graphicImpression(ostream& oStream){
@@ -145,8 +157,8 @@ void simulation::stats(ostream& oStream){
         tweede += centra[i]->getGevaccineerd();
     }
 
-    oStream << "Er zijn in het totaal " << eerste-tweede << " inwoners die nog maar één vaccinatie gekregen hebben" << endl;
-    oStream << "Er zijn in het totaal " << tweede << " inwoners die twee vaccinaties gekregen hebben" << endl;
+    oStream << "Er zijn in totaal " << eerste-tweede << " inwoners die nog maar één vaccinatie gekregen hebben" << endl;
+    oStream << "Er zijn in totaal " << tweede << " inwoners die twee vaccinaties gekregen hebben" << endl;
 
     for (it = deliveries_by_type.begin(); it != deliveries_by_type.end(); it++){
         oStream << "Er zijn " << it->second << " " << it->first << " vaccins geleverd" << endl;
@@ -154,5 +166,14 @@ void simulation::stats(ostream& oStream){
 }
 
 void simulation::addDelivery(string type, int aantal){
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when adding delivery");
+    REQUIRE(getDeliveries()[type] + aantal >= 0, "deliveries can't go into negative");
+    int oAmount = deliveries_by_type[type];
     deliveries_by_type[type] += aantal;
+    ENSURE(oAmount + aantal == getDeliveries()[type], "addDelivery postcondition failed");
+}
+
+map<string, int> & simulation::getDeliveries() {
+    REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when getting deliveries");
+    return deliveries_by_type;
 }

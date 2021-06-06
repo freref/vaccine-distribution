@@ -33,8 +33,19 @@ class Centrum {
     map<Vaccine*, int> voorraad;
     map<pair<int, Vaccine*>, int> gevac;
 public:
+    /**
+     * Add parsed xml element data to the center
+     * @param ele:      Parsed element
+     * @param errStr:   output error stream
+     * @return      Succes of insert
+     */
     bool insert(TiXmlElement *ele, ostream& errStr);
 
+    /**
+     * Check wether centrum is empty
+     * REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when checking empty");
+     * @return
+     */
     bool empty();
     //constructor
     Centrum();
@@ -147,8 +158,10 @@ public:
      \n REQUIRE(dag >= 0, "transport day can't be negative")
      \n REQUIRE(devide >= 0, "division can't be negative")
      \n ENSURE(ladingen>=0, "berekenEerstePrikLadingen postconditions failed")
+     * @param hub:      Hub to which center is linked
      * @param vaccin:   Vaccine to ship
      * @param dag:      Day of injection
+     * @param devide:   Amount of vaccins for center until next shipment arrives in hub
      * @return          Amount of shipments
      */
     int berekenEerstePrikLadingen(Hub* hub, Vaccine* vaccin, int dag, int devide);
@@ -158,6 +171,7 @@ public:
      \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling berekenTweedePrikLadingen")
      \n REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines")
      \n ENSURE(ladingen >= 0, "berekenTweedePrikLadingen postconditions failed")
+     * @param hub:      Hub to which center is linked
      * @param vaccin:   Vaccine to ship
      * @param aantal:   Necessary amount
      * @return          Amount of shipments

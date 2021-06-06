@@ -30,8 +30,9 @@ vector<double> graphicExport::calculateGradient(int maxVal, int curVal) {
     return color;
 }
 
-void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *, int> &transports, int day,
-                              const string &path) {
+void
+graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, map<Centrum *, int> &transports, int day,
+                         const string &path) {
     ostringstream conv;
     conv << hubNum;
     string fPath = path + "/hub" + conv.str();
@@ -50,9 +51,9 @@ void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *
     int cAmount = 0;
 
     // Hub toevoegen aan ini
-    iniAddHub(hub, figAmount, oFile);
+    iniAddHub(figAmount, oFile);
     figAmount += 1;
-    figAmount = iniAddHubStock(hub, figAmount, 10000, 1, oFile);
+    figAmount = iniAddHubStock(hub, figAmount, stockDivide, 1, oFile);
 
     // Centra en transporten toevoegen aan ini
     map<string, Centrum*> centra = hub->getCentra();
@@ -71,33 +72,31 @@ void graphicExport::createIni(const Hub *hub, unsigned int hubNum, map<Centrum *
         figAmount += transportAmount;
     }
 
-    iniGeneral(figAmount, cAmount, maxTransport, cOffset, oFile);
+    iniGeneral(figAmount, maxTransport, oFile);
 
     oFile.close();
 }
 
-void graphicExport::iniAddColorSegment(string colorType, double red, double green, double blue, ofstream& oFile) {
+void graphicExport::iniAdd3dVectorSegment(string type, double x, double y, double z, ofstream& oFile) {
     ostringstream conv;
 
-    oFile << colorType << " = (";
+    oFile << type << " = (";
     // Rood
     conv.str("");
-    conv << red;
+    conv << x;
     oFile << conv.str() << ", ";
     // Groen
     conv.str("");
-    conv << green;
+    conv << y;
     oFile << conv.str() << ", ";
     // Blauw
     conv.str("");
-    conv << blue;
+    conv << z;
     oFile << conv.str() << ")" << endl;
 }
 
-void graphicExport::iniAddHub(const Hub *h, int figNum, ofstream &oFile) {
+void graphicExport::iniAddHub(int figNum, ofstream &oFile) {
     ostringstream conv;
-
-    h->getVaccins();
 
     conv << figNum;
     oFile << "[Figure" << conv.str() << "]\n";
@@ -111,7 +110,7 @@ void graphicExport::iniAddHub(const Hub *h, int figNum, ofstream &oFile) {
              "ambientReflection = (0.2, 0.2, 0.2)\n"
              "diffuseReflection = (0.1, 0.1, 0.1)\n"
              "specularReflection = (0.5, 0.5, 0.5)\n"
-             "center = (0 , -4, 0)\n"
+             "center = (0, -4, 0)\n"
              "reflectionCoefficient = 10\n\n";
 }
 
@@ -133,14 +132,10 @@ int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int
                  "ambientReflection = (0.2, 0.2, 0.2)\n"
                  "diffuseReflection = (0.1, 0.1, 0.7)\n"
                  "specularReflection = (0.5, 0.5, 0.5)\n"
-                 "reflectionCoefficient = 10\n"
-                 "center = (";
-        conv.str("");
-        conv << calculateCenterOffset(i % 10, sOffset);
-        oFile << conv.str() << ", -4, ";
-        conv.str("");
-        conv << 2 + (floor(float (i) / 10) * sOffset);
-        oFile << conv.str() << ")\n\n";
+                 "reflectionCoefficient = 10\n";
+        iniAdd3dVectorSegment("center", calculateCenterOffset(i % 10, sOffset),
+                              -4, 2 + (floor(float(i) / 10) * sOffset), oFile);
+        oFile << endl;
 
         figNum += 1;
     }
@@ -166,14 +161,10 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
              "rotateX = 0\n"
              "rotateY = 0\n"
              "rotateZ = 0\n";
-    oFile << "center = (";
-    // Set center depending on center offset
-    convert.str("");
-    convert << xOffset;
-    oFile << convert.str() << ", 0, 0)" << endl;
+    iniAdd3dVectorSegment("center", xOffset, 0, 0, oFile);
     // Add color of center
-    iniAddColorSegment("ambientReflection", red/4, green/4, blue/4, oFile);
-    iniAddColorSegment("diffuseReflection", red, green, blue, oFile);
+    iniAdd3dVectorSegment("ambientReflection", red / 4, green / 4, blue / 4, oFile);
+    iniAdd3dVectorSegment("diffuseReflection", red, green, blue, oFile);
     oFile << "specularReflection = (0.5, 0.5, 0.5)" << endl;
     oFile << "reflectionCoefficient = 10" << endl;
     oFile << endl;
@@ -189,19 +180,15 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
     // Add roof to center to show storage capacity
     oFile << "[Figure" << convert.str() << "]\n";
     oFile << "type = \"Octahedron\"\n"
-             "n = 3\n"
              "scale = 1.40\n"
              "rotateX = 0\n"
              "rotateY = 0\n"
              "rotateZ = 45\n";
-    oFile << "center = (";
     // Calculate offset
-    convert.str("");
-    convert << xOffset;
-    oFile << convert.str() << ", 0, 1)" << endl;
+    iniAdd3dVectorSegment("center", xOffset, 0, 1, oFile);
     // Add color of center
-    iniAddColorSegment("ambientReflection", red/4, green/4, blue/4, oFile);
-    iniAddColorSegment("diffuseReflection", red, green, blue, oFile);
+    iniAdd3dVectorSegment("ambientReflection", red / 4, green / 4, blue / 4, oFile);
+    iniAdd3dVectorSegment("diffuseReflection", red, green, blue, oFile);
     oFile << "specularReflection = (0.5, 0.5, 0.5)" << endl;
     oFile << "reflectionCoefficient = 10" << endl;
     oFile << endl;
@@ -219,15 +206,8 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
                  "rotateY = 0\n"
                  "rotateZ = 0\n";
         // Calculate center
-        oFile << "center = (";
-        // X offset
-        convert.str("");
-        convert << calculateCenterOffset(centerNum, cOffset);
-        oFile << convert.str() << ", ";
-        // Y offset
-        convert.str("");
-        convert << 1.5 + (i * tOffset);
-        oFile << convert.str() << ", 0)" << endl;
+        iniAdd3dVectorSegment("center", calculateCenterOffset(centerNum, cOffset),
+                              1.5 + (i * tOffset), 0, oFile);
         // Color parameters
         oFile << "ambientReflection = (0.5, 0.5, 0.5)" << endl;
         oFile << "diffuseReflection = (0.1, 0.1, 0.1)" << endl;
@@ -237,8 +217,7 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
     }
 }
 
-void graphicExport::iniGeneral(int figAmount, int cAmount, int maxTrans, int cOffset, ofstream &oFile) {
-//    double xOffset = ((cAmount - 1) * cOffset)/2.0;
+void graphicExport::iniGeneral(int figAmount, int maxTrans, ofstream &oFile) {
     int yOffset = maxTrans * 10;
     double xOffset = 0;
 
@@ -247,15 +226,8 @@ void graphicExport::iniGeneral(int figAmount, int cAmount, int maxTrans, int cOf
     oFile << "[General]\n"
              "size = 2048\n"
              "backgroundcolor = (0, 0, 0)\n"
-             "type = \"LightedZBuffering\"\n"
-             "eye = (";
-    // Eye gets centered between al centers in simulation
-    conv << xOffset;
-    oFile << conv.str() << ", ";
-    // Make sure eye is far enough for the transports
-    conv.str("");
-    conv << yOffset;
-    oFile << conv.str() << ", 10)\n";
+             "type = \"LightedZBuffering\"\n";
+    iniAdd3dVectorSegment("eye", xOffset, yOffset, 10, oFile);
     // Add figures
     conv.str("");
     conv << figAmount;
@@ -264,7 +236,7 @@ void graphicExport::iniGeneral(int figAmount, int cAmount, int maxTrans, int cOf
     // Add a light
     oFile << "[Light0]\n"
              "infinity = FALSE\n"
-             "location = (-1, ";
+             "location = (0, ";
     conv.str("");
     conv << yOffset;
     oFile << yOffset;

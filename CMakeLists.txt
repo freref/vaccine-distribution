@@ -26,12 +26,13 @@ set(SOURCE_FILES
         Simulation/graphicExport.cpp Simulation/graphicExport.h)
 
 set(DEBUG_FILES
-        Simulation/tests/autoSimTests.cpp
+        Simulation/fileCompare.cpp
         Simulation/tests/centrumTests.cpp
-        Simulation/tests/domainTests.cpp
+        Simulation/tests/hubTests.cpp
+        Simulation/tests/simulationTests.cpp
+        Simulation/tests/autoSimTests.cpp
         Simulation/tests/exportTests.cpp
-        Simulation/tests/importTests.cpp
-        Simulation/fileCompare.cpp)
+        Simulation/tests/importTests.cpp)
 
 # Create executables
 add_executable(Project main.cpp ${SOURCE_FILES})
