@@ -174,8 +174,6 @@ const vector<Centrum*> &simulation::getCentra() const {
 
 void simulation::addDelivery(string type, int aantal){
     REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when adding delivery");
-    REQUIRE(!getHubs().empty(), "simulation didn't contain hubs when adding delivery");
-    REQUIRE(!getCentra().empty(), "simulation didn't contain centra when adding delivery");
     REQUIRE(getDeliveries()[type] + aantal >= 0, "deliveries can't go into negative");
     int oAmount = deliveries_by_type[type];
     deliveries_by_type[type] += aantal;

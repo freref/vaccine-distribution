@@ -3,6 +3,7 @@
 //
 
 #include "graphicExport.h"
+#include <iomanip>
 #include <sstream>
 #include <cmath>
 
@@ -34,10 +35,10 @@ void
 graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, map<Centrum *, int> &transports, int day,
                          const string &path) {
     ostringstream conv;
-    conv << hubNum;
+    conv << setw(2) << setfill('0') << hubNum;
     string fPath = path + "/hub" + conv.str();
     conv.str("");
-    conv << day;
+    conv << setw(4) << setfill('0')<< day;
     fPath += "_dag" + conv.str() + ".ini";
 
     ofstream oFile(fPath.c_str());
@@ -45,7 +46,7 @@ graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, m
     int cOffset = 3;
     int tOffset = 2;
 
-    int maxTransport;
+    int maxTransport = 0;
 
     int figAmount = 0;
     int cAmount = 0;
@@ -218,7 +219,7 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
 }
 
 void graphicExport::iniGeneral(int figAmount, int maxTrans, ofstream &oFile) {
-    int yOffset = maxTrans * 10;
+    int yOffset = 10 + maxTrans * 10;
     double xOffset = 0;
 
     ostringstream conv;

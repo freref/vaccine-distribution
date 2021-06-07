@@ -121,8 +121,6 @@ public:
     /**
      \n Adds stats for delivery of certain vaccine type
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when adding delivery")
-     \n REQUIRE(!getHubs().empty(), "simulation didn't contain hubs when adding delivery")
-     \n REQUIRE(!getCentra().empty(), "simulation didn't contain centra when adding delivery")
      \n REQUIRE(getDeliveries()[type] + aantal >= 0, "deliveries can't go into negative")
      \n ENSURE(oAmount + aantal == getDeliveries()[type], "addDelivery postcondition failed")
      @param type:     Type of delivered vaccine

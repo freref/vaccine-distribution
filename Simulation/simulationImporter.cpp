@@ -250,8 +250,15 @@ int simulationImporter::importFile(string inFile, simulation &sim, ostream& errS
 
     if (checkConsistent(centraMap, hubs, errStr))
         loadSim(&sim, &centraMap, &hubs);
-    else
+    else {
+        for (unsigned int i = 0; i < hubs.size(); ++i) {
+            delete hubs[i];
+        }
+        for (map<string, Centrum*>::iterator it = centraMap.begin(); it != centraMap.end(); it++) {
+            delete it->second;
+        }
         return 1;
+    }
     doc.Clear();
     ENSURE(!sim.getHubs().empty() && !sim.getCentra().empty(),"importFile postconditions failed");
     return 0;

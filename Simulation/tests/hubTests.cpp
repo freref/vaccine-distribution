@@ -81,6 +81,7 @@ TEST_F(hubTests, gettersSettersVaccines) {
     EXPECT_EQ(vaccines, h_->getVaccins());
 
     vaccines.erase(vaccines.begin());
+    delete v_;
     h_->setVaccins(vaccines);
     EXPECT_EQ(unsigned (1), h_->getVaccins().size());
     EXPECT_EQ(vaccines, h_->getVaccins());

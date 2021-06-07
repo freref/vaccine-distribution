@@ -24,6 +24,7 @@ protected:
         h_ = new Hub();
     }
     virtual void TearDown() {
+        sim_.clear();
     }
 
     // Variables to use in the tests
@@ -38,6 +39,9 @@ TEST_F(simulationTests, checkSetup) {
     EXPECT_EQ(unsigned (0), sim_.getHubs().size());
     EXPECT_EQ(unsigned (0), sim_.getCentra().size());
     EXPECT_EQ(unsigned (0), sim_.getDeliveries().size());
+
+    delete h_;
+    delete c_;
 }
 
 TEST_F(simulationTests, gettersSettersHub) {
@@ -46,6 +50,8 @@ TEST_F(simulationTests, gettersSettersHub) {
     sim_.setHubs(hubs);
     EXPECT_EQ(unsigned (1), sim_.getHubs().size());
     EXPECT_EQ(hubs, sim_.getHubs());
+
+    delete c_;
 }
 
 TEST_F(simulationTests, gettersSettersCentra) {
@@ -61,6 +67,8 @@ TEST_F(simulationTests, gettersSettersCentra) {
     sim_.addCentrum(c);
     EXPECT_EQ(unsigned (2), sim_.getCentra().size());
     EXPECT_EQ(centra, sim_.getCentra());
+
+    delete h_;
 }
 
 TEST_F(simulationTests, deliveryTests) {
@@ -75,6 +83,9 @@ TEST_F(simulationTests, deliveryTests) {
     EXPECT_EQ(unsigned (2), sim_.getDeliveries().size());
     EXPECT_EQ(11, sim_.getDeliveries()["type"]);
     EXPECT_EQ(3, sim_.getDeliveries()["type2"]);
+
+    delete h_;
+    delete c_;
 }
 
 TEST_F(simulationTests, clearTest) {
