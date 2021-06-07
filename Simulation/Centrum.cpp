@@ -97,6 +97,8 @@ void Centrum::setVoorraad(Vaccine* vac, int aantal){
     REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVoorraad");
     REQUIRE(vac->properlyInitialised(), "vaccine must be initialised when setting stock");
     REQUIRE(aantal >= 0, "vaccine can't have negative stock");
+    REQUIRE(getVaccins() - getVoorraad()[vac] + aantal <= getCapaciteit()*2,
+            "stock can't be bigger than capacity allows");
     voorraad[vac] = aantal;
     ENSURE(getVoorraad()[vac] == aantal, "setVoorraad postcondition failed");
 }
@@ -109,6 +111,7 @@ map<Vaccine*, int> Centrum::getVoorraad(){
 void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
     REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogVoorraad");
     REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verhoogVoorraad");
+    REQUIRE(getVaccins() + aantal <= getCapaciteit()*2, "can't store more vaccines than capacity allows");
     int oAmount = getVoorraad()[vac];
     voorraad[vac] += aantal;
     ENSURE(getVoorraad()[vac]-aantal == oAmount, "verhoogVoorraad postcondition failed");
@@ -117,6 +120,8 @@ void Centrum::verhoogVoorraad(Vaccine* vac, int aantal){
 void Centrum::verlaagVoorraad(Vaccine* vac, int aantal){
     REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verlaagVoorraad");
     REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verlaagVoorraad");
+    REQUIRE(getVaccins() - aantal >= 0, "can't have negative stock of vaccines");
+    REQUIRE(getVoorraad()[vac] - aantal >=0, "can't have negative stock of vaccine");
     int oAmount = getVoorraad()[vac];
     voorraad[vac] -= aantal;
     ENSURE(getVoorraad()[vac]+aantal == oAmount, "verlaagVoorraad postcondition failed");

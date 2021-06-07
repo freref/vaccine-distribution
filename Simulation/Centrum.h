@@ -79,6 +79,8 @@ public:
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVoorraad")
      \n REQUIRE(vac->properlyInitialised(), "vaccine must be initialised when setting stock")
      \n REQUIRE(aantal >= 0, "vaccine can't have negative stock")
+     \n REQUIRE(getVaccins() - getVoorraad()[vac] + aantal <= getCapaciteit()*2,
+                "stock can't be bigger than capacity allows")
      \n ENSURE(getVoorraad()[vac] == aantal, "setVoorraad postcondition failed")
      * @param vac:      The vaccine
      * @param aantal:   Stock of the vaccine
@@ -94,6 +96,7 @@ public:
      \n Add to stock of vaccine
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogVoorraad")
      \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verhoogVoorraad")
+     \n REQUIRE(getVaccins() + aantal <= getCapaciteit()*2, "can't store more vaccines than capacity allows")
      \n ENSURE(getVoorraad()[vac]-aantal == oAmount, "verhoogVoorraad postcondition failed")
      * @param vac:      Vaccine to add stock toe
      * @param aantal:   Amount of stock to add
@@ -103,6 +106,8 @@ public:
      \n Lower stock of vaccine
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verlaagVoorraad")
      \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling verlaagVoorraad")
+     \n REQUIRE(getVaccins() - aantal >= 0, "can't have negative stock of vaccines")
+     \n REQUIRE(getVoorraad()[vac] - aantal >=0, "can't have negative stock of vaccine")
      \n ENSURE(getVoorraad()[vac]+aantal == oAmount, "verlaagVoorraad postcondition failed")
      * @param vac:      Vaccine to lower stock off
      * @param aantal:   Amount to lower
