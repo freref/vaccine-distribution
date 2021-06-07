@@ -3,6 +3,7 @@
 //
 
 #include "graphicExport.h"
+#include "DesignByContract.h"
 #include <iomanip>
 #include <sstream>
 #include <cmath>
@@ -12,6 +13,9 @@ inline double calculateCenterOffset(int cNum, int cOffset) {
 }
 
 vector<double> graphicExport::calculateGradient(int maxVal, int curVal) {
+    REQUIRE(curVal <= maxVal, "current value can't be biggger than maximum value");
+    REQUIRE(maxVal >= 0, "maximum value must be positive for gradient");
+    REQUIRE(curVal >= 0, "current value must be positive for gradient");
     // Calculate capacity load
     double percent = double (curVal) / maxVal;
     double green = (percent * 2);
@@ -28,23 +32,37 @@ vector<double> graphicExport::calculateGradient(int maxVal, int curVal) {
     color.push_back(green);
     color.push_back(0);
 
+    ENSURE(color.size() == unsigned (3), "didn't create all colors");
+    ENSURE(0.0 <= color[0] && color[0] <= 1.0, "red value must be 0, 1 or inbetween");
+    ENSURE(0.0<= color[1] && color[1] <= 1.0, "green value must be 0, 1 or inbetween");
+    ENSURE(0.0 <= color[2] && color[2] <= 1.0, "blue value must be 0, 1 or inbetween");
     return color;
 }
 
-void
-graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, map<Centrum *, int> &transports, int day,
-                         const string &path) {
+void graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, map<Centrum *, int> &transports,
+                              int day, const string &path) {
+    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when creating ini");
+    REQUIRE(hubNum >= 0, "hub number can't be negative");
+    REQUIRE(stockDivide > 0, "stock division must be bigger than 1");
+    REQUIRE(day >= 0, "day can't be negative");
+
     ostringstream conv;
     conv << setw(2) << setfill('0') << hubNum;
-    string fPath = path + "/hub" + conv.str();
+    string fPath = path;
+    if (path.empty())
+        fPath += "./";
+    else
+        fPath += "/";
+    fPath += "hub" + conv.str();
     conv.str("");
-    conv << setw(4) << setfill('0')<< day;
+    conv << setw(4) << setfill('0') << day;
     fPath += "_dag" + conv.str() + ".ini";
 
     ofstream oFile(fPath.c_str());
 
-    int cOffset = 3;
-    int tOffset = 2;
+    int centrumOffset = 3;
+    int transportOffset = 2;
+    int stockOffset = 1;
 
     int maxTransport = 0;
 
@@ -54,17 +72,17 @@ graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, m
     // Hub toevoegen aan ini
     iniAddHub(figAmount, oFile);
     figAmount += 1;
-    figAmount = iniAddHubStock(hub, figAmount, stockDivide, 1, oFile);
+    figAmount = iniAddHubStock(hub, figAmount, stockDivide, stockOffset, oFile);
 
     // Centra en transporten toevoegen aan ini
     map<string, Centrum*> centra = hub->getCentra();
     for (map<string, Centrum*>::iterator it = centra.begin(); it != centra.end(); it++) {
         // Centrum toevoegen
-        iniAddCenter(it->second, cAmount, figAmount, cOffset, oFile);
+        iniAddCenter(it->second, cAmount, figAmount, centrumOffset, oFile);
         figAmount += 2;
         int transportAmount = transports[it->second];
         // Correct aantal transporten toevoegen
-        iniAddTransports(transportAmount, cAmount, figAmount, cOffset, tOffset, oFile);
+        iniAddTransports(transportAmount, cAmount, figAmount, centrumOffset, transportOffset, oFile);
 
         if (transportAmount > maxTransport)
             maxTransport = transportAmount;
@@ -79,6 +97,8 @@ graphicExport::createIni(const Hub *hub, unsigned int hubNum, int stockDivide, m
 }
 
 void graphicExport::iniAdd3dVectorSegment(string type, double x, double y, double z, ofstream& oFile) {
+    REQUIRE(!type.empty(), "type value can't be empty for ini vector");
+
     ostringstream conv;
 
     oFile << type << " = (";
@@ -97,6 +117,8 @@ void graphicExport::iniAdd3dVectorSegment(string type, double x, double y, doubl
 }
 
 void graphicExport::iniAddHub(int figNum, ofstream &oFile) {
+    REQUIRE(figNum >= 0, "figure number can't be negative");
+
     ostringstream conv;
 
     conv << figNum;
@@ -116,6 +138,11 @@ void graphicExport::iniAddHub(int figNum, ofstream &oFile) {
 }
 
 int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int sOffset, ofstream &oFile) {
+    REQUIRE(h->properlyInitialised(), "hub must be initialised when adding stock to ini");
+    REQUIRE(figNum >= 0, "figure number can't be negative");
+    REQUIRE(stockDivide > 0, "stock divide must be positive");
+    REQUIRE(sOffset > 0, "offset between stock must be bigger than 0");
+
     ostringstream conv;
 
     int stockAmount = ceil(float (h->getTotaleVoorraad()) / stockDivide);
@@ -141,10 +168,16 @@ int graphicExport::iniAddHubStock(const Hub *h, int figNum, int stockDivide, int
         figNum += 1;
     }
 
+    ENSURE(figNum >= 0, "iniAddHubStock postcondition failed");
     return figNum;
 }
 
 void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, ofstream &oFile) {
+    REQUIRE(c->properlyInitialised(), "centrum was't initialised when adding to ini");
+    REQUIRE(cNum >= 0, "center number can't be negative");
+    REQUIRE(figNum >= 0, "figure number can't be negative");
+    REQUIRE(cOffset > 0, "offset between centra must be bigger than 0");
+
     double xOffset = calculateCenterOffset(cNum, cOffset);
 
     // Get color gradient for center based on percentage vaccinated
@@ -196,6 +229,12 @@ void graphicExport::iniAddCenter(Centrum *c, int cNum, int figNum, int cOffset, 
 }
 
 void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int cOffset, int tOffset, ofstream &oFile) {
+    REQUIRE(amount >= 0, "transport amount to be added must be positive");
+    REQUIRE(centerNum >= 0, "center number can't be negative");
+    REQUIRE(figNum >= 0, "figure number can't be negative");
+    REQUIRE(cOffset > 0, "offset between centra must be bigger than 0");
+    REQUIRE(tOffset > 0, "offset between transports must be bigger than 0");
+
     for (int i = 0; i < amount ; ++i) {
         ostringstream convert;
         convert << figNum + i; // Get figure number in file
@@ -219,6 +258,9 @@ void graphicExport::iniAddTransports(int amount, int centerNum, int figNum, int 
 }
 
 void graphicExport::iniGeneral(int figAmount, int maxTrans, ofstream &oFile) {
+    REQUIRE(figAmount >= 0, "ini can't contain negative amount of figures");
+    REQUIRE(maxTrans >= 0, "ini can't have a negative amount of maximum transports");
+
     int yOffset = 10 + maxTrans * 10;
     double xOffset = 0;
 

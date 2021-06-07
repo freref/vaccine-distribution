@@ -34,7 +34,8 @@ class Centrum {
     map<pair<int, Vaccine*>, int> gevac;
 public:
     /**
-     * Add parsed xml element data to the center
+     \n Add parsed xml element data to the center
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when inserting xml element")
      * @param ele:      Parsed element
      * @param errStr:   output error stream
      * @return      Succes of insert
@@ -42,18 +43,24 @@ public:
     bool insert(TiXmlElement *ele, ostream& errStr);
 
     /**
-     * Check wether centrum is empty
-     * REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when checking empty");
+     \n Check wether centrum is empty
+     \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when checking empty");
      * @return
      */
     bool empty();
     //constructor
+    /**
+     \n Empty constructor
+     \n ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised")
+     */
     Centrum();
     /**
-     * Constructor
-     * \n REQUIRE(i>=0, "inhabitant amount can't be negative");
-       \n REQUIRE(c>=0, "capacity can't be negative");
-     * \n ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
+     \n Constructor
+     \n REQUIRE(!n.empty(), "center name can't be empty")
+     \n REQUIRE(!a.empty(), "center addres can't be empty")
+     \n REQUIRE(i>=0, "inhabitant amount can't be negative")
+     \n REQUIRE(c>=0, "capacity can't be negative")
+     \n ENSURE(this->properlyInitialised(), "constructor must end properlyInitialised");
      * @param n:    Name
      * @param a:    Adres
      * @param i:    Inhabitants amount
@@ -63,13 +70,15 @@ public:
 
     /**
      * Checks if propperly initialized
-     * @return bool
+     * @return bool properly initialised
      */
     bool properlyInitialised() const {return _initCheck == this; };
 
     /**
      \n set stock of certain vaccine
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling setVoorraad")
+     \n REQUIRE(vac->properlyInitialised(), "vaccine must be initialised when setting stock")
+     \n REQUIRE(aantal >= 0, "vaccine can't have negative stock")
      \n ENSURE(getVoorraad()[vac] == aantal, "setVoorraad postcondition failed")
      * @param vac:      The vaccine
      * @param aantal:   Stock of the vaccine
@@ -154,6 +163,7 @@ public:
     /**
      \n Calculate amount of shipments for first injection
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenEerstePrikLadingen")
+     \n REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling berekenEerstePrikLadingen")
      \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling berekenEerstePrikLadingen")
      \n REQUIRE(dag >= 0, "transport day can't be negative")
      \n REQUIRE(devide >= 0, "division can't be negative")
@@ -168,6 +178,7 @@ public:
     /**
      \n Calculate amount of shipments for second injection
      \n REQUIRE(this->properlyInitialised(), "simulation wasn't initialised when calling berekenTweedePrikLadingen")
+     \n REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when calling berekenTweedePrikLadingen")
      \n REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when calling berekenTweedePrikLadingen")
      \n REQUIRE(aantal >= 0, "transport can't have negative amount of vaccines")
      \n ENSURE(ladingen >= 0, "berekenTweedePrikLadingen postconditions failed")
@@ -214,6 +225,8 @@ public:
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling zetVaccinatie")
      \n REQUIRE(vac->properlyInitialised(), "vaccine wasn't initialised when calling zetVaccinatie")
      \n REQUIRE(dag >= 0, "day can't be negative")
+     \n REQUIRE(aantal >= 0, "can't vaccinate negative amount of people")
+     \n ENSURE(getGevac()[make_pair(dag, vac)] = oAmount + aantal, "zetVaccinatie postcondition failed")
      * @param dag:      Day of vaccination
      * @param vac:      Used vaccine
      * @param aantal:   Amount to vaccinate
@@ -239,6 +252,9 @@ public:
     /**
      \n Increase amount of fully vaccinated people
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogGevaccineerd")
+     \n REQUIRE(getGevaccineerd() + aantal <= getInwoners(),
+               "amount of vaccinated people can't be more than inhabitants")
+     \n ENSURE(getGevaccineerd() == oAmount + aantal, "verhoogGevaccineerd postcondition failed")
      * @param aantal:   Amount by wich to increase
      */
     void verhoogGevaccineerd(int aantal);
@@ -252,6 +268,9 @@ public:
     /**
      \n Increase amount of people with first injection
      \n REQUIRE(this->properlyInitialised(), "centrum wasn't initialised when calling verhoogEerste")
+     \n REQUIRE(getEerste() + aantal <= getInwoners(),
+                "amount of people with first injection can't be more than inhabitants")
+     \n ENSURE(getEerste() == oAmount + aantal, "verhoogEerste postcondition failed")
      * @param aantal:   Amount to increase by
      */
     void verhoogEerste(int aantal);

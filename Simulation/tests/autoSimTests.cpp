@@ -9,6 +9,7 @@
 
 #include <gtest/gtest.h>
 #include <fstream>
+#include <iomanip>
 
 #include "../fileCompare.h"
 
@@ -178,14 +179,14 @@ TEST_F(autoSimTests, correctInjections) {
     c_->setVoorraad(v_, 135);
     c_->zetVaccinatie(0, v_, 50);
     c_->verhoogEerste(50);
-    autoSim::simulateVaccinatie(c_, strStrm, 1);
+    autoSim::simulateVaccinatie(c_, 1, strStrm);
     EXPECT_FALSE(strStrm.str().empty());
     EXPECT_EQ(100, c_->getEerste());
     EXPECT_EQ(50, c_->getGevaccineerd());
     EXPECT_EQ(35, c_->getVaccins());
 
     strStrm.str("");
-    autoSim::simulateVaccinatie(c_, strStrm, 2);
+    autoSim::simulateVaccinatie(c_, 2, strStrm);
     EXPECT_FALSE(strStrm.str().empty());
     EXPECT_EQ(100, c_->getEerste());
     EXPECT_EQ(85, c_->getGevaccineerd());
@@ -195,14 +196,14 @@ TEST_F(autoSimTests, correctInjections) {
 TEST_F(autoSimTests, noRenewalTest) {
     v_->setHernieuwing(0);
     c_->setVoorraad(v_, 135);
-    autoSim::simulateVaccinatie(c_, strStrm, 1);
+    autoSim::simulateVaccinatie(c_, 1, strStrm);
     EXPECT_FALSE(strStrm.str().empty());
     EXPECT_EQ(100, c_->getEerste());
     EXPECT_EQ(100, c_->getGevaccineerd());
     EXPECT_EQ(35, c_->getVaccins());
 
     strStrm.str("");
-    autoSim::simulateVaccinatie(c_, strStrm, 2);
+    autoSim::simulateVaccinatie(c_, 2, strStrm);
     EXPECT_FALSE(strStrm.str().empty());
     EXPECT_EQ(135, c_->getEerste());
     EXPECT_EQ(135, c_->getGevaccineerd());
@@ -238,13 +239,13 @@ TEST_F(autoSimTests, autoSimulation) {
 
     for (int i = 1; i <= 3; i++) {
         stringstream conv;
-        conv << i;
-        string path = "../testOutput/autoSim/hub0_dag" + conv.str() + ".ini";
+        conv << setw(4) << setfill('0') << i;
+        string path = "../testOutput/autoSim/hub00_dag" + conv.str() + ".ini";
         EXPECT_FALSE(FileIsEmpty(path));
     }
     for (int i = 4; i <= 10; i++) {
         stringstream conv;
-        conv << i;
+        conv << setw(4) << setfill('0') << i;
         string path = "../testOutput/autoSim/hub0_dag" + conv.str() + ".ini";
         ifstream iFile;
         iFile.open(path.c_str());

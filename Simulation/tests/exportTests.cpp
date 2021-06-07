@@ -115,6 +115,20 @@ TEST_F(exporterTests, simpleGraphic) {
                             "../expectedData/export/simpleGraphic2.txt"));
 }
 
+TEST_F(exporterTests, statExport) {
+    ofstream oFile;
+    oFile.open("../testOutput/export/stats.txt");
+
+    sim_.addDelivery("vaccine", 800);
+    c2->verhoogEerste(400);
+    c2->setGevaccineerd(100);
+    c1->verhoogEerste(150);
+    c1->setGevaccineerd(150);
+    sim_.stats(oFile);
+
+    EXPECT_TRUE(FileCompare("../testOutput/export/stats.txt", "../expectedData/export/stats.txt"));
+}
+
 TEST_F(exporterTests, gradientCalc) {
     vector<double> result = graphicExport::calculateGradient(100, 0);
     EXPECT_EQ(1.0, result[0]);
@@ -212,5 +226,5 @@ TEST_F(exporterTests, iniFull) {
     c1->setVoorraad(vac, 200);
     graphicExport::createIni(h, 1, 400, transports, 0, "../testOutput/export");
 
-    EXPECT_TRUE(FileCompare("../testOutput/export/hub1_dag0.ini", "../expectedData/export/fullIni.ini"));
+    EXPECT_TRUE(FileCompare("../testOutput/export/hub01_dag0000.ini", "../expectedData/export/fullIni.ini"));
 }

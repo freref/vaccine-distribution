@@ -17,21 +17,31 @@
 using namespace std;
 
 // Simulates the transport of a vaccine from a hub to a center
-void autoSim::simulateTransport(Hub* hub, Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS){
+void autoSim::simulateTransport(Hub* hub, Centrum* c, Vaccine* vaccin, int vaccins, ostream& outS) {
+    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when simulating transport");
     REQUIRE(c->properlyInitialised(), "center wasn't initialised when simulating transport");
     REQUIRE(vaccin->properlyInitialised(), "vaccine wasn't initialised when simulating transport");
     REQUIRE(vaccins >= 0, "can't simulate transport of negative amount of vaccines");
+    REQUIRE(hub->getVoorraad(vaccin) - vaccins >= 0, "can't transport more vaccines than in stock");
+    REQUIRE(c->getVoorraad()[vaccin] + vaccins <= c->getCapaciteit() * 2, "can't go over stock capacity in center");
+
+    int oHub = hub->getVoorraad(vaccin);
+    int oCenter = c->getVoorraad()[vaccin];
 
     hub->verlaagVoorraad(vaccin, vaccins);
     c->verhoogVoorraad(vaccin, vaccins);
 
     if (vaccins > 0)
         c->printTransport(vaccins, vaccin, outS);
+
+    ENSURE((oHub - vaccins == hub->getVoorraad(vaccin)) && (oCenter + vaccins == c->getVoorraad()[vaccin]),
+           "simulateTransport postcondition failed");
 }
 
 // Simulate transport for first injections
 void autoSim::simulateEerstePrikTransport(Hub *hub, map<string, Centrum *> &centraHub, vector<Vaccine *> &vaccins,
                                           map<Centrum *, int> &transports, ostream &outS, int dag) {
+    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when transporting first injectios");
     REQUIRE(centraHub.size() > unsigned (0), "no centra when simulationg first injection transport");
     REQUIRE(vaccins.size() > unsigned (0), "no vaccines when simulationd first injection transport");
     REQUIRE(dag >= 0, "can't simulate second injection transport on negative day");
@@ -60,6 +70,7 @@ void autoSim::simulateEerstePrikTransport(Hub *hub, map<string, Centrum *> &cent
 // Simulate transport for second injections
 void autoSim::simulateTweedePrikTransport(Hub *hub, map<string, Centrum *> &centraHub, vector<Vaccine *> &vaccins,
                                           map<Centrum *, int> &transports, ostream &outS, int dag) {
+    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when transporting second injectios");
     REQUIRE(centraHub.size() > unsigned (0), "no centra when simulationg second injection transport");
     REQUIRE(vaccins.size() > unsigned (0), "no vaccines when simulationd second injection transport");
     REQUIRE(dag >= 0, "can't simulate second injection transport on negative day");
@@ -86,7 +97,7 @@ void autoSim::simulateTweedePrikTransport(Hub *hub, map<string, Centrum *> &cent
 }
 
 // Simulate first injections in a center using certain vaccine
-int autoSim::simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int vaccinated, ostream& outS, int dag){
+int autoSim::simulateEerstePrik(Centrum *c, map<Vaccine *, int>::iterator it, int vaccinated, int dag, ostream &outS) {
     REQUIRE(it->first->properlyInitialised(),
             "Vaccine wasn't initialised when simulating first injection");
     REQUIRE(c->properlyInitialised(), "center wasn't initialised when simulating first injection");
@@ -106,11 +117,12 @@ int autoSim::simulateEerstePrik(Centrum* c, map<Vaccine*, int>::iterator it, int
             c->verhoogGevaccineerd(vaccinaties);
         }
     }
+    ENSURE(vaccinated + vaccinaties <= c->getCapaciteit(), "can't vaccinate more people than capacity allows");
     return vaccinaties;
 }
 
 // Simulates the second injections in a center using a certain vaccine
-int autoSim::simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated, Centrum* c, int dag, ostream& outS){
+int autoSim::simulateTweedePrik(Centrum *c, map<Vaccine *, int>::iterator it, int vaccinated, int dag, ostream &outS) {
     REQUIRE(it->first->properlyInitialised(),
             "Vaccine wasn't initialised when simulating second injection");
     REQUIRE(c->properlyInitialised(), "center wasn't initialised when simulating second injection");
@@ -137,11 +149,12 @@ int autoSim::simulateTweedePrik(map<Vaccine*, int>::iterator it, int vaccinated,
             // Remove pair for memory
             c->removeVaccinatie(dag - it->first->getHernieuwing(), it->first);
     }
+    ENSURE(vaccinated + vaccinaties <= c->getCapaciteit(), "can't vaccinate more people than capacity allows");
     return vaccinaties;
 }
 
 // Simulate vaccination in a center
-void autoSim::simulateVaccinatie(Centrum *c, ostream& outS, int dag) {
+void autoSim::simulateVaccinatie(Centrum *c, int dag, ostream &outS) {
     REQUIRE(c->properlyInitialised(), "center wasn't initialised when calling simulateVaccinatie");
     REQUIRE(dag >= 0, "can't vaccinate on negative day");
 
@@ -154,17 +167,17 @@ void autoSim::simulateVaccinatie(Centrum *c, ostream& outS, int dag) {
         map<Vaccine*, int> voorraad = c->getVoorraad();
         for (map<Vaccine*, int>::iterator it = voorraad.begin(); it != voorraad.end(); it++) {
             if (i == 0)
-                vaccinated += simulateTweedePrik(it, vaccinated, c, dag, outS);
+                vaccinated += simulateTweedePrik(c, it, vaccinated, dag, outS);
             else if (i == 1 && it->first->getTemperatuur() < 0)
-                vaccinated += simulateEerstePrik(c, it, vaccinated, outS, dag);
+                vaccinated += simulateEerstePrik(c, it, vaccinated, dag, outS);
             else if (i == 2)
-                vaccinated += simulateEerstePrik(c, it, vaccinated, outS, dag);
+                vaccinated += simulateEerstePrik(c, it, vaccinated, dag, outS);
         }
     }
 }
 
 // Simulate the vaccinations for all centers
-bool autoSim::simulateVaccinatieProcess(vector<Centrum *> &centra, ostream& outS, int dag){
+bool autoSim::simulateVaccinatieProcess(vector<Centrum *> &centra, int dag, ostream &outS) {
     REQUIRE(centra.size() > unsigned (0), "No centra when simulation vaccination");
     REQUIRE(dag >= 0, "can't simulate vaccination on negative day");
 
@@ -172,7 +185,7 @@ bool autoSim::simulateVaccinatieProcess(vector<Centrum *> &centra, ostream& outS
     for (long unsigned int i = 0; i < centra.size(); i++) {
         Centrum* centrum = centra.at(i);
         // Simulate vaccinations for current center
-        simulateVaccinatie(centrum, outS, dag);
+        simulateVaccinatie(centrum, dag, outS);
         if (centrum->getGevaccineerd() != centrum->getInwoners())
             check = false;
     }
@@ -180,7 +193,9 @@ bool autoSim::simulateVaccinatieProcess(vector<Centrum *> &centra, ostream& outS
 }
 
 // Simulate delivery of vaccines to the hub
-void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &vaccins, int dag){
+void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &vaccins, int dag) {
+    REQUIRE(hub->properlyInitialised(), "hub wasn't initialised when simulating delivery");
+    REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when simulating delivery");
     REQUIRE(vaccins.size() > unsigned (0), "No vaccines in hub on delivery simulation");
     REQUIRE(dag >= 0, "can't deliver to hub on negative day");
 
@@ -200,6 +215,7 @@ void autoSim::simulateHubDelivery(Hub* hub, simulation& s, vector<Vaccine *> &va
 void autoSim::simulate(simulation &s, int n, string graphicPath, int stockDivide, bool graphicOutput, ostream &outS) {
     REQUIRE(s.properlyInitialised(), "simulation wasn't initialised when calling simulate");
     REQUIRE(n >= 0, "can't simulate negative amount of days");
+    REQUIRE(stockDivide > 0, "stock divide must be bigger than 0");
 
     vector<Hub*> hubs = s.getHubs();
     vector<Centrum*> centra = s.getCentra();
@@ -227,7 +243,7 @@ void autoSim::simulate(simulation &s, int n, string graphicPath, int stockDivide
         }
 
         // Simulate possible vaccinations
-        if (simulateVaccinatieProcess(centra, outS, j))
+        if (simulateVaccinatieProcess(centra, j, outS))
             break;
         outS << endl;
     }
