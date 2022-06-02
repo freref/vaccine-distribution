@@ -2,7 +2,7 @@
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
  * \n Test the Centrum class
  *
- * @authors Frederic Hamelink & Sander Marinus
+ * @authors Frederic & Sander Marinus
  * @date    28/4/2021
  * @version 2.0
  */
