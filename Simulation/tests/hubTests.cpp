@@ -2,7 +2,7 @@
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
  * \n Tests for the Hub class
  *
- * @authors Frederic Hamelink & Sander Marinus
+ * @authors Frederic & Sander Marinus
  * @date    5/6/2021
  * @version 2.0
  */
