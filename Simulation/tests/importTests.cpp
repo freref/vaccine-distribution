@@ -2,7 +2,7 @@
  * \n University of Antwerp - BA1 Informatica - Project Software Engineering 2021
  * \n Tests voor simulation importer
  *
- * @authors Frederic Hamelink & Sander Marinus
+ * @authors Frederic & Sander Marinus
  * @date    16/3/2021
  * @version 1.0
  */
