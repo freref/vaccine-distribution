@@ -1,4 +1,0 @@
-C:/Users/sande/CLionProjects/ProjectPSE/cmake-build-debug/CMakeFiles/Project.dir
-C:/Users/sande/CLionProjects/ProjectPSE/cmake-build-debug/CMakeFiles/sim_debug.dir
-C:/Users/sande/CLionProjects/ProjectPSE/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/sande/CLionProjects/ProjectPSE/cmake-build-debug/CMakeFiles/rebuild_cache.dir
